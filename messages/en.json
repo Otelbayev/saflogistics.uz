@@ -1,0 +1,193 @@
+{
+  "site": {
+    "name": "SAF Logistics",
+    "tagline": "On time, every time"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "contact": "Contact",
+    "about": "About",
+    "getQuote": "Get a quote"
+  },
+  "hero": {
+    "badge": "International logistics company",
+    "title": "SAF Logistics — On time, every time",
+    "subtitle": "Reliable, fast and professional freight from China to Uzbekistan and around the world. B2B partnerships and end-to-end freight solutions.",
+    "ctaContact": "Contact us",
+    "ctaServices": "View services",
+    "stats": {
+      "years": "Years of experience",
+      "projects": "Successful projects",
+      "countries": "Partner countries",
+      "clients": "Repeat clients"
+    }
+  },
+  "about": {
+    "title": "About us",
+    "subtitle": "A trusted partner in international logistics",
+    "description": "SAF Logistics has over 5 years of experience moving freight between China and Uzbekistan. We offer our clients fast, safe and transparent solutions.",
+    "features": {
+      "experience": {
+        "title": "5 years of experience",
+        "desc": "Deep expertise in international logistics and a reliable partner network."
+      },
+      "b2b": {
+        "title": "B2B and full truckload",
+        "desc": "Comprehensive logistics services for business and full-truck shipping."
+      },
+      "projects": {
+        "title": "500+ projects",
+        "desc": "Successfully completed projects and grateful clients."
+      }
+    }
+  },
+  "services": {
+    "title": "Our services",
+    "subtitle": "Choose the tariff that fits you",
+    "description": "Standard and Express — we deliver your cargo anywhere in the world.",
+    "standard": {
+      "name": "Standard tariff",
+      "price": "Best value",
+      "duration": "25–35 days",
+      "description": "A convenient and affordable solution for bulk cargo.",
+      "features": [
+        "Sea and land freight",
+        "Full container load",
+        "Secure packaging",
+        "Shipment tracking",
+        "Customs clearance"
+      ]
+    },
+    "express": {
+      "name": "Express tariff",
+      "price": "Premium service",
+      "duration": "7–14 days",
+      "description": "For urgent, time-sensitive shipments.",
+      "features": [
+        "Air and land freight",
+        "Priority delivery",
+        "24/7 monitoring",
+        "Personal manager",
+        "Fast-track customs"
+      ]
+    },
+    "cta": "Choose tariff",
+    "compare": "Compare tariffs",
+    "compareTable": {
+      "feature": "Feature",
+      "standard": "Standard",
+      "express": "Express",
+      "rows": {
+        "delivery": "Delivery time",
+        "tracking": "Shipment tracking",
+        "manager": "Personal manager",
+        "customs": "Customs service",
+        "insurance": "Cargo insurance",
+        "priority": "Priority routing"
+      }
+    }
+  },
+  "globe": {
+    "title": "Our global network",
+    "subtitle": "Partner countries worldwide",
+    "description": "From our Guangzhou (China) hub we ship to more than 15 countries.",
+    "hub": "Guangzhou, China — main hub"
+  },
+  "why": {
+    "title": "Why choose us?",
+    "subtitle": "Our advantages",
+    "items": {
+      "fast": {
+        "title": "Fast delivery",
+        "desc": "Optimized routes and fast dispatch system."
+      },
+      "secure": {
+        "title": "Full security",
+        "desc": "Every shipment is insured and tracked."
+      },
+      "price": {
+        "title": "Competitive pricing",
+        "desc": "Transparent pricing, no hidden fees."
+      },
+      "support": {
+        "title": "24/7 support",
+        "desc": "We are ready to help you any time of day."
+      },
+      "expert": {
+        "title": "China specialist",
+        "desc": "Deep experience and personal connections in Guangzhou."
+      },
+      "tech": {
+        "title": "Modern technology",
+        "desc": "Shipment tracking and online management."
+      }
+    }
+  },
+  "founder": {
+    "title": "Founder",
+    "name": "Farrukh Mashanpin",
+    "role": "International logistics expert",
+    "specialty": "China route specialist",
+    "bio": "An expert who has shaped freight flows between China and Uzbekistan for years. Knows the Guangzhou market inside out and offers clients the most convenient solutions.",
+    "instagram": "Instagram profile"
+  },
+  "ctaBanner": {
+    "title": "Put your cargo on the road today",
+    "subtitle": "Contact us for a free consultation and an accurate quote.",
+    "button": "Contact us"
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Have a question? Send us a message",
+    "description": "Our specialists will offer you the most suitable solution.",
+    "phoneLabel": "Phone numbers",
+    "hoursLabel": "Working hours",
+    "hoursWeek": "Mon–Sat: 10:00–19:00",
+    "hoursSun": "Sunday: Closed",
+    "addressLabel": "Address",
+    "address": "Tashkent, Uzbekistan",
+    "mapTitle": "Find us on the map",
+    "socialLabel": "Social networks",
+    "form": {
+      "title": "Send a message",
+      "name": "Your name",
+      "namePlaceholder": "Full name",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+998 __ ___ __ __",
+      "message": "Message",
+      "messagePlaceholder": "Your message…",
+      "submit": "Send",
+      "success": "Thanks! We'll be in touch shortly."
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "title": "End-to-end logistics services",
+      "subtitle": "From China to Uzbekistan and beyond",
+      "description": "Professional solutions for cargo of any size and timeline."
+    },
+    "pricing": {
+      "title": "Pricing plans",
+      "subtitle": "Pick the plan that fits your business",
+      "popular": "Popular",
+      "month": "Order",
+      "cta": "Choose"
+    }
+  },
+  "footer": {
+    "about": "SAF Logistics — reliable freight, on time, every time.",
+    "rights": "All rights reserved.",
+    "quickLinks": "Quick links",
+    "contacts": "Contacts",
+    "follow": "Follow us",
+    "madeWith": "Made with care"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  }
+}

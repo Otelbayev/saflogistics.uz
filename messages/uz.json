@@ -1,0 +1,193 @@
+{
+  "site": {
+    "name": "SAF Logistics",
+    "tagline": "O‘z vaqtida"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "services": "Xizmatlar",
+    "contact": "Aloqa",
+    "about": "Biz haqimizda",
+    "getQuote": "Taklif olish"
+  },
+  "hero": {
+    "badge": "Xalqaro logistika kompaniyasi",
+    "title": "SAF Logistics — O‘z vaqtida",
+    "subtitle": "Xitoydan O‘zbekistonga va butun dunyoga ishonchli, tezkor va professional yuk tashish xizmati. B2B hamkorlik va to‘liq yuk tashish yechimlari.",
+    "ctaContact": "Biz bilan bog‘laning",
+    "ctaServices": "Xizmatlarni ko‘rish",
+    "stats": {
+      "years": "Yillik tajriba",
+      "projects": "Muvaffaqiyatli loyihalar",
+      "countries": "Hamkor davlatlar",
+      "clients": "Doimiy mijozlar"
+    }
+  },
+  "about": {
+    "title": "Biz haqimizda",
+    "subtitle": "Xalqaro logistikada ishonchli hamkor",
+    "description": "SAF Logistics — Xitoy va O‘zbekiston o‘rtasidagi xalqaro yuk tashish bo‘yicha 5 yildan ortiq tajribaga ega kompaniya. Biz mijozlarimizga tezkor, xavfsiz va shaffof yechimlarni taklif etamiz.",
+    "features": {
+      "experience": {
+        "title": "5 yillik tajriba",
+        "desc": "Xalqaro logistikada chuqur tajriba va ishonchli hamkorlar tarmog‘i."
+      },
+      "b2b": {
+        "title": "B2B va to‘liq yuk",
+        "desc": "Biznes uchun keng qamrovli logistika xizmatlari va to‘liq yuk tashish."
+      },
+      "projects": {
+        "title": "500+ loyiha",
+        "desc": "Yakunlangan muvaffaqiyatli loyihalar va minnatdor mijozlar."
+      }
+    }
+  },
+  "services": {
+    "title": "Bizning xizmatlar",
+    "subtitle": "Sizga mos tarifni tanlang",
+    "description": "Standart va Ekspress tariflarimiz orqali yukingizni dunyoning istalgan nuqtasiga yetkazib beramiz.",
+    "standard": {
+      "name": "Standart tarif",
+      "price": "Qulay narx",
+      "duration": "25–35 kun",
+      "description": "Katta hajmdagi yuklar uchun qulay va arzon yechim.",
+      "features": [
+        "Dengiz va quruqlik yo‘li",
+        "Keng hajm — to‘liq konteyner",
+        "Xavfsiz qadoqlash",
+        "Yuk kuzatuvi",
+        "Bojxona rasmiylashtirish"
+      ]
+    },
+    "express": {
+      "name": "Ekspress tarif",
+      "price": "Premium xizmat",
+      "duration": "7–14 kun",
+      "description": "Shoshilinch va tezkor yetkazib berishni talab qiladigan yuklar uchun.",
+      "features": [
+        "Aviayuk va quruqlik",
+        "Ustuvor yetkazib berish",
+        "24/7 monitoring",
+        "Shaxsiy menejer",
+        "Tezlashtirilgan bojxona"
+      ]
+    },
+    "cta": "Tarifni tanlash",
+    "compare": "Tariflarni solishtiring",
+    "compareTable": {
+      "feature": "Xususiyat",
+      "standard": "Standart",
+      "express": "Ekspress",
+      "rows": {
+        "delivery": "Yetkazib berish muddati",
+        "tracking": "Yuk kuzatuvi",
+        "manager": "Shaxsiy menejer",
+        "customs": "Bojxona xizmati",
+        "insurance": "Yuk sug‘urtasi",
+        "priority": "Ustuvor yo‘nalish"
+      }
+    }
+  },
+  "globe": {
+    "title": "Global tarmog‘imiz",
+    "subtitle": "Dunyo bo‘ylab hamkor davlatlar",
+    "description": "Guanchjou (Xitoy) bosh ofisimiz orqali 15 dan ortiq davlatga yuk yetkazamiz.",
+    "hub": "Guanchjou, Xitoy — bosh hub"
+  },
+  "why": {
+    "title": "Nega aynan bizni tanlashadi?",
+    "subtitle": "Bizning ustunliklarimiz",
+    "items": {
+      "fast": {
+        "title": "Tezkor yetkazib berish",
+        "desc": "Optimallashtirilgan marshrutlar va tezkor jo‘natish tizimi."
+      },
+      "secure": {
+        "title": "To‘liq xavfsizlik",
+        "desc": "Har bir yuk sug‘urtalangan va kuzatib boriladi."
+      },
+      "price": {
+        "title": "Qulay narxlar",
+        "desc": "Shaffof narx siyosati va yashirin to‘lovlar yo‘q."
+      },
+      "support": {
+        "title": "24/7 qo‘llab-quvvatlash",
+        "desc": "Har qanday vaqtda siz bilan bog‘lanishga tayyormiz."
+      },
+      "expert": {
+        "title": "Xitoy bo‘yicha mutaxassis",
+        "desc": "Guanchjou bo‘yicha chuqur tajriba va shaxsiy aloqalar."
+      },
+      "tech": {
+        "title": "Zamonaviy texnologiyalar",
+        "desc": "Yuk kuzatuvi va onlayn boshqaruv tizimi."
+      }
+    }
+  },
+  "founder": {
+    "title": "Asoschi",
+    "name": "Farrux Mashanpin",
+    "role": "Xalqaro logistika bo‘yicha ekspert",
+    "specialty": "Xitoy yo‘nalishi mutaxassisi",
+    "bio": "Yillar davomida Xitoy va O‘zbekiston o‘rtasidagi yuk oqimlarini shakllantirgan ekspert. Guanchjou bozorini ichkaridan biladi va mijozlarga eng qulay yechimlarni taklif qiladi.",
+    "instagram": "Instagram profili"
+  },
+  "ctaBanner": {
+    "title": "Yukingizni bugun yo‘lga qo‘ying",
+    "subtitle": "Bepul konsultatsiya va aniq hisob-kitob uchun biz bilan bog‘laning.",
+    "button": "Bog‘lanish"
+  },
+  "contact": {
+    "title": "Biz bilan bog‘laning",
+    "subtitle": "Savollaringiz bo‘lsa, bizga yozing",
+    "description": "Mutaxassislarimiz sizga eng mos yechimni taklif qilishadi.",
+    "phoneLabel": "Telefon raqamlar",
+    "hoursLabel": "Ish vaqti",
+    "hoursWeek": "Dushanba–Shanba: 10:00–19:00",
+    "hoursSun": "Yakshanba: Dam olish kuni",
+    "addressLabel": "Manzil",
+    "address": "Toshkent, O‘zbekiston",
+    "mapTitle": "Bizni xaritada toping",
+    "socialLabel": "Ijtimoiy tarmoqlar",
+    "form": {
+      "title": "Xabar yuboring",
+      "name": "Ismingiz",
+      "namePlaceholder": "To‘liq ismingiz",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "phone": "Telefon",
+      "phonePlaceholder": "+998 __ ___ __ __",
+      "message": "Xabar",
+      "messagePlaceholder": "Xabaringiz…",
+      "submit": "Yuborish",
+      "success": "Xabaringiz qabul qilindi. Tez orada bog‘lanamiz!"
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "title": "Keng qamrovli logistika xizmatlari",
+      "subtitle": "Xitoydan O‘zbekistonga va undan tashqariga",
+      "description": "Har qanday hajm va muddatdagi yuklar uchun professional yechim."
+    },
+    "pricing": {
+      "title": "Tarif rejalari",
+      "subtitle": "Biznesingizga mos rejani tanlang",
+      "popular": "Mashhur",
+      "month": "Buyurtma",
+      "cta": "Tanlash"
+    }
+  },
+  "footer": {
+    "about": "SAF Logistics — O‘z vaqtida ishonchli yuk tashish.",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "quickLinks": "Tezkor havolalar",
+    "contacts": "Kontaktlar",
+    "follow": "Ijtimoiy tarmoqlar",
+    "madeWith": "Mehr bilan ishlangan"
+  },
+  "theme": {
+    "light": "Yorug‘",
+    "dark": "Qorong‘i",
+    "toggle": "Mavzuni almashtirish"
+  }
+}

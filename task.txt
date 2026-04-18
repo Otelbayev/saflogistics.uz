@@ -1,0 +1,189 @@
+You are a senior full-stack developer and UI/UX expert.
+
+Your task is to build a COMPLETE, PRODUCTION-READY logistics website using Next.js (App Router) with modern best practices.
+
+========================
+📌 GENERAL REQUIREMENTS
+========================
+- Framework: Next.js (latest, App Router)
+- Language: TypeScript
+- Styling: Tailwind CSS
+- Animations: Framer Motion + Scroll animations (Intersection Observer / GSAP optional)
+- State: React Context or Zustand
+- i18n: next-intl or i18next (3 languages: Uzbek, Russian, English)
+- Theme: Dark/Light mode toggle (system + manual)
+- SEO: Fully optimized (metadata, OpenGraph, sitemap, robots.txt)
+- Performance: Optimized images, lazy loading, code splitting
+- Folder structure: Clean, scalable architecture
+
+========================
+🎨 DESIGN SYSTEM
+========================
+Primary colors:
+- #032a7d (main blue)
+- #030f31 (dark navy)
+
+Design:
+- Modern logistics style
+- Clean UI
+- Soft gradients using main colors
+- Rounded cards, shadows
+- Professional business feel
+
+Assets:
+- All images/icons must be used from `/public` folder
+- Use `boss.jpg` for founder section
+
+========================
+🌍 WEBSITE STRUCTURE
+========================
+
+1. HOME PAGE
+- Hero section (animated)
+  - Title: "SAF Logistics — O‘z vaqtida"
+  - Subtitle: logistics description
+  - CTA buttons (Contact / Services)
+  - Background animation (particles or gradient motion)
+
+- About section:
+  - 5 years experience
+  - B2B + full truck services
+  - 500+ successful projects
+
+- Services section:
+  - Standard Tariff
+  - Express Tariff
+  - Each with animated cards
+
+- 3D WORLD MAP section:
+  - Interactive 3D globe (Three.js or react-globe.gl)
+  - Highlight partner countries
+  - Focus on China (Guangzhou)
+  - Animated markers
+
+- Why choose us:
+  - Icons + animated features
+
+- Founder section:
+  - Name: Farrukh Mashanpin
+  - Title: International Logistics Expert (China specialist)
+  - Instagram link
+  - Image: `/public/boss.jpg`
+
+- Contact CTA section
+
+========================
+📦 SERVICES PAGE
+========================
+- Detailed logistics services
+- Standard vs Express comparison
+- Pricing cards (UI only)
+- Scroll animations
+
+========================
+🌐 CONTACT PAGE
+========================
+- Phone numbers:
+  - +998935118484
+  - +998771730303
+- Working hours:
+  - Mon–Sat: 10:00–19:00
+  - Sunday: Closed
+
+- Google Maps embed:
+  https://maps.app.goo.gl/u8wdkLZBd8cnEKNz7
+
+- Contact form (frontend only)
+
+========================
+🌎 MULTI-LANGUAGE
+========================
+Languages:
+- Uzbek (default)
+- Russian
+- English
+
+Routes:
+- /uz
+- /ru
+- /en
+
+Translate ALL content properly.
+
+========================
+🌙 DARK / LIGHT MODE
+========================
+- Toggle button
+- Persist in localStorage
+- Smooth transitions
+
+========================
+✨ ANIMATIONS
+========================
+- Scroll reveal animations
+- Parallax effects
+- Hero animations
+- Hover effects
+- Smooth page transitions
+
+========================
+🔍 SEO OPTIMIZATION
+========================
+- Dynamic metadata per page
+- OpenGraph tags
+- Twitter cards
+- Sitemap.xml
+- robots.txt
+- Structured data (JSON-LD for business)
+
+Business info:
+- Name: SAF Logistics
+- Type: Logistics Service
+- Region: Uzbekistan / International
+- Founder: Farrukh Mashanpin
+
+========================
+📁 PROJECT STRUCTURE
+========================
+- /app
+- /components
+- /shared
+- /lib
+- /hooks
+- /public
+- /messages (translations)
+
+========================
+⚙️ EXTRA FEATURES
+========================
+- Responsive design (mobile-first)
+- Navbar with language switcher
+- Sticky header
+- Footer with contacts and social links
+- Instagram link:
+  https://www.instagram.com/farrukh_mashanpin
+
+========================
+🚀 OUTPUT FORMAT
+========================
+Generate:
+1. Project structure
+2. All key files
+3. Components
+4. Pages
+5. Translation files
+6. Config files
+
+Code must be clean, modular, and production-ready.
+
+DO NOT SKIP DETAILS.
+
+Build step-by-step:
+1. Setup
+2. Layout
+3. Pages
+4. Components
+5. Animations
+6. i18n
+7. SEO
+8. Final optimization
