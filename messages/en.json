@@ -8,14 +8,24 @@
     "services": "Services",
     "contact": "Contact",
     "about": "About",
-    "getQuote": "Get a quote"
+    "getQuote": "Get a quote",
+    "track": "Track shipment"
   },
   "hero": {
     "badge": "International logistics company",
-    "title": "SAF Logistics — On time, every time",
+    "titleLine1": "Bringing the world closer,",
+    "titleLine2": "one delivery",
+    "titleAccent": "on time",
     "subtitle": "Reliable, fast and professional freight from China to Uzbekistan and around the world. B2B partnerships and end-to-end freight solutions.",
-    "ctaContact": "Contact us",
+    "ctaContact": "Get a quote",
     "ctaServices": "View services",
+    "tickerLabel": "Live route",
+    "routeLabel": "Guangzhou → Tashkent",
+    "routeValue": "End-to-end freight",
+    "badgeInsured": "Insured freight",
+    "badgeInsuredValue": "100% protected",
+    "badgeExpress": "Express tariff",
+    "badgeExpressValue": "7–14 days",
     "stats": {
       "years": "Years of experience",
       "projects": "Successful projects",
@@ -23,10 +33,87 @@
       "clients": "Repeat clients"
     }
   },
+  "showcase": {
+    "eyebrow": "Services and routes",
+    "title": "Fast, precise cargo delivery — for every customer",
+    "description": "We orchestrate end-to-end freight flows: air, sea containers, trucking and multimodal combinations.",
+    "exploreCta": "Explore services",
+    "cards": {
+      "air": {
+        "title": "Charter air freight",
+        "meta": "Express · 3–10 days",
+        "cta": "Book a shipment"
+      },
+      "ocean": {
+        "title": "Continental ocean freight",
+        "meta": "FCL/LCL · 25–40 days",
+        "bullet": "One customer can fill a full container load"
+      }
+    },
+    "support": {
+      "name": "Edward Blake",
+      "role": "Customer Support, SAF",
+      "message": "Hi, how can I help you?",
+      "cta": "Call and book cargo",
+      "trust": "Trusted by 60 000+ customers"
+    },
+    "trust": {
+      "title": "Delivering faith, peace of mind, and unparalleled quality",
+      "monthlyUsers": "Monthly users",
+      "totalBooking": "Total booking",
+      "today": "Today",
+      "rows": [
+        { "name": "Steel core shipment", "client": "Jonathan Trott", "amount": "$248,750" },
+        { "name": "Motorcar shipment", "client": "Cameron Green", "amount": "$62,540" }
+      ],
+      "total": "Total shipment"
+    }
+  },
+  "tech": {
+    "eyebrow": "Next-gen technology",
+    "title": "Powered by next-gen cargo shipping technology",
+    "description": "Shipment tracking, digital document flow and real-time monitoring — all in a single platform.",
+    "badge": "Collaborated with",
+    "badgeSub": "Tech crafted by clear vision",
+    "pinTitle": "Pinpoint delivery",
+    "pinSub": "accuracy and safety",
+    "ctaQuote": "Get free quote",
+    "ctaDemo": "Watch a demo"
+  },
+  "process": {
+    "eyebrow": "Optimized handling",
+    "title": "Precision handling for accurate product delivery",
+    "description": "Our warehouse and logistics system ensures safe, precise and on-time delivery of every product.",
+    "cta": "Explore process",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Warehouse",
+        "desc": "Safe storage in modern warehouses in Guangzhou and Tashkent."
+      },
+      {
+        "num": "02",
+        "title": "Electric lifter",
+        "desc": "Precision handling — goods are loaded without damage."
+      },
+      {
+        "num": "03",
+        "title": "Delivery service",
+        "desc": "Personal hand-over delivery service to every customer."
+      }
+    ]
+  },
   "about": {
     "title": "About us",
     "subtitle": "A trusted partner in international logistics",
     "description": "SAF Logistics has over 5 years of experience moving freight between China and Uzbekistan. We offer our clients fast, safe and transparent solutions.",
+    "highlight": {
+      "hub": "Main hub",
+      "city": "Guangzhou, China",
+      "since": "Since 2019",
+      "projectsNumber": "500+",
+      "projectsLabel": "shipments delivered on time"
+    },
     "features": {
       "experience": {
         "title": "5 years of experience",
@@ -92,7 +179,11 @@
     "title": "Our global network",
     "subtitle": "Partner countries worldwide",
     "description": "From our Guangzhou (China) hub we ship to more than 15 countries.",
-    "hub": "Guangzhou, China — main hub"
+    "hub": "Guangzhou, China — main hub",
+    "hubTag": "HUB",
+    "partners": "Partner countries",
+    "activeRoutes": "Active routes",
+    "deliveries": "Deliveries"
   },
   "why": {
     "title": "Why choose us?",
@@ -124,6 +215,40 @@
       }
     }
   },
+  "testimonials": {
+    "eyebrow": "Client testimonials",
+    "title": "What our clients say",
+    "items": [
+      {
+        "name": "Martin Edwards",
+        "role": "General Manager",
+        "rating": "4.8",
+        "badge": "Reliable & expert",
+        "quote": "Top-notch logistics with expert and dedicated support for all your cargo transport needs."
+      },
+      {
+        "name": "James Atkinson",
+        "role": "Business Proprietor",
+        "rating": "4.7",
+        "badge": "Accurate support",
+        "quote": "We trust SAF's dedicated team and highly recommend them as a leading freight forwarder."
+      },
+      {
+        "name": "Natasha Portman",
+        "role": "Business Owner",
+        "rating": "4.9",
+        "badge": "24/7 service",
+        "quote": "Exceptional 24/7 logistics support — a professional, fully committed team."
+      },
+      {
+        "name": "Aziz Abdullayev",
+        "role": "Head of Imports",
+        "rating": "5.0",
+        "badge": "On time",
+        "quote": "All procedures from Guangzhou to Tashkent were handled by them — truly end-to-end."
+      }
+    ]
+  },
   "founder": {
     "title": "Founder",
     "name": "Farrukh Mashanpin",
@@ -132,10 +257,37 @@
     "bio": "An expert who has shaped freight flows between China and Uzbekistan for years. Knows the Guangzhou market inside out and offers clients the most convenient solutions.",
     "instagram": "Instagram profile"
   },
+  "faq": {
+    "eyebrow": "Frequently asked questions",
+    "title": "Questions you may have",
+    "items": [
+      {
+        "q": "How quickly do you deliver cargo?",
+        "a": "Standard tariff takes 25–35 days, Express tariff takes 7–14 days."
+      },
+      {
+        "q": "How can I track my shipment?",
+        "a": "By your order number through online real-time monitoring and personal manager messages."
+      },
+      {
+        "q": "Is customs clearance included?",
+        "a": "Yes, all our tariffs include customs clearance."
+      },
+      {
+        "q": "What kinds of cargo do you accept?",
+        "a": "Commercial, industrial and special cargo — apart from hazardous — we accept all kinds."
+      },
+      {
+        "q": "Is the cargo insured?",
+        "a": "Yes, every shipment is automatically insured."
+      }
+    ]
+  },
   "ctaBanner": {
     "title": "Put your cargo on the road today",
     "subtitle": "Contact us for a free consultation and an accurate quote.",
-    "button": "Contact us"
+    "button": "Get a quote",
+    "secondary": "Call us"
   },
   "contact": {
     "title": "Get in touch",
@@ -148,6 +300,7 @@
     "addressLabel": "Address",
     "address": "Tashkent, Uzbekistan",
     "mapTitle": "Find us on the map",
+    "mapCta": "Open in Google Maps",
     "socialLabel": "Social networks",
     "form": {
       "title": "Send a message",
@@ -157,10 +310,13 @@
       "emailPlaceholder": "email@example.com",
       "phone": "Phone",
       "phonePlaceholder": "+998 __ ___ __ __",
+      "phoneInvalid": "Invalid phone number. Pick a country and enter the full number.",
       "message": "Message",
       "messagePlaceholder": "Your message…",
       "submit": "Send",
-      "success": "Thanks! We'll be in touch shortly."
+      "sending": "Sending…",
+      "success": "Thanks! We'll be in touch shortly.",
+      "error": "Couldn't send. Please try again."
     }
   },
   "servicesPage": {
@@ -177,13 +333,30 @@
       "cta": "Choose"
     }
   },
+  "newsletter": {
+    "title": "Signup to receive our offer and stay up to date",
+    "subtitle": "Be the first to know about news and special tariffs.",
+    "namePlaceholder": "Your name",
+    "phonePlaceholder": "+998 __ ___ __ __",
+    "submit": "Submit",
+    "success": "Thanks! You are subscribed.",
+    "error": "Something went wrong. Please try again."
+  },
   "footer": {
     "about": "SAF Logistics — reliable freight, on time, every time.",
     "rights": "All rights reserved.",
     "quickLinks": "Quick links",
     "contacts": "Contacts",
     "follow": "Follow us",
-    "madeWith": "Made with care"
+    "madeWith": "Made with care",
+    "signupTitle": "Signup to receive our offer and stay up to date",
+    "links": {
+      "services": "Services",
+      "contact": "Contact us",
+      "tracking": "Tracking",
+      "about": "About us",
+      "privacy": "Privacy policy"
+    }
   },
   "theme": {
     "light": "Light",

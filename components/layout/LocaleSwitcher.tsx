@@ -52,7 +52,7 @@ export function LocaleSwitcher({ current }: Props) {
       {open ? (
         <ul
           role="listbox"
-          className="absolute right-0 z-50 mt-2 w-44 overflow-hidden rounded-2xl border border-border bg-surface p-1 shadow-[var(--shadow-soft)]"
+          className="absolute right-0 z-50 mt-2 w-44 overflow-hidden rounded-2xl border border-border bg-surface p-1 shadow-(--shadow-soft)"
         >
           {locales.map((l) => {
             const active = l === current;

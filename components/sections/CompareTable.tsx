@@ -24,7 +24,7 @@ const rows: {
 function Cell({ value }: { value: string }) {
   if (value === "yes")
     return (
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-800 text-white shadow-[var(--shadow-soft)]">
+      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-800 text-white shadow-(--shadow-soft)">
         <Icon.Check size={18} />
       </span>
     );
@@ -45,7 +45,7 @@ export function CompareTable({ dict }: Props) {
     <section className="py-24">
       <Container>
         <SectionHeading title={dict.services.compare} />
-        <Reveal className="mt-14 overflow-hidden rounded-[2rem] border border-border bg-surface shadow-[var(--shadow-elevated)]">
+        <Reveal className="mt-14 overflow-hidden rounded-4xl border border-border bg-surface shadow-(--shadow-elevated)">
           <table className="w-full text-left">
             <thead className="bg-surface-2 text-foreground">
               <tr>

@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import type { Dictionary } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { siteConfig } from "@/lib/site";
 import { useQuoteModal } from "@/components/ui/QuoteModal";
 
 type Props = { dict: Dictionary };
@@ -20,7 +20,7 @@ export function CtaBanner({ dict }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7 }}
-          className="relative isolate overflow-hidden rounded-[2.5rem] border border-border shadow-[var(--shadow-elevated)]"
+          className="relative isolate overflow-hidden rounded-4xl border border-border shadow-(--shadow-elevated)"
         >
           <video
             className="absolute inset-0 -z-20 h-full w-full object-cover"
@@ -40,12 +40,12 @@ export function CtaBanner({ dict }: Props) {
             className="absolute inset-0 -z-10"
             style={{
               background:
-                "linear-gradient(115deg, rgba(3,15,49,0.92) 0%, rgba(3,42,125,0.78) 50%, rgba(3,15,49,0.55) 100%)",
+                "linear-gradient(115deg, rgba(3,15,49,0.94) 0%, rgba(3,42,125,0.82) 50%, rgba(3,15,49,0.6) 100%)",
             }}
           />
           <div aria-hidden className="absolute inset-0 -z-10 bg-grid opacity-20" />
 
-          <div className="relative flex flex-col items-start justify-between gap-8 p-10 text-white sm:p-14 lg:flex-row lg:items-center">
+          <div className="relative flex flex-col items-start justify-between gap-8 p-7 text-white sm:gap-10 sm:p-14 lg:flex-row lg:items-center">
             <div className="max-w-2xl">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-white/85 backdrop-blur">
                 <Icon.Lightning size={12} />
@@ -58,14 +58,23 @@ export function CtaBanner({ dict }: Props) {
                 {dict.ctaBanner.subtitle}
               </p>
             </div>
-            <Button
-              onClick={open}
-              size="lg"
-              className="shrink-0 bg-white text-brand-950 hover:bg-white/90"
-            >
-              {dict.ctaBanner.button}
-              <Icon.ArrowRight size={18} />
-            </Button>
+            <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+              <button
+                type="button"
+                onClick={open}
+                className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-white px-8 text-base font-semibold text-brand-950 shadow-(--shadow-glow) transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/95 sm:w-auto"
+              >
+                {dict.ctaBanner.button}
+                <Icon.ArrowRight size={18} />
+              </button>
+              <a
+                href={`tel:${siteConfig.phones[0]}`}
+                className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 text-base font-semibold text-white backdrop-blur transition-all duration-200 hover:bg-white/15 sm:w-auto"
+              >
+                <Icon.Phone size={16} />
+                {dict.ctaBanner.secondary}
+              </a>
+            </div>
           </div>
         </motion.div>
       </Container>

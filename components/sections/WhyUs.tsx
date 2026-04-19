@@ -32,13 +32,13 @@ export function WhyUs({ dict }: Props) {
               <Reveal
                 key={item.key}
                 delay={(i % 3) * 0.08}
-                className="group relative overflow-hidden rounded-3xl border border-border bg-surface p-7 transition duration-500 hover:-translate-y-1 hover:border-brand-500/30 hover:shadow-[var(--shadow-glow)]"
+                className="group relative overflow-hidden rounded-3xl border border-border bg-surface p-7 transition duration-500 hover:-translate-y-1 hover:border-brand-500/30 hover:shadow-(--shadow-glow)"
               >
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-500/10 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100"
                 />
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-700 to-brand-900 text-white shadow-[var(--shadow-soft)]">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-brand-700 to-brand-900 text-white shadow-(--shadow-soft)">
                   <Ico size={22} />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-foreground">

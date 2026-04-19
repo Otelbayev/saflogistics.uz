@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "react-phone-number-input/style.css";
 
 @theme {
   --color-brand-50: #eef3ff;
@@ -37,14 +38,14 @@
 }
 
 .dark {
-  --background: #030817;
-  --background-2: #06112e;
-  --foreground: #e6ecff;
-  --surface: #071131;
-  --surface-2: #0b1942;
-  --border: #172454;
-  --border-strong: #26357a;
-  --muted: #93a0c7;
+  --background: #0b1638;
+  --background-2: #132150;
+  --foreground: #eaf0ff;
+  --surface: #17245a;
+  --surface-2: #1f2d6b;
+  --border: #2a3a78;
+  --border-strong: #3a4d9c;
+  --muted: #a9b5da;
   color-scheme: dark;
 }
 
@@ -208,4 +209,103 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.phone-field {
+  --PhoneInputCountryFlag-borderColor: transparent;
+  --PhoneInputCountryFlag-borderColor--focus: transparent;
+  --PhoneInputCountrySelectArrow-color: currentColor;
+  --PhoneInputCountrySelectArrow-opacity: 0.55;
+  --PhoneInputCountrySelectArrow-width: 0.35em;
+}
+.phone-field .PhoneInput {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
+}
+.phone-field .PhoneInputCountry {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 0.75rem 0 0.75rem;
+  height: 100%;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.phone-field .PhoneInputCountry:hover,
+.phone-field .PhoneInputCountry:focus-within {
+  border-color: color-mix(in oklab, var(--color-brand-500) 60%, transparent);
+}
+.phone-field .PhoneInputCountry::after {
+  content: "+" attr(data-calling-code);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.phone-field .PhoneInputCountryIcon {
+  width: 1.35rem;
+  height: 1rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.phone-field .PhoneInputCountrySelect {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.phone-field .PhoneInputInput {
+  flex: 1;
+  min-width: 0;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  outline: none;
+  padding: 0 1rem;
+  font: inherit;
+  color: inherit;
+  border-radius: 9999px;
+  height: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.phone-field .PhoneInputInput:focus {
+  border-color: var(--color-brand-500);
+  box-shadow: 0 0 0 2px
+    color-mix(in oklab, var(--color-brand-500) 30%, transparent);
+}
+.phone-field .PhoneInputInput::placeholder {
+  color: color-mix(in oklab, currentColor 55%, transparent);
+}
+
+.phone-field--pill:not(.phone-field--dark) {
+  min-height: 3rem;
+}
+
+.phone-field--dark .PhoneInputCountry {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+.phone-field--dark .PhoneInputCountry:hover,
+.phone-field--dark .PhoneInputCountry:focus-within {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.phone-field--dark .PhoneInputInput {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+.phone-field--dark .PhoneInputInput:focus {
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }

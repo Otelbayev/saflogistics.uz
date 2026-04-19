@@ -52,7 +52,7 @@ export function Services({ locale, dict }: Props) {
               >
                 <div
                   aria-hidden
-                  className={`pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-gradient-to-br ${t.accent} opacity-20 blur-3xl transition duration-700 group-hover:opacity-40`}
+                  className={`pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-linear-to-br ${t.accent} opacity-20 blur-3xl transition duration-700 group-hover:opacity-40`}
                 />
                 {t.featured ? (
                   <span className="absolute right-6 top-6 inline-flex items-center gap-1 rounded-full border border-brand-500/40 bg-brand-500/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-brand-600 dark:text-brand-200">
@@ -79,7 +79,7 @@ export function Services({ locale, dict }: Props) {
                       key={f}
                       className="flex items-center gap-4 rounded-2xl border border-border bg-background/60 px-4 py-3.5 transition hover:border-brand-500/40 hover:bg-background"
                     >
-                      <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-800 text-white shadow-[var(--shadow-soft)]">
+                      <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-800 text-white shadow-(--shadow-soft)">
                         <Icon.Check size={16} />
                       </span>
                       <span className="font-medium">{f}</span>

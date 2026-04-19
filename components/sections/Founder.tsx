@@ -32,7 +32,7 @@ export function Founder({ dict }: Props) {
               transition={{ duration: 0.8 }}
               className="relative lg:col-span-2"
             >
-              <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-white/20 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]">
+              <div className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-2xl border border-white/20 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]">
                 <Image
                   src="/images/boss.jpg"
                   alt={dict.founder.name}

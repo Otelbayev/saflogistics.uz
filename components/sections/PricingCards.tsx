@@ -50,7 +50,7 @@ export function PricingCards({ locale, dict }: Props) {
               >
                 <div
                   aria-hidden
-                  className={`pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-gradient-to-br ${t.accent} opacity-20 blur-3xl`}
+                  className={`pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-linear-to-br ${t.accent} opacity-20 blur-3xl`}
                 />
                 {t.featured ? (
                   <span className="absolute right-6 top-6 inline-flex items-center gap-1 rounded-full border border-brand-500/40 bg-brand-500/10 px-3 py-1 text-xs uppercase tracking-widest text-brand-600 dark:text-brand-200">

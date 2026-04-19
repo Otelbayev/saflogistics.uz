@@ -5,6 +5,7 @@ import type { Locale } from "@/lib/locales";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { siteConfig } from "@/lib/site";
+import { Newsletter } from "@/components/sections/Newsletter";
 
 type Props = {
   locale: Locale;
@@ -24,96 +25,132 @@ export function Footer({ locale, dict }: Props) {
             "radial-gradient(60% 40% at 20% 0%, color-mix(in oklab, var(--color-brand-800) 25%, transparent), transparent), radial-gradient(40% 40% at 100% 100%, color-mix(in oklab, var(--color-brand-500) 18%, transparent), transparent)",
         }}
       />
-      <Container className="relative grid gap-10 py-16 md:grid-cols-4">
-        <div className="md:col-span-2">
-          <Link href={`/${locale}`} className="flex items-center gap-3">
-            <span className="relative inline-flex h-11 w-11 overflow-hidden rounded-xl bg-brand-950">
-              <Image
-                src="/images/logo.jpg"
-                alt={dict.site.name}
-                fill
-                sizes="44px"
-                className="object-cover"
-              />
-            </span>
-            <div>
-              <div className="text-lg font-semibold">{dict.site.name}</div>
-              <div className="text-xs uppercase tracking-widest text-muted">
-                {dict.site.tagline}
+      <Container className="relative py-16">
+        <div className="mb-12">
+          <Newsletter dict={dict} />
+        </div>
+
+        <div className="grid gap-10 md:grid-cols-4">
+          <div className="md:col-span-2">
+            <Link href={`/${locale}`} className="flex items-center gap-3">
+              <span className="relative inline-flex h-11 w-11 overflow-hidden rounded-xl bg-brand-950">
+                <Image
+                  src="/images/logo.jpg"
+                  alt={dict.site.name}
+                  fill
+                  sizes="44px"
+                  className="object-cover"
+                />
+              </span>
+              <div>
+                <div className="text-lg font-semibold">{dict.site.name}</div>
+                <div className="text-xs uppercase tracking-widest text-muted">
+                  {dict.site.tagline}
+                </div>
               </div>
-            </div>
-          </Link>
-          <p className="mt-5 max-w-md text-sm text-muted">{dict.footer.about}</p>
-          <div className="mt-6 flex items-center gap-3">
-            <a
-              href={siteConfig.instagram}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="Instagram"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-brand-800 hover:text-white"
-            >
-              <Icon.Instagram size={18} />
-            </a>
-            {siteConfig.phones.map((p) => (
+            </Link>
+            <p className="mt-5 max-w-md text-sm text-muted">
+              {dict.footer.about}
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
-                key={p}
-                href={`tel:${p}`}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 text-sm text-foreground transition hover:bg-surface-2"
+                href={siteConfig.instagram}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-brand-800 hover:text-white"
               >
-                <Icon.Phone size={16} />
-                <span>{p}</span>
+                <Icon.Instagram size={18} />
               </a>
-            ))}
+              {siteConfig.phones.map((p) => (
+                <a
+                  key={p}
+                  href={`tel:${p}`}
+                  className="inline-flex h-10 items-center gap-2 rounded-full border border-border bg-background px-3 text-sm text-foreground transition hover:bg-surface-2"
+                >
+                  <Icon.Phone size={16} />
+                  <span>{p}</span>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground">
-            {dict.footer.quickLinks}
-          </h4>
-          <ul className="mt-4 space-y-2 text-sm text-muted">
-            <li>
-              <Link href={`/${locale}`} className="hover:text-foreground">
-                {dict.nav.home}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={`/${locale}/services`}
-                className="hover:text-foreground"
-              >
-                {dict.nav.services}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={`/${locale}/contact`}
-                className="hover:text-foreground"
-              >
-                {dict.nav.contact}
-              </Link>
-            </li>
-          </ul>
-        </div>
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground">
+              {dict.footer.quickLinks}
+            </h4>
+            <ul className="mt-4 space-y-2 text-sm text-muted">
+              <li>
+                <Link
+                  href={`/${locale}/services`}
+                  className="hover:text-foreground"
+                >
+                  {dict.footer.links.services}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}/contact`}
+                  className="hover:text-foreground"
+                >
+                  {dict.footer.links.contact}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}#network`}
+                  className="hover:text-foreground"
+                >
+                  {dict.footer.links.tracking}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}#about`}
+                  className="hover:text-foreground"
+                >
+                  {dict.footer.links.about}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`/${locale}#`}
+                  className="hover:text-foreground"
+                >
+                  {dict.footer.links.privacy}
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground">
-            {dict.footer.contacts}
-          </h4>
-          <ul className="mt-4 space-y-3 text-sm text-muted">
-            <li className="flex items-center gap-2">
-              <Icon.MapPin size={16} />
-              <span>{dict.contact.address}</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Icon.Clock size={16} />
-              <span>{dict.contact.hoursWeek}</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Icon.Clock size={16} />
-              <span>{dict.contact.hoursSun}</span>
-            </li>
-          </ul>
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-widest text-foreground">
+              {dict.footer.contacts}
+            </h4>
+            <ul className="mt-4 space-y-3 text-sm text-muted">
+              <li className="flex items-center gap-2">
+                <Icon.MapPin size={16} />
+                <span>{dict.contact.address}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Icon.Clock size={16} />
+                <span>{dict.contact.hoursWeek}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Icon.Clock size={16} />
+                <span>{dict.contact.hoursSun}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Icon.Mail size={16} />
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="hover:text-foreground"
+                >
+                  {siteConfig.email}
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </Container>
 
