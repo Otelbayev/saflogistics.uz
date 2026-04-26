@@ -3,6 +3,21 @@
     "name": "SAF Logistics",
     "tagline": "O‘z vaqtida"
   },
+  "seo": {
+    "homeTitle": "SAF Logistics — Xitoydan Toshkentga ishonchli yuk tashish",
+    "homeDescription": "Xitoydan O‘zbekistonga aviayuk, dengiz konteyneri va avtomobil yetkazib berish. 5+ yillik tajriba, 500+ muvaffaqiyatli loyiha, sug‘urta va bojxona — bir tizimda. Bepul taklif oling.",
+    "keywords": [
+      "Xitoydan yuk tashish",
+      "Guanchjou Toshkent",
+      "xalqaro logistika O‘zbekiston",
+      "aviayuk Xitoy",
+      "dengiz konteyneri",
+      "B2B logistika",
+      "bojxona rasmiylashtirish",
+      "SAF Logistics",
+      "Farrux Mashanpin"
+    ]
+  },
   "nav": {
     "home": "Bosh sahifa",
     "services": "Xizmatlar",
@@ -12,20 +27,22 @@
     "track": "Yukni kuzatish"
   },
   "hero": {
-    "badge": "Xalqaro logistika kompaniyasi",
-    "titleLine1": "Dunyoni yaqinlashtiramiz,",
-    "titleLine2": "har bir yukni",
+    "badge": "Xalqaro logistika kompaniyasi · 2019 yildan",
+    "titleLine1": "Xitoydan Toshkentga",
+    "titleLine2": "ishonchli yuk —",
     "titleAccent": "o‘z vaqtida",
-    "subtitle": "Xitoydan O‘zbekistonga va butun dunyoga ishonchli, tezkor va professional yuk tashish xizmati. B2B hamkorlik va to‘liq yuk tashish yechimlari.",
-    "ctaContact": "Taklif olish",
+    "subtitle": "SAF Logistics — Guanchjou ofisi orqali Xitoy va dunyoning istalgan nuqtasidan O‘zbekistonga aviayuk, dengiz konteyneri va avtoyo‘l bilan tezkor yetkazib berish. B2B mijozlar uchun shaxsiy menejer, sug‘urta va bojxona — bir tizimda.",
+    "ctaContact": "Bepul taklif olish",
     "ctaServices": "Xizmatlarni ko‘rish",
     "tickerLabel": "Jonli yo‘nalish",
     "routeLabel": "Guanchjou → Toshkent",
-    "routeValue": "To‘liq yetkazib berish",
+    "routeValue": "Eshikdan-eshikgacha",
     "badgeInsured": "Sug‘urtalangan yuk",
-    "badgeInsuredValue": "100% himoyalangan",
+    "badgeInsuredValue": "100% sug‘urta",
     "badgeExpress": "Ekspress tarif",
     "badgeExpressValue": "7–14 kun",
+    "float1": "500+ muvaffaqiyatli yuk",
+    "float2": "Xitoy bo‘yicha mutaxassis",
     "stats": {
       "years": "Yillik tajriba",
       "projects": "Muvaffaqiyatli loyihalar",
@@ -303,7 +320,8 @@
     "mapCta": "Google xaritada ochish",
     "socialLabel": "Ijtimoiy tarmoqlar",
     "form": {
-      "title": "Xabar yuboring",
+      "title": "Bepul ariza qoldiring",
+      "subtitle": "Ish soatlarida 30 daqiqa ichida shaxsiy menejer aloqaga chiqadi.",
       "name": "Ismingiz",
       "namePlaceholder": "To‘liq ismingiz",
       "email": "Email",
@@ -311,12 +329,22 @@
       "phone": "Telefon",
       "phonePlaceholder": "+998 __ ___ __ __",
       "phoneInvalid": "Telefon raqam noto‘g‘ri. Davlat kodini tanlang va raqamni to‘liq kiriting.",
-      "message": "Xabar",
-      "messagePlaceholder": "Xabaringiz…",
-      "submit": "Yuborish",
+      "service": "Xizmat turi",
+      "services": {
+        "sea": "Dengiz yuk tashish",
+        "air": "Aviayuk · Ekspress",
+        "road": "Avtomobil yetkazish",
+        "customs": "Bojxona rasmiylashtirish",
+        "b2b": "B2B hamkorlik",
+        "china": "Xitoy bo‘yicha konsultatsiya"
+      },
+      "message": "Xabar (ixtiyoriy)",
+      "messagePlaceholder": "Yuk hajmi, jo‘natish va manzil haqida qisqacha…",
+      "submit": "Arizani yuborish",
       "sending": "Yuborilmoqda…",
-      "success": "Xabaringiz qabul qilindi. Tez orada bog‘lanamiz!",
-      "error": "Yuborib bo‘lmadi. Iltimos, qayta urinib ko‘ring."
+      "success": "Arizangiz qabul qilindi. Tez orada bog‘lanamiz!",
+      "error": "Yuborib bo‘lmadi. Iltimos, qayta urinib ko‘ring.",
+      "disclaimer": "Yuborish orqali biz bilan bog‘lanishga rozilik bildirasiz. Ma‘lumotlaringiz uchinchi shaxslarga uzatilmaydi."
     }
   },
   "servicesPage": {

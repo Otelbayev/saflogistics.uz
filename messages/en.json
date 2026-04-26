@@ -3,6 +3,21 @@
     "name": "SAF Logistics",
     "tagline": "On time, every time"
   },
+  "seo": {
+    "homeTitle": "SAF Logistics — Reliable freight from China to Tashkent",
+    "homeDescription": "Air, sea and road freight from China and worldwide to Uzbekistan. 5+ years of experience, 500+ successful shipments, insurance and customs in one system. Get a free quote.",
+    "keywords": [
+      "freight from China to Uzbekistan",
+      "Guangzhou Tashkent shipping",
+      "international logistics Uzbekistan",
+      "China air freight",
+      "sea container shipping",
+      "B2B logistics",
+      "customs clearance",
+      "SAF Logistics",
+      "Farrukh Mashanpin"
+    ]
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
@@ -12,20 +27,22 @@
     "track": "Track shipment"
   },
   "hero": {
-    "badge": "International logistics company",
-    "titleLine1": "Bringing the world closer,",
-    "titleLine2": "one delivery",
+    "badge": "International logistics company · since 2019",
+    "titleLine1": "From China to Tashkent —",
+    "titleLine2": "freight you can trust,",
     "titleAccent": "on time",
-    "subtitle": "Reliable, fast and professional freight from China to Uzbekistan and around the world. B2B partnerships and end-to-end freight solutions.",
-    "ctaContact": "Get a quote",
-    "ctaServices": "View services",
+    "subtitle": "SAF Logistics moves your cargo from China and the rest of the world to Uzbekistan via our Guangzhou hub — air, sea container and road freight, with a dedicated manager, full insurance and customs in one place.",
+    "ctaContact": "Get a free quote",
+    "ctaServices": "Explore services",
     "tickerLabel": "Live route",
     "routeLabel": "Guangzhou → Tashkent",
-    "routeValue": "End-to-end freight",
+    "routeValue": "Door-to-door delivery",
     "badgeInsured": "Insured freight",
-    "badgeInsuredValue": "100% protected",
+    "badgeInsuredValue": "100% insured",
     "badgeExpress": "Express tariff",
     "badgeExpressValue": "7–14 days",
+    "float1": "500+ shipments delivered",
+    "float2": "China sourcing expert",
     "stats": {
       "years": "Years of experience",
       "projects": "Successful projects",
@@ -303,7 +320,8 @@
     "mapCta": "Open in Google Maps",
     "socialLabel": "Social networks",
     "form": {
-      "title": "Send a message",
+      "title": "Get a free quote",
+      "subtitle": "A dedicated manager will reach out within 30 minutes during business hours.",
       "name": "Your name",
       "namePlaceholder": "Full name",
       "email": "Email",
@@ -311,12 +329,22 @@
       "phone": "Phone",
       "phonePlaceholder": "+998 __ ___ __ __",
       "phoneInvalid": "Invalid phone number. Pick a country and enter the full number.",
-      "message": "Message",
-      "messagePlaceholder": "Your message…",
-      "submit": "Send",
+      "service": "Service type",
+      "services": {
+        "sea": "Sea freight",
+        "air": "Air · Express",
+        "road": "Road transport",
+        "customs": "Customs clearance",
+        "b2b": "B2B partnership",
+        "china": "China sourcing"
+      },
+      "message": "Message (optional)",
+      "messagePlaceholder": "Volume, dispatch date and destination…",
+      "submit": "Send request",
       "sending": "Sending…",
       "success": "Thanks! We'll be in touch shortly.",
-      "error": "Couldn't send. Please try again."
+      "error": "Couldn't send. Please try again.",
+      "disclaimer": "By submitting, you agree to be contacted. We never share your details with third parties."
     }
   },
   "servicesPage": {

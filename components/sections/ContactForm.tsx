@@ -4,11 +4,19 @@ import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { isValidPhoneNumber } from "libphonenumber-js";
 import type { Dictionary } from "@/lib/i18n";
-import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { PhoneField } from "@/components/ui/PhoneField";
 
 type Props = { dict: Dictionary };
+
+const SERVICE_KEYS = [
+  "sea",
+  "air",
+  "road",
+  "customs",
+  "b2b",
+  "china",
+] as const;
 
 export function ContactForm({ dict }: Props) {
   const [submitting, setSubmitting] = useState(false);
@@ -18,7 +26,10 @@ export function ContactForm({ dict }: Props) {
   const [phoneError, setPhoneError] = useState(false);
 
   const inputClass =
-    "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted/80 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30";
+    "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted/80 outline-none transition focus:border-brand-500 focus:bg-surface focus:ring-2 focus:ring-brand-500/30";
+
+  const labelClass =
+    "mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.2em] text-muted";
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,6 +43,15 @@ export function ContactForm({ dict }: Props) {
     setSubmitting(true);
     setError(false);
     try {
+      const serviceKey = String(fd.get("service") ?? "");
+      const serviceLabel =
+        (dict.contact.form.services as Record<string, string>)[serviceKey] ??
+        serviceKey;
+      const userMsg = String(fd.get("message") ?? "").trim();
+      const composed = serviceLabel
+        ? `[${serviceLabel}]${userMsg ? `\n${userMsg}` : ""}`
+        : userMsg;
+
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -39,7 +59,7 @@ export function ContactForm({ dict }: Props) {
           source: "contact",
           name: String(fd.get("name") ?? ""),
           phone,
-          message: String(fd.get("message") ?? ""),
+          message: composed,
           locale: document.documentElement.lang,
           page: window.location.pathname,
         }),
@@ -59,55 +79,95 @@ export function ContactForm({ dict }: Props) {
   }
 
   return (
-    <div className="relative rounded-3xl border border-border bg-surface p-8 shadow-(--shadow-soft)">
-      <h3 className="text-xl font-semibold text-foreground">
+    <div className="relative isolate overflow-hidden rounded-3xl border border-border bg-surface p-7 shadow-(--shadow-soft) sm:p-10">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-[20%] top-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-brand-500) 70%, transparent), transparent)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 -top-24 -z-10 h-64 w-64 rounded-full bg-brand-500/15 blur-3xl"
+      />
+
+      <h3 className="text-xl font-semibold text-foreground sm:text-2xl">
         {dict.contact.form.title}
       </h3>
-      <form onSubmit={onSubmit} className="mt-6 grid gap-4">
+      <p className="mt-1.5 text-sm text-muted">{dict.contact.form.subtitle}</p>
+
+      <form onSubmit={onSubmit} className="mt-7 grid gap-5">
+        <div className="grid gap-5 sm:grid-cols-2">
+          <label className="block">
+            <span className={labelClass}>{dict.contact.form.name}</span>
+            <input
+              required
+              name="name"
+              type="text"
+              placeholder={dict.contact.form.namePlaceholder}
+              className={inputClass}
+            />
+          </label>
+          <label className="block">
+            <span className={labelClass}>{dict.contact.form.phone}</span>
+            <PhoneField
+              value={phone}
+              onChange={setPhone}
+              placeholder={dict.contact.form.phonePlaceholder}
+              required
+            />
+            {phoneError ? (
+              <span className="mt-1.5 block text-xs text-red-600 dark:text-red-300">
+                {dict.contact.form.phoneInvalid}
+              </span>
+            ) : null}
+          </label>
+        </div>
+
         <label className="block">
-          <span className="mb-1.5 block text-sm text-muted">
-            {dict.contact.form.name}
-          </span>
-          <input
-            required
-            name="name"
-            type="text"
-            placeholder={dict.contact.form.namePlaceholder}
-            className={inputClass}
-          />
-        </label>
-        <label className="block">
-          <span className="mb-1.5 block text-sm text-muted">
-            {dict.contact.form.phone}
-          </span>
-          <PhoneField
-            value={phone}
-            onChange={setPhone}
-            placeholder={dict.contact.form.phonePlaceholder}
-            required
-          />
-          {phoneError ? (
-            <span className="mt-1.5 block text-xs text-red-600 dark:text-red-300">
-              {dict.contact.form.phoneInvalid}
+          <span className={labelClass}>{dict.contact.form.service}</span>
+          <div className="relative">
+            <select
+              name="service"
+              defaultValue={SERVICE_KEYS[0]}
+              className={`${inputClass} appearance-none pr-12`}
+            >
+              {SERVICE_KEYS.map((k) => (
+                <option key={k} value={k}>
+                  {dict.contact.form.services[k]}
+                </option>
+              ))}
+            </select>
+            <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-muted">
+              <Icon.ChevronDown size={16} />
             </span>
-          ) : null}
+          </div>
         </label>
+
         <label className="block">
-          <span className="mb-1 block text-sm text-muted">
-            {dict.contact.form.message}
-          </span>
+          <span className={labelClass}>{dict.contact.form.message}</span>
           <textarea
-            required
             name="message"
-            rows={5}
+            rows={4}
             placeholder={dict.contact.form.messagePlaceholder}
             className={`${inputClass} resize-none`}
           />
         </label>
-        <Button type="submit" size="lg" className="mt-2" disabled={submitting}>
-          {submitting ? "…" : dict.contact.form.submit}
-          <Icon.ArrowRight size={16} />
-        </Button>
+
+        <button
+          type="submit"
+          disabled={submitting}
+          className="mt-1 inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-700 via-brand-500 to-brand-800 px-6 text-base font-semibold text-white shadow-(--shadow-glow) transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 disabled:pointer-events-none disabled:opacity-60 dark:from-brand-500 dark:via-brand-400 dark:to-brand-200 dark:text-brand-950"
+        >
+          {submitting ? dict.contact.form.sending : dict.contact.form.submit}
+          <Icon.ArrowRight size={18} />
+        </button>
+
+        <p className="text-center text-xs text-muted">
+          {dict.contact.form.disclaimer}
+        </p>
 
         <AnimatePresence>
           {done ? (
@@ -115,7 +175,7 @@ export function ContactForm({ dict }: Props) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
-              className="mt-2 flex items-center gap-3 rounded-xl border border-brand-500/30 bg-brand-500/10 px-4 py-3 text-sm text-brand-700 dark:text-brand-200"
+              className="flex items-center gap-3 rounded-xl border border-brand-500/30 bg-brand-500/10 px-4 py-3 text-sm text-brand-700 dark:text-brand-200"
               role="status"
             >
               <Icon.Check size={16} />
@@ -127,7 +187,7 @@ export function ContactForm({ dict }: Props) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
-              className="mt-2 flex items-center gap-3 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-700 dark:text-red-200"
+              className="flex items-center gap-3 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-700 dark:text-red-200"
               role="alert"
             >
               {dict.contact.form.error}

@@ -13,10 +13,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://saflogistics.uz"),
-  title: {
-    default: "SAF Logistics",
-    template: "%s · SAF Logistics",
+  verification: {
+    google: "kMhsNqHBmEreRqg7G4upchL42Tm8ksL361dsC8xZX3s",
   },
+  title: "SAF Logistics",
   description:
     "SAF Logistics — reliable international freight forwarding from China to Uzbekistan and worldwide.",
   icons: {

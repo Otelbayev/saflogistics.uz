@@ -23,24 +23,31 @@ export async function generateMetadata({
 
   return {
     title: {
-      default: `${dict.site.name} — ${dict.site.tagline}`,
+      default: dict.seo.homeTitle,
       template: `%s · ${dict.site.name}`,
     },
-    description: dict.hero.subtitle,
+    description: dict.seo.homeDescription,
+    keywords: dict.seo.keywords,
+    applicationName: dict.site.name,
+    authors: [{ name: siteConfig.founder }],
+    creator: siteConfig.founder,
+    publisher: dict.site.name,
+    category: "Logistics",
     alternates: {
       canonical: url,
       languages: {
         uz: `${siteConfig.url}/uz`,
         ru: `${siteConfig.url}/ru`,
         en: `${siteConfig.url}/en`,
+        "x-default": `${siteConfig.url}/uz`,
       },
     },
     openGraph: {
       type: "website",
       url,
       siteName: dict.site.name,
-      title: `${dict.site.name} — ${dict.site.tagline}`,
-      description: dict.hero.subtitle,
+      title: dict.seo.homeTitle,
+      description: dict.seo.homeDescription,
       locale: localeHtmlLang[safeLocale],
       images: [
         {
@@ -53,9 +60,19 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${dict.site.name} — ${dict.site.tagline}`,
-      description: dict.hero.subtitle,
+      title: dict.seo.homeTitle,
+      description: dict.seo.homeDescription,
       images: ["/images/semi-truck-port-sunset.jpg"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
   };
 }
