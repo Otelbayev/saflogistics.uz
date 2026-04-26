@@ -356,44 +356,47 @@ html {
   --PhoneInputCountryFlag-borderColor: transparent;
   --PhoneInputCountryFlag-borderColor--focus: transparent;
   --PhoneInputCountrySelectArrow-color: currentColor;
-  --PhoneInputCountrySelectArrow-opacity: 0.55;
+  --PhoneInputCountrySelectArrow-opacity: 0.6;
   --PhoneInputCountrySelectArrow-width: 0.35em;
-}
-.phone-field .PhoneInput {
-  display: flex;
-  align-items: stretch;
-  gap: 0.5rem;
   width: 100%;
   min-width: 0;
+}
+.phone-field .PhoneInput {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  height: 3.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.phone-field .PhoneInput:focus-within {
+  border-color: var(--color-brand-500);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-brand-500) 25%, transparent);
 }
 .phone-field .PhoneInputCountry {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0 0.75rem 0 0.75rem;
-  height: 100%;
-  border-radius: 9999px;
-  border: 1px solid var(--color-border);
-  background: var(--color-background);
+  gap: 0.4rem;
+  padding: 0 0.65rem 0 0.85rem;
+  border: none;
+  background: transparent;
   cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease;
   flex-shrink: 0;
-  font-variant-numeric: tabular-nums;
-}
-.phone-field .PhoneInputCountry:hover,
-.phone-field .PhoneInputCountry:focus-within {
-  border-color: color-mix(in oklab, var(--color-brand-500) 60%, transparent);
-}
-.phone-field .PhoneInputCountry::after {
-  content: "+" attr(data-calling-code);
-  font-size: 0.875rem;
-  font-weight: 500;
+  border-right: 1px solid color-mix(in oklab, var(--color-border) 90%, transparent);
 }
 .phone-field .PhoneInputCountryIcon {
-  width: 1.35rem;
+  width: 1.4rem;
   height: 1rem;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
   border-radius: 2px;
   overflow: hidden;
   flex-shrink: 0;
@@ -404,49 +407,53 @@ html {
   opacity: 0;
   cursor: pointer;
 }
+.phone-field .PhoneInputCountrySelectArrow {
+  margin-left: 0.05rem;
+}
 .phone-field .PhoneInputInput {
   flex: 1;
   min-width: 0;
-  background: var(--color-background);
-  border: 1px solid var(--color-border);
+  background: transparent;
+  border: none;
   outline: none;
   padding: 0 1rem;
   font: inherit;
   color: inherit;
-  border-radius: 9999px;
   height: 100%;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-.phone-field .PhoneInputInput:focus {
-  border-color: var(--color-brand-500);
-  box-shadow: 0 0 0 2px
-    color-mix(in oklab, var(--color-brand-500) 30%, transparent);
+  font-variant-numeric: tabular-nums;
 }
 .phone-field .PhoneInputInput::placeholder {
   color: color-mix(in oklab, currentColor 55%, transparent);
 }
 
-.phone-field--pill:not(.phone-field--dark) {
-  min-height: 3rem;
+/* Pill variant — taller, fully rounded (used in inline / hero forms) */
+.phone-field--pill .PhoneInput {
+  height: 3rem;
+  border-radius: 9999px;
+}
+.phone-field--pill .PhoneInputCountry {
+  padding-left: 1rem;
+}
+.phone-field--pill .PhoneInputInput {
+  padding-right: 1.25rem;
 }
 
-.phone-field--dark .PhoneInputCountry {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+/* Dark variant — used on dark/branded backgrounds (newsletter, hero, footer) */
+.phone-field--dark .PhoneInput {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
   color: #fff;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-.phone-field--dark .PhoneInputCountry:hover,
-.phone-field--dark .PhoneInputCountry:focus-within {
-  border-color: rgba(255, 255, 255, 0.5);
-}
-.phone-field--dark .PhoneInputInput {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  backdrop-filter: blur(8px);
-}
-.phone-field--dark .PhoneInputInput:focus {
+.phone-field--dark .PhoneInput:focus-within {
+  background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+}
+.phone-field--dark .PhoneInputCountry {
+  border-right-color: rgba(255, 255, 255, 0.2);
+}
+.phone-field--dark .PhoneInputCountryIcon {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
 }

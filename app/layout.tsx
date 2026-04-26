@@ -16,11 +16,26 @@ export const metadata: Metadata = {
   verification: {
     google: "kMhsNqHBmEreRqg7G4upchL42Tm8ksL361dsC8xZX3s",
   },
-  title: "SAF Logistics",
+  title: {
+    default: "SAF Logistics",
+    template: "%s | SAF Logistics",
+  },
   description:
     "SAF Logistics — reliable international freight forwarding from China to Uzbekistan and worldwide.",
   icons: {
     icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "SAF Logistics",
+    description: "Reliable international freight forwarding services.",
+    url: "https://saflogistics.uz",
+    siteName: "SAF Logistics",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

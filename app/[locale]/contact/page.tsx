@@ -35,6 +35,7 @@ export default async function ContactPage({
         description={dict.contact.description}
         imageSrc="/images/truck-logistics-operations-dusk.jpg"
         imageAlt="Logistics operations at dusk"
+        videoSrc="/videos/15373444_3840_2160_25fps.mp4"
       />
 
       <section className="py-20">

@@ -82,6 +82,7 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
           value={phone}
           onChange={setPhone}
           placeholder={dict.newsletter.phonePlaceholder}
+          shape="pill"
           required
         />
         <button
@@ -130,6 +131,7 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
               onChange={setPhone}
               placeholder={dict.newsletter.phonePlaceholder}
               variant="dark"
+              shape="pill"
               required
             />
             <button

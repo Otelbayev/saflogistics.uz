@@ -15,6 +15,7 @@ type Props = {
   required?: boolean;
   name?: string;
   variant?: "light" | "dark";
+  shape?: "block" | "pill";
   className?: string;
 };
 
@@ -27,14 +28,22 @@ export const PhoneField = forwardRef<HTMLDivElement, Props>(function PhoneField(
     required,
     name = "phone",
     variant = "light",
+    shape = "block",
     className,
   },
   ref,
 ) {
-  const base =
-    variant === "dark"
-      ? "phone-field phone-field--dark phone-field--pill h-12 w-full min-w-0 text-sm text-white"
-      : "phone-field phone-field--pill w-full min-w-0 text-sm text-foreground";
+  const classes = [
+    "phone-field",
+    "w-full",
+    "min-w-0",
+    "text-sm",
+    shape === "pill" ? "phone-field--pill" : "",
+    variant === "dark" ? "phone-field--dark text-white" : "text-foreground",
+    className ?? "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   function handleChange(v: string | undefined) {
     const next = (v ?? "") as string;
@@ -43,7 +52,7 @@ export const PhoneField = forwardRef<HTMLDivElement, Props>(function PhoneField(
   }
 
   return (
-    <div ref={ref} className={`${base} ${className ?? ""}`}>
+    <div ref={ref} className={classes}>
       <PhoneInput
         international
         withCountryCallingCode

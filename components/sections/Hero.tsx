@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 import type { Dictionary } from "@/lib/i18n";
@@ -58,7 +59,7 @@ export function Hero({ locale, dict }: Props) {
         muted
         loop
         playsInline
-        poster="/images/semi-truck-port-sunset.jpg"
+        poster="/images/poster.png"
       >
         <source src="/videos/15373444_3840_2160_25fps.mp4" type="video/mp4" />
       </video>
@@ -217,14 +218,12 @@ export function Hero({ locale, dict }: Props) {
               {dict.hero.ctaContact}
               <Icon.ArrowRight size={18} />
             </Button>
-            <Button
+            <Link
               href={`/${locale}/services`}
-              size="lg"
-              variant="secondary"
-              className="border-brand-700/30 bg-white/70 text-brand-900 backdrop-blur hover:bg-white dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-8 text-base font-medium text-brand-900 backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-700/60 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/45 dark:hover:bg-white/20"
             >
               {dict.hero.ctaServices}
-            </Button>
+            </Link>
           </motion.div>
 
           <motion.div

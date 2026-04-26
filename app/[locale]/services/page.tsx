@@ -36,6 +36,7 @@ export default async function ServicesPage({
         description={dict.servicesPage.hero.description}
         imageSrc="/images/large-cargo-truck-driving-rural-highway-with-trailer-logistics-freight-transport.jpg"
         imageAlt="Cargo truck on highway"
+        videoSrc="/videos/15373444_3840_2160_25fps.mp4"
       />
       <Services locale={locale} dict={dict} />
       <CompareTable dict={dict} />
