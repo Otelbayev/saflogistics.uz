@@ -6,23 +6,9 @@ import { siteConfig } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/ui/Icon";
+import { Flag } from "@/components/ui/Flag";
 
 type Props = { dict: Dictionary };
-
-const flags: Record<string, string> = {
-  CN: "🇨🇳",
-  UZ: "🇺🇿",
-  RU: "🇷🇺",
-  TR: "🇹🇷",
-  KZ: "🇰🇿",
-  KR: "🇰🇷",
-  DE: "🇩🇪",
-  US: "🇺🇸",
-  JP: "🇯🇵",
-  AE: "🇦🇪",
-  IN: "🇮🇳",
-  GB: "🇬🇧",
-};
 
 const featuredCodes = ["CN", "UZ", "RU", "TR"] as const;
 
@@ -313,8 +299,8 @@ export function Globe3D({ dict }: Props) {
                 style={{ left: "50%", top: "50%" }}
               >
                 <div className="flex flex-col items-center gap-2">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-700 text-2xl shadow-(--shadow-glow) dark:bg-brand-500">
-                    {flags[hub.code]}
+                  <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-brand-700 shadow-(--shadow-glow) dark:bg-brand-500">
+                    <Flag code={hub.code} width={40} square />
                   </div>
                   <div className="rounded-full border border-brand-500/30 bg-background/90 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-800 backdrop-blur dark:border-white/20 dark:bg-white/10 dark:text-white">
                     {hub.name} · HUB
@@ -338,10 +324,8 @@ export function Globe3D({ dict }: Props) {
                       className={`flex items-center gap-1.5 ${isLeft ? "flex-row-reverse" : ""}`}
                     >
                       <span className="h-3 w-3 shrink-0 rounded-full" />
-                      <div className="rounded-md border border-border bg-surface/95 px-2 py-1 text-[10px] font-semibold text-foreground shadow-(--shadow-soft) backdrop-blur dark:border-white/15 dark:bg-white/10 dark:text-white">
-                        <span className="mr-1 text-sm leading-none">
-                          {flags[p.code] ?? "🌐"}
-                        </span>
+                      <div className="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface/95 px-2 py-1 text-[10px] font-semibold text-foreground shadow-(--shadow-soft) backdrop-blur dark:border-white/15 dark:bg-white/10 dark:text-white">
+                        <Flag code={p.code} width={14} />
                         <span className="uppercase tracking-wider">
                           {p.code}
                         </span>
@@ -396,9 +380,7 @@ export function Globe3D({ dict }: Props) {
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl" aria-hidden>
-                    {flags[c.code] ?? "🌐"}
-                  </span>
+                  <Flag code={c.code} width={32} />
                   {isHub ? (
                     <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest backdrop-blur">
                       <Icon.MapPin size={10} />
@@ -434,9 +416,10 @@ export function Globe3D({ dict }: Props) {
             {others.map((c) => (
               <li
                 key={c.code}
-                className="rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-muted"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 font-medium text-muted"
               >
-                {flags[c.code] ?? "🌐"} {c.name}
+                <Flag code={c.code} width={16} />
+                {c.name}
               </li>
             ))}
           </ul>

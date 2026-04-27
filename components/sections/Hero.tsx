@@ -167,18 +167,20 @@ export function Hero({ locale, dict }: Props) {
       </div>
 
       {/* Floating info boxes */}
-      <FloatBox
-        className="right-[42%] bottom-[26%] hidden md:inline-flex"
-        style={{ ["--dur" as string]: "3.4s" }}
-      >
-        <Icon.Sparkle size={12} /> {dict.hero.float1}
-      </FloatBox>
-      <FloatBox
-        className="right-[26%] top-[24%] hidden md:inline-flex"
-        style={{ ["--dur" as string]: "4.2s" }}
-      >
-        <Icon.Globe size={12} /> {dict.hero.float2}
-      </FloatBox>
+      <div className="hidden md:block">
+        <FloatBox
+          className="right-[42%] bottom-[26%] inline-flex"
+          style={{ ["--dur" as string]: "3.4s" }}
+        >
+          <Icon.Sparkle size={12} /> {dict.hero.float1}
+        </FloatBox>
+        <FloatBox
+          className="right-[26%] top-[24%] inline-flex"
+          style={{ ["--dur" as string]: "4.2s" }}
+        >
+          <Icon.Globe size={12} /> {dict.hero.float2}
+        </FloatBox>
+      </div>
 
       <Container className="relative flex flex-1 flex-col justify-center">
         <div className="max-w-2xl">
@@ -186,13 +188,13 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-800 backdrop-blur sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.22em] dark:border-white/15 dark:bg-white/10 dark:text-brand-200"
+            className="w-fit items-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-800 backdrop-blur inline-flex sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.22em] dark:border-white/15 dark:bg-white/10 dark:text-brand-200"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500/80" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500 dark:bg-brand-300" />
             </span>
-            <span className="line-clamp-1">{dict.hero.badge}</span>
+            <span>{dict.hero.badge}</span>
           </motion.span>
 
           <motion.h1
@@ -241,7 +243,7 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45 }}
-            className="mt-7 flex flex-wrap items-center gap-2 text-brand-950/85 sm:mt-9 sm:gap-2.5 dark:text-white/85"
+            className="mt-9 hidden flex-wrap items-center gap-2.5 text-brand-950/85 sm:flex dark:text-white/85"
           >
             <Pill>
               <Icon.Shield size={12} /> {dict.hero.badgeInsuredValue}
@@ -249,7 +251,7 @@ export function Hero({ locale, dict }: Props) {
             <Pill>
               <Icon.Lightning size={12} /> {dict.hero.badgeExpressValue}
             </Pill>
-            <Pill className="hidden sm:inline-flex">
+            <Pill>
               <Icon.Truck size={12} /> {dict.hero.routeValue}
             </Pill>
           </motion.div>
@@ -268,14 +270,14 @@ export function Hero({ locale, dict }: Props) {
           }}
           className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4"
         >
-          {stats.map((s) => (
+          {stats.map((s, idx) => (
             <motion.li
               key={s.key}
               variants={{
                 hidden: { opacity: 0, y: 18 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="rounded-2xl border border-brand-700/20 bg-white/60 p-3 backdrop-blur-md sm:p-4 dark:border-white/15 dark:bg-white/10"
+              className={`rounded-2xl border border-brand-700/20 bg-white/60 p-3 backdrop-blur-md sm:p-4 dark:border-white/15 dark:bg-white/10 ${idx >= 2 ? "hidden sm:block" : ""}`}
             >
               <div className="text-2xl font-semibold text-brand-950 sm:text-4xl dark:text-white">
                 {s.value}

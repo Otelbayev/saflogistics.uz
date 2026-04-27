@@ -39,18 +39,38 @@ export function Navbar({ locale, dict }: Props) {
     setMobileOpen(false);
   }, [pathname]);
 
+  // iOS-safe scroll lock: position:fixed on <body> with preserved scroll Y
   useEffect(() => {
     if (!mobileOpen) return;
-    const prevOverflow = document.body.style.overflow;
-    const prevPaddingRight = document.body.style.paddingRight;
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.overflow = "hidden";
-    if (scrollbarWidth > 0)
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    const scrollY = window.scrollY;
+    const html = document.documentElement;
+    const body = document.body;
+    const prev = {
+      htmlOverflow: html.style.overflow,
+      bodyOverflow: body.style.overflow,
+      bodyPosition: body.style.position,
+      bodyTop: body.style.top,
+      bodyLeft: body.style.left,
+      bodyRight: body.style.right,
+      bodyWidth: body.style.width,
+    };
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+
     return () => {
-      document.body.style.overflow = prevOverflow;
-      document.body.style.paddingRight = prevPaddingRight;
+      html.style.overflow = prev.htmlOverflow;
+      body.style.overflow = prev.bodyOverflow;
+      body.style.position = prev.bodyPosition;
+      body.style.top = prev.bodyTop;
+      body.style.left = prev.bodyLeft;
+      body.style.right = prev.bodyRight;
+      body.style.width = prev.bodyWidth;
+      window.scrollTo(0, scrollY);
     };
   }, [mobileOpen]);
 
@@ -62,12 +82,13 @@ export function Navbar({ locale, dict }: Props) {
   ];
 
   return (
+    <>
     <header
       className={clsx(
-        "fixed inset-x-0 top-0 z-50 w-full transition-all duration-300",
+        "fixed inset-x-0 top-0 z-90 w-full transition-all duration-300",
         scrolled
           ? "backdrop-blur-xl bg-[color-mix(in_oklab,var(--background)_88%,transparent)] border-b border-border"
-          : "backdrop-blur-md bg-[color-mix(in_oklab,var(--background)_55%,transparent)] md:bg-transparent md:backdrop-blur-none",
+          : "backdrop-blur-md bg-[color-mix(in_oklab,var(--background)_60%,transparent)] md:bg-transparent md:backdrop-blur-none",
       )}
       style={{ pointerEvents: "auto" }}
     >
@@ -122,45 +143,43 @@ export function Navbar({ locale, dict }: Props) {
           onClick={() => setMobileOpen((o) => !o)}
           aria-label="Menu"
           aria-expanded={mobileOpen}
-          className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-(--shadow-soft) md:hidden"
+          aria-controls="mobile-menu"
+          className="relative inline-flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-(--shadow-soft) transition-transform active:scale-95 md:hidden"
+          style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
         >
-          <motion.span
-            aria-hidden
-            className="absolute block h-0.5 w-5 rounded-full bg-current"
-            animate={
-              mobileOpen
-                ? { rotate: 45, y: 0 }
-                : { rotate: 0, y: -5 }
-            }
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            aria-hidden
-            className="absolute block h-0.5 w-5 rounded-full bg-current"
-            animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.2 }}
-          />
-          <motion.span
-            aria-hidden
-            className="absolute block h-0.5 w-5 rounded-full bg-current"
-            animate={
-              mobileOpen
-                ? { rotate: -45, y: 0 }
-                : { rotate: 0, y: 5 }
-            }
-            transition={{ duration: 0.3 }}
-          />
+          <span aria-hidden className="pointer-events-none relative block h-3 w-5">
+            <motion.span
+              className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
+              style={{ top: "0%" }}
+              animate={mobileOpen ? { y: 5, rotate: 45 } : { y: 0, rotate: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
+              style={{ top: "calc(50% - 1px)" }}
+              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
+              style={{ top: "calc(100% - 2px)" }}
+              animate={mobileOpen ? { y: -5, rotate: -45 } : { y: 0, rotate: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          </span>
         </button>
       </Container>
+    </header>
 
-      <AnimatePresence>
+    <AnimatePresence>
         {mobileOpen ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 top-0 z-55 overflow-y-auto md:hidden"
+            id="mobile-menu"
+            className="fixed inset-0 top-0 z-95 overflow-y-auto md:hidden"
           >
             <div
               aria-hidden
@@ -349,7 +368,7 @@ export function Navbar({ locale, dict }: Props) {
             </div>
           </motion.div>
         ) : null}
-      </AnimatePresence>
-    </header>
+    </AnimatePresence>
+    </>
   );
 }

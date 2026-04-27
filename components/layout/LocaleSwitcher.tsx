@@ -2,11 +2,18 @@
 
 import { useState, useRef, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { locales, localeFlags, localeNames, type Locale } from "@/lib/locales";
+import { locales, localeNames, type Locale } from "@/lib/locales";
 import { Icon } from "@/components/ui/Icon";
+import { Flag } from "@/components/ui/Flag";
 
 type Props = {
   current: Locale;
+};
+
+const localeFlagCodes: Record<Locale, string> = {
+  uz: "uz",
+  ru: "ru",
+  en: "gb",
 };
 
 function swapLocale(pathname: string, next: Locale): string {
@@ -45,7 +52,7 @@ export function LocaleSwitcher({ current }: Props) {
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span aria-hidden>{localeFlags[current]}</span>
+        <Flag code={localeFlagCodes[current]} width={20} />
         <span className="uppercase">{current}</span>
         <Icon.ChevronDown size={14} />
       </button>
@@ -72,7 +79,7 @@ export function LocaleSwitcher({ current }: Props) {
                       : "hover:bg-surface-2 text-foreground"
                   }`}
                 >
-                  <span aria-hidden>{localeFlags[l]}</span>
+                  <Flag code={localeFlagCodes[l]} width={20} />
                   <span>{localeNames[l]}</span>
                 </button>
               </li>
