@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
@@ -24,6 +25,7 @@ export function Navbar({ locale, dict }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { open: openQuote } = useQuoteModal();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -32,12 +34,23 @@ export function Navbar({ locale, dict }: Props) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   useEffect(() => {
     if (!mobileOpen) return;
-    const prev = document.body.style.overflow;
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0)
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
     };
   }, [mobileOpen]);
 
@@ -51,11 +64,12 @@ export function Navbar({ locale, dict }: Props) {
   return (
     <header
       className={clsx(
-        "sticky top-0 z-40 w-full transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "backdrop-blur-xl bg-[color-mix(in_oklab,var(--background)_80%,transparent)] border-b border-border"
-          : "bg-transparent",
+          ? "backdrop-blur-xl bg-[color-mix(in_oklab,var(--background)_88%,transparent)] border-b border-border"
+          : "backdrop-blur-md bg-[color-mix(in_oklab,var(--background)_55%,transparent)] md:bg-transparent md:backdrop-blur-none",
       )}
+      style={{ pointerEvents: "auto" }}
     >
       <Container className="flex h-16 items-center justify-between sm:h-20">
         <Link
@@ -146,7 +160,7 @@ export function Navbar({ locale, dict }: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 top-0 z-50 overflow-y-auto md:hidden"
+            className="fixed inset-0 top-0 z-55 overflow-y-auto md:hidden"
           >
             <div
               aria-hidden

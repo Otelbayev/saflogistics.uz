@@ -51,7 +51,7 @@ export function Hero({ locale, dict }: Props) {
   return (
     <section
       id="showcase"
-      className="relative isolate flex min-h-svh w-full flex-col overflow-hidden pt-24 pb-20 sm:pt-28"
+      className="relative isolate flex min-h-svh w-full flex-col overflow-hidden pt-20 pb-14 sm:pt-28 sm:pb-20"
     >
       <video
         className="absolute inset-0 -z-30 h-full w-full object-cover"
@@ -64,13 +64,21 @@ export function Hero({ locale, dict }: Props) {
         <source src="/videos/15373444_3840_2160_25fps.mp4" type="video/mp4" />
       </video>
 
-      {/* Theme-aware video overlay */}
+      {/* Theme-aware video overlay — stronger on mobile for readability */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 dark:hidden"
+        className="absolute inset-0 -z-20 sm:hidden dark:hidden"
         style={{
           background:
-            "linear-gradient(135deg, rgba(247, 249, 255, 0.42) 0%, rgba(237, 241, 251, 0.32) 45%, rgba(3, 42, 125, 0.32) 100%)",
+            "linear-gradient(180deg, rgba(247, 249, 255, 0.78) 0%, rgba(237, 241, 251, 0.58) 35%, rgba(3, 42, 125, 0.45) 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 hidden sm:block dark:hidden"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(247, 249, 255, 0.5) 0%, rgba(237, 241, 251, 0.34) 45%, rgba(3, 42, 125, 0.32) 100%)",
         }}
       />
       <div
@@ -78,7 +86,7 @@ export function Hero({ locale, dict }: Props) {
         className="absolute inset-0 -z-20 hidden dark:block"
         style={{
           background:
-            "linear-gradient(135deg, rgba(5,13,26,0.85) 0%, rgba(5,13,26,0.7) 45%, rgba(13,59,122,0.55) 70%, rgba(5,13,26,0.85) 100%)",
+            "linear-gradient(135deg, rgba(5,13,26,0.88) 0%, rgba(5,13,26,0.78) 45%, rgba(13,59,122,0.6) 70%, rgba(5,13,26,0.88) 100%)",
         }}
       />
 
@@ -92,14 +100,17 @@ export function Hero({ locale, dict }: Props) {
         }}
       />
 
-      {/* Animated grid */}
+      {/* Animated grid — desktop only */}
       <div
         aria-hidden
-        className="showcase-grid pointer-events-none absolute inset-0 -z-10"
+        className="showcase-grid pointer-events-none absolute inset-0 -z-10 hidden sm:block"
       />
 
-      {/* Particles */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+      {/* Particles — desktop only */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 hidden sm:block"
+      >
         {particles.map((p, i) => (
           <span
             key={i}
@@ -175,20 +186,20 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-800 backdrop-blur dark:border-white/15 dark:bg-white/10 dark:text-brand-200"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-800 backdrop-blur sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.22em] dark:border-white/15 dark:bg-white/10 dark:text-brand-200"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500/80" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500 dark:bg-brand-300" />
             </span>
-            {dict.hero.badge}
+            <span className="line-clamp-1">{dict.hero.badge}</span>
           </motion.span>
 
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-brand-950 sm:text-6xl md:text-7xl dark:text-white"
+            className="mt-5 text-balance text-3xl font-semibold leading-[1.08] tracking-tight text-brand-950 sm:mt-6 sm:text-6xl sm:leading-[1.05] md:text-7xl dark:text-white"
           >
             {dict.hero.titleLine1}
             <span className="block">
@@ -203,7 +214,7 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-brand-950/80 sm:mt-8 sm:text-lg dark:text-white/85"
+            className="mt-4 max-w-xl text-sm leading-relaxed text-brand-950/85 sm:mt-8 sm:text-lg dark:text-white/85"
           >
             {dict.hero.subtitle}
           </motion.p>
@@ -212,15 +223,15 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-9 flex flex-wrap items-center gap-3"
+            className="mt-7 flex flex-col items-stretch gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center"
           >
-            <Button onClick={openQuote} size="lg">
+            <Button onClick={openQuote} size="lg" className="w-full sm:w-auto">
               {dict.hero.ctaContact}
               <Icon.ArrowRight size={18} />
             </Button>
             <Link
               href={`/${locale}/services`}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-8 text-base font-medium text-brand-900 backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-700/60 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/45 dark:hover:bg-white/20"
+              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-6 text-base font-medium text-brand-900 backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-700/60 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:px-8 dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/45 dark:hover:bg-white/20"
             >
               {dict.hero.ctaServices}
             </Link>
@@ -230,22 +241,22 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45 }}
-            className="mt-9 flex flex-wrap items-center gap-2.5 text-brand-950/85 dark:text-white/85"
+            className="mt-7 flex flex-wrap items-center gap-2 text-brand-950/85 sm:mt-9 sm:gap-2.5 dark:text-white/85"
           >
             <Pill>
-              <Icon.Shield size={14} /> {dict.hero.badgeInsuredValue}
+              <Icon.Shield size={12} /> {dict.hero.badgeInsuredValue}
             </Pill>
             <Pill>
-              <Icon.Lightning size={14} /> {dict.hero.badgeExpressValue}
+              <Icon.Lightning size={12} /> {dict.hero.badgeExpressValue}
             </Pill>
-            <Pill>
-              <Icon.Truck size={14} /> {dict.hero.routeValue}
+            <Pill className="hidden sm:inline-flex">
+              <Icon.Truck size={12} /> {dict.hero.routeValue}
             </Pill>
           </motion.div>
         </div>
       </Container>
 
-      <Container className="relative mt-12">
+      <Container className="relative mt-8 sm:mt-12">
         <motion.ul
           initial="hidden"
           animate="visible"
@@ -255,7 +266,7 @@ export function Hero({ locale, dict }: Props) {
               transition: { staggerChildren: 0.08, delayChildren: 0.55 },
             },
           }}
-          className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4"
+          className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4"
         >
           {stats.map((s) => (
             <motion.li
@@ -264,12 +275,12 @@ export function Hero({ locale, dict }: Props) {
                 hidden: { opacity: 0, y: 18 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className="rounded-2xl border border-brand-700/20 bg-white/60 p-4 backdrop-blur-md dark:border-white/15 dark:bg-white/10"
+              className="rounded-2xl border border-brand-700/20 bg-white/60 p-3 backdrop-blur-md sm:p-4 dark:border-white/15 dark:bg-white/10"
             >
-              <div className="text-3xl font-semibold text-brand-950 sm:text-4xl dark:text-white">
+              <div className="text-2xl font-semibold text-brand-950 sm:text-4xl dark:text-white">
                 {s.value}
               </div>
-              <div className="mt-1 text-[10px] font-medium uppercase tracking-widest text-brand-900/75 sm:text-[11px] dark:text-white/75">
+              <div className="mt-0.5 text-[9px] font-medium uppercase tracking-widest text-brand-900/75 sm:mt-1 sm:text-[11px] dark:text-white/75">
                 {dict.hero.stats[s.key]}
               </div>
             </motion.li>
@@ -297,9 +308,17 @@ export function Hero({ locale, dict }: Props) {
   );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
+function Pill({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-brand-700/25 bg-white/65 px-3 py-1.5 text-xs backdrop-blur dark:border-white/20 dark:bg-white/10">
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full border border-brand-700/25 bg-white/65 px-2.5 py-1 text-[11px] backdrop-blur sm:gap-2 sm:px-3 sm:py-1.5 sm:text-xs dark:border-white/20 dark:bg-white/10 ${className ?? ""}`}
+    >
       {children}
     </span>
   );

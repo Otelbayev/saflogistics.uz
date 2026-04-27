@@ -104,8 +104,8 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
         aria-hidden
         className="pointer-events-none absolute -right-20 -top-16 h-72 w-72 rounded-full bg-brand-500/25 blur-3xl"
       />
-      <div className="relative grid items-center gap-8 lg:grid-cols-2">
-        <div>
+      <div className="relative flex flex-col gap-8">
+        <div className="max-w-2xl">
           <h3 className="text-balance text-2xl font-semibold leading-tight sm:text-3xl">
             {dict.newsletter.title}
           </h3>
@@ -114,10 +114,10 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
           </p>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
           <form
             onSubmit={onSubmit}
-            className="flex w-full flex-col gap-3 sm:flex-row"
+            className="grid w-full gap-3 sm:grid-cols-[1fr_1.4fr_auto]"
           >
             <input
               name="name"
