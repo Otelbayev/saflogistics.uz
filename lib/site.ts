@@ -28,6 +28,10 @@ export const siteConfig = {
   shortName: "SAF",
   url: "https://saflogistics.uz",
   founder: "Farrukh Mashanpin",
+  founderAlt: ["Farrux Mashanpin", "Фаррух Машанпин", "Фаррух Машанпин SAF"],
+  founderImage: "/images/boss.jpg",
+  logo: "/images/logo1.jpg",
+  ogImage: "/images/logo1.jpg",
   phones: ["+998935118484", "+998771730303"],
   email: "info@saflogistics.uz",
   address: "Tashkent, Uzbekistan",
@@ -35,6 +39,7 @@ export const siteConfig = {
   mapEmbed:
     "https://www.google.com/maps?q=Tashkent%2C+Uzbekistan&output=embed",
   instagram: "https://www.instagram.com/farrukh_mashanpin",
+  instagramHandle: "farrukh_mashanpin",
   hub: { city: "Guangzhou", country: "China", lat: 23.1291, lng: 113.2644 },
   partnerCountries,
 };

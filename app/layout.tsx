@@ -14,25 +14,56 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://saflogistics.uz"),
   title: {
-    default: "SAF Logistics",
+    default:
+      "SAF Logistics — Xitoydan Toshkentga yuk tashish · логистика · logistics",
     template: "%s | SAF Logistics",
   },
   description:
-    "SAF Logistics — reliable international freight forwarding from China to Uzbekistan and worldwide.",
+    "SAF Logistics — Xitoydan O‘zbekistonga ishonchli xalqaro logistika va yuk tashish. Грузоперевозки из Китая в Узбекистан. Reliable international freight forwarding from China and worldwide.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/images/logo1.jpg", type: "image/jpeg" },
+    ],
+    apple: "/images/logo1.jpg",
+    shortcut: "/favicon.ico",
   },
   openGraph: {
-    title: "SAF Logistics",
-    description: "Reliable international freight forwarding services.",
+    title: "SAF Logistics — Xitoydan Toshkentga yuk tashish · логистика",
+    description:
+      "Xitoydan O‘zbekistonga ishonchli logistika · Грузоперевозки Китай — Узбекистан · International freight forwarding.",
     url: "https://saflogistics.uz",
     siteName: "SAF Logistics",
-    locale: "en_US",
+    locale: "uz_UZ",
+    alternateLocale: ["ru_RU", "en_US"],
     type: "website",
+    images: [
+      {
+        url: "/images/logo1.jpg",
+        width: 1080,
+        height: 1080,
+        alt: "SAF Logistics — logo",
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SAF Logistics — Xitoydan Toshkentga yuk tashish",
+    description:
+      "Xalqaro logistika · логистика · freight forwarding from China to Uzbekistan.",
+    images: ["/images/logo1.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 

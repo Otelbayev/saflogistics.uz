@@ -178,46 +178,50 @@ export function Navbar({ locale, dict }: Props) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             id="mobile-menu"
-            className="fixed inset-0 top-0 z-95 overflow-y-auto md:hidden"
+            className="fixed inset-0 top-0 z-95 overflow-x-hidden overflow-y-auto overscroll-contain md:hidden"
+            style={{ WebkitOverflowScrolling: "touch" }}
           >
             <div
               aria-hidden
-              className="absolute inset-0 bg-linear-to-br from-brand-950 via-brand-900 to-brand-800"
-            />
-            <div aria-hidden className="absolute inset-0 bg-grid opacity-20" />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-32 -top-24 h-96 w-96 rounded-full bg-brand-500/30 blur-3xl"
+              className="pointer-events-none fixed inset-0 bg-linear-to-br from-brand-950 via-brand-900 to-brand-800"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute -bottom-24 -left-20 h-80 w-80 rounded-full bg-brand-500/20 blur-3xl"
+              className="pointer-events-none fixed inset-0 bg-grid opacity-15"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none fixed -right-20 -top-16 h-64 w-64 rounded-full bg-brand-500/25 blur-3xl"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none fixed -bottom-16 -left-16 h-56 w-56 rounded-full bg-brand-500/20 blur-3xl"
             />
 
-            <div className="relative flex min-h-dvh flex-col text-white">
-              <Container className="flex h-16 items-center justify-between sm:h-20">
+            <div className="relative flex min-h-dvh w-full flex-col text-white">
+              <Container className="flex h-16 items-center justify-between">
                 <Link
                   href={`/${locale}`}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-2.5"
                   aria-label={dict.site.name}
                 >
-                  <span className="relative inline-flex h-10 w-10 overflow-hidden rounded-xl bg-white/10 ring-1 ring-white/20">
+                  <span className="relative inline-flex h-9 w-9 overflow-hidden rounded-lg bg-white/10 ring-1 ring-white/20">
                     <Image
                       src="/images/logo1.jpg"
                       alt={dict.site.name}
                       fill
-                      sizes="40px"
+                      sizes="36px"
                       className="object-cover"
                     />
                   </span>
                   <span className="flex flex-col leading-tight">
-                    <span className="text-sm font-semibold tracking-wide">
+                    <span className="text-[13px] font-semibold tracking-wide">
                       {dict.site.name}
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/60">
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-white/60">
                       {dict.site.tagline}
                     </span>
                   </span>
@@ -226,23 +230,23 @@ export function Navbar({ locale, dict }: Props) {
                   type="button"
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur transition active:scale-95"
                 >
-                  <Icon.X size={18} />
+                  <Icon.X size={16} />
                 </button>
               </Container>
 
-              <Container className="flex flex-1 flex-col gap-8 pb-12 pt-6">
+              <Container className="flex flex-1 flex-col gap-5 pt-2 pb-6">
                 <motion.ul
                   initial="hidden"
                   animate="visible"
                   variants={{
                     hidden: {},
                     visible: {
-                      transition: { staggerChildren: 0.06, delayChildren: 0.1 },
+                      transition: { staggerChildren: 0.04, delayChildren: 0.05 },
                     },
                   }}
-                  className="flex flex-col gap-2"
+                  className="flex flex-col gap-1.5"
                 >
                   {links.map((l, i) => {
                     const Ico = l.icon;
@@ -250,31 +254,32 @@ export function Navbar({ locale, dict }: Props) {
                       <motion.li
                         key={l.href}
                         variants={{
-                          hidden: { opacity: 0, x: -24 },
+                          hidden: { opacity: 0, x: -16 },
                           visible: { opacity: 1, x: 0 },
                         }}
                       >
                         <Link
                           href={l.href}
                           onClick={() => setMobileOpen(false)}
-                          className="group flex items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-5 py-5 backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                          className="group flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-3.5 py-3 backdrop-blur transition active:scale-[0.98]"
                         >
-                          <span className="flex items-center gap-4">
-                            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-white">
-                              <Ico size={20} />
+                          <span className="flex items-center gap-3 min-w-0">
+                            <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
+                              <Ico size={16} />
                             </span>
-                            <span className="flex flex-col">
-                              <span className="text-[10px] uppercase tracking-[0.25em] text-white/50">
+                            <span className="flex flex-col min-w-0">
+                              <span className="text-[9px] uppercase tracking-[0.22em] text-white/50">
                                 0{i + 1}
                               </span>
-                              <span className="text-xl font-semibold">
+                              <span className="truncate text-base font-semibold">
                                 {l.label}
                               </span>
                             </span>
                           </span>
-                          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition group-hover:translate-x-1 group-hover:bg-white/20">
-                            <Icon.ArrowRight size={16} />
-                          </span>
+                          <Icon.ArrowRight
+                            size={14}
+                            className="shrink-0 text-white/70 transition group-hover:translate-x-0.5"
+                          />
                         </Link>
                       </motion.li>
                     );
@@ -282,10 +287,10 @@ export function Navbar({ locale, dict }: Props) {
                 </motion.ul>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.35, duration: 0.5 }}
-                  className="flex flex-col gap-3"
+                  transition={{ delay: 0.25, duration: 0.4 }}
+                  className="flex flex-col gap-2.5"
                 >
                   <button
                     type="button"
@@ -293,14 +298,14 @@ export function Navbar({ locale, dict }: Props) {
                       setMobileOpen(false);
                       openQuote();
                     }}
-                    className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-white text-base font-semibold text-brand-950 shadow-(--shadow-glow) transition hover:-translate-y-0.5 hover:bg-white/95"
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white text-sm font-semibold text-brand-950 shadow-(--shadow-glow) transition active:scale-[0.98]"
                   >
                     {dict.nav.getQuote}
-                    <Icon.ArrowRight size={18} />
+                    <Icon.ArrowRight size={16} />
                   </button>
 
-                  <div className="flex items-center gap-3">
-                    <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 min-w-0">
                       <LocaleSwitcher current={locale} />
                     </div>
                     <ThemeToggle label={dict.theme.toggle} />
@@ -308,60 +313,62 @@ export function Navbar({ locale, dict }: Props) {
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.45, duration: 0.5 }}
-                  className="mt-auto space-y-4 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+                  transition={{ delay: 0.32, duration: 0.4 }}
+                  className="mt-auto rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur"
                 >
-                  <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/60">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-                    </span>
-                    {dict.contact.hoursLabel}
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-white/60">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                      </span>
+                      {dict.contact.hoursLabel}
+                    </div>
+                    <div className="text-[11px] text-white/80 truncate">
+                      {dict.contact.hoursWeek}
+                    </div>
                   </div>
-                  <div className="text-sm text-white/90">
-                    {dict.contact.hoursWeek}
-                  </div>
-                  <div className="flex flex-col gap-2">
+                  <div className="mt-3 flex flex-col gap-1.5">
                     {siteConfig.phones.map((p) => (
                       <a
                         key={p}
                         href={`tel:${p}`}
-                        className="inline-flex items-center gap-3 text-base font-semibold text-white"
+                        className="inline-flex items-center gap-2.5 text-sm font-semibold text-white"
                       >
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
-                          <Icon.Phone size={15} />
+                        <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10">
+                          <Icon.Phone size={12} />
                         </span>
-                        {p}
+                        <span className="truncate">{p}</span>
                       </a>
                     ))}
                   </div>
-                  <div className="flex items-center gap-3 pt-2">
+                  <div className="mt-3 flex items-center gap-2 border-t border-white/10 pt-3">
                     <a
                       href={siteConfig.instagram}
                       target="_blank"
                       rel="noreferrer noopener"
                       aria-label="Instagram"
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white hover:text-brand-950"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition active:scale-95"
                     >
-                      <Icon.Instagram size={18} />
+                      <Icon.Instagram size={15} />
                     </a>
                     <a
                       href={siteConfig.mapUrl}
                       target="_blank"
                       rel="noreferrer noopener"
                       aria-label="Map"
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white hover:text-brand-950"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition active:scale-95"
                     >
-                      <Icon.MapPin size={18} />
+                      <Icon.MapPin size={15} />
                     </a>
                     <a
                       href={`mailto:${siteConfig.email}`}
                       aria-label="Email"
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white hover:text-brand-950"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition active:scale-95"
                     >
-                      <Icon.Mail size={18} />
+                      <Icon.Mail size={15} />
                     </a>
                   </div>
                 </motion.div>

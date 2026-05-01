@@ -63,8 +63,8 @@ export function Globe3D({ dict }: Props) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
           className="relative mx-auto mt-14 max-w-6xl overflow-hidden rounded-3xl border border-border bg-surface p-5 shadow-(--shadow-soft) sm:p-10 dark:bg-brand-950/60"
         >
           <div
@@ -371,8 +371,8 @@ export function Globe3D({ dict }: Props) {
                 key={c.code}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
-                transition={{ delay: i * 0.07, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: i * 0.07, duration: 0.5 }}
                 className={`group relative overflow-hidden rounded-2xl border p-4 transition hover:-translate-y-0.5 ${
                   isHub
                     ? "border-brand-500/40 bg-linear-to-br from-brand-800 to-brand-950 text-white shadow-(--shadow-soft)"

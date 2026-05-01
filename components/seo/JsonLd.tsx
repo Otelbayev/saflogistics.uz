@@ -6,18 +6,57 @@ type Props = { locale: Locale; dict: Dictionary };
 
 export function BusinessJsonLd({ locale, dict }: Props) {
   const url = `${siteConfig.url}/${locale}`;
-  const image = `${siteConfig.url}/images/semi-truck-port-sunset.jpg`;
+  const logoUrl = `${siteConfig.url}${siteConfig.logo}`;
+  const ogImage = `${siteConfig.url}${siteConfig.ogImage}`;
+  const founderImage = `${siteConfig.url}${siteConfig.founderImage}`;
+
+  const founderPerson = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${siteConfig.url}/#founder`,
+    name: siteConfig.founder,
+    alternateName: siteConfig.founderAlt,
+    givenName: "Farrukh",
+    familyName: "Mashanpin",
+    description:
+      "Farrukh Mashanpin — SAF Logistics asoschisi, Guanchjou (Xitoy) ofisi rahbari · Фаррух Машанпин, основатель SAF Logistics, руководитель офиса в Гуанчжоу · Founder of SAF Logistics, head of Guangzhou (China) office.",
+    jobTitle: dict.founder.role,
+    image: {
+      "@type": "ImageObject",
+      url: founderImage,
+      caption: siteConfig.founder,
+    },
+    url: `${siteConfig.url}/${locale}#founder`,
+    nationality: { "@type": "Country", name: "Uzbekistan" },
+    worksFor: { "@id": `${siteConfig.url}/#organization` },
+    knowsLanguage: ["uz", "ru", "zh", "en"],
+    sameAs: [
+      siteConfig.instagram,
+      `https://www.instagram.com/${siteConfig.instagramHandle}`,
+    ],
+  };
 
   const business = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "MovingCompany"],
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
-    alternateName: ["SAF Logistics Uzbekistan", "SAFcargo"],
+    alternateName: [
+      "SAF Logistics Uzbekistan",
+      "САФ Логистикс",
+      "SAF Логистика",
+      "SAFcargo",
+      "Saflogistics",
+    ],
     description: dict.seo.homeDescription,
     url,
-    logo: `${siteConfig.url}/images/logo.png`,
-    image,
+    logo: {
+      "@type": "ImageObject",
+      url: logoUrl,
+      width: 1080,
+      height: 1080,
+    },
+    image: [logoUrl, ogImage, `${siteConfig.url}/images/semi-truck-port-sunset.jpg`],
     telephone: siteConfig.phones,
     email: siteConfig.email,
     priceRange: "$$",
@@ -41,12 +80,8 @@ export function BusinessJsonLd({ locale, dict }: Props) {
         closes: "19:00",
       },
     ],
-    founder: {
-      "@type": "Person",
-      name: siteConfig.founder,
-      jobTitle: dict.founder.role,
-      sameAs: [siteConfig.instagram],
-    },
+    founder: { "@id": `${siteConfig.url}/#founder` },
+    employee: { "@id": `${siteConfig.url}/#founder` },
     sameAs: [siteConfig.instagram],
     areaServed: siteConfig.partnerCountries.map((c) => ({
       "@type": "Country",
@@ -59,6 +94,15 @@ export function BusinessJsonLd({ locale, dict }: Props) {
       "Customs clearance",
       "B2B logistics",
       "China sourcing",
+      "Aviayuk Xitoy",
+      "Dengiz konteyneri",
+      "Avtoyo'l yetkazib berish",
+      "Bojxona rasmiylashtirish",
+      "Авиаперевозки из Китая",
+      "Морские контейнерные перевозки",
+      "Автомобильные грузоперевозки",
+      "Таможенное оформление",
+      "Международная логистика",
     ],
     aggregateRating: {
       "@type": "AggregateRating",
@@ -70,6 +114,14 @@ export function BusinessJsonLd({ locale, dict }: Props) {
       "Guangzhou Tashkent route",
       "Customs clearance Uzbekistan",
       "International logistics",
+      "Logistika",
+      "Yuk tashish",
+      "Xitoydan O'zbekistonga yuk",
+      "Логистика",
+      "Грузоперевозки",
+      "Международная доставка",
+      "Доставка из Китая",
+      "Логистика Узбекистан",
     ],
   };
 
@@ -110,6 +162,11 @@ export function BusinessJsonLd({ locale, dict }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderPerson) }}
+      />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

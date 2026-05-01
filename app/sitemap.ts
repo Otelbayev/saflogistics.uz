@@ -7,11 +7,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   return locales.flatMap((locale) =>
-    routes.map((route) => ({
-      url: `${siteConfig.url}/${locale}${route}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: route === "" ? 1 : 0.8,
-    })),
+    routes.map((route) => {
+      const languages = Object.fromEntries(
+        locales.map((l) => [l, `${siteConfig.url}/${l}${route}`]),
+      );
+      return {
+        url: `${siteConfig.url}/${locale}${route}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: route === "" ? 1 : 0.8,
+        alternates: {
+          languages: {
+            ...languages,
+            "x-default": `${siteConfig.url}/uz${route}`,
+          },
+        },
+      };
+    }),
   );
 }

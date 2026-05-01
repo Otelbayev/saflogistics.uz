@@ -51,6 +51,13 @@ export async function generateMetadata({
       locale: localeHtmlLang[safeLocale],
       images: [
         {
+          url: siteConfig.ogImage,
+          width: 1080,
+          height: 1080,
+          alt: `${dict.site.name} — logo`,
+          type: "image/jpeg",
+        },
+        {
           url: "/images/semi-truck-port-sunset.jpg",
           width: 1200,
           height: 630,
@@ -62,7 +69,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: dict.seo.homeTitle,
       description: dict.seo.homeDescription,
-      images: ["/images/semi-truck-port-sunset.jpg"],
+      images: [siteConfig.ogImage],
     },
     robots: {
       index: true,
