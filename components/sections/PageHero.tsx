@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 
@@ -21,15 +22,26 @@ export function PageHero({
   imageAlt,
   videoSrc,
 }: Props) {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   return (
     <section className="relative isolate overflow-hidden pb-20 pt-36 sm:pt-44">
-      {videoSrc ? (
+      {videoSrc && isDesktop ? (
         <video
           className="absolute inset-0 -z-30 h-full w-full object-cover"
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
           poster={imageSrc}
           aria-label={imageAlt}
         >

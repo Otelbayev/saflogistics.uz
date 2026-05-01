@@ -42,8 +42,8 @@ export function Services({ locale, dict }: Props) {
                 key={t.key}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.7, delay: i * 0.1 }}
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
+                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className={`group relative overflow-hidden rounded-3xl border bg-surface p-8 transition-all duration-500 hover:-translate-y-2 ${
                   t.featured
                     ? "border-brand-500/40 ring-1 ring-brand-500/30"

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type { Dictionary } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
@@ -11,6 +13,15 @@ type Props = { dict: Dictionary };
 
 export function CtaBanner({ dict }: Props) {
   const { open } = useQuoteModal();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   return (
     <section className="relative py-24">
@@ -18,23 +29,36 @@ export function CtaBanner({ dict }: Props) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7 }}
+          viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative isolate overflow-hidden rounded-4xl border border-border shadow-(--shadow-elevated)"
         >
-          <video
-            className="absolute inset-0 -z-20 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/images/semi-truck-port-sunset.jpg"
-          >
-            <source
-              src="/videos/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046.mp4"
-              type="video/mp4"
+          {isDesktop ? (
+            <video
+              className="absolute inset-0 -z-20 h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/images/semi-truck-port-sunset.jpg"
+            >
+              <source
+                src="/videos/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046.mp4"
+                type="video/mp4"
+              />
+            </video>
+          ) : (
+            <Image
+              src="/images/semi-truck-port-sunset.jpg"
+              alt=""
+              aria-hidden
+              fill
+              loading="lazy"
+              sizes="100vw"
+              className="absolute inset-0 -z-20 h-full w-full object-cover"
             />
-          </video>
+          )}
           <div
             aria-hidden
             className="absolute inset-0 -z-10"

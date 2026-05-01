@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Dictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/locales";
 import { Container } from "@/components/ui/Container";
@@ -26,6 +27,15 @@ const PARTICLE_COUNT = 36;
 
 export function Hero({ locale, dict }: Props) {
   const { open: openQuote } = useQuoteModal();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const particles = useMemo(
     () =>
@@ -53,16 +63,29 @@ export function Hero({ locale, dict }: Props) {
       id="showcase"
       className="relative isolate flex min-h-svh w-full flex-col overflow-hidden pt-20 pb-14 sm:pt-28 sm:pb-20"
     >
-      <video
-        className="absolute inset-0 -z-30 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/images/poster.png"
-      >
-        <source src="/videos/15373444_3840_2160_25fps.mp4" type="video/mp4" />
-      </video>
+      {isDesktop ? (
+        <video
+          className="absolute inset-0 -z-30 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/poster.png"
+        >
+          <source src="/videos/15373444_3840_2160_25fps.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        <Image
+          src="/images/poster.png"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          className="absolute inset-0 -z-30 h-full w-full object-cover"
+        />
+      )}
 
       {/* Theme-aware video overlay — stronger on mobile for readability */}
       <div

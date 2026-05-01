@@ -35,7 +35,7 @@ export function Footer({ locale, dict }: Props) {
             <Link href={`/${locale}`} className="flex items-center gap-3">
               <span className="relative inline-flex h-11 w-11 overflow-hidden rounded-xl bg-brand-950">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/logo1.jpg"
                   alt={dict.site.name}
                   fill
                   sizes="44px"

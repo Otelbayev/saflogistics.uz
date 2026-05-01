@@ -68,16 +68,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
   min-height: 100dvh;
+  position: relative;
   transition:
     background-color 400ms ease,
     color 400ms ease;
   background-image:
     radial-gradient(60% 40% at 90% 0%, color-mix(in oklab, var(--color-brand-500) 10%, transparent), transparent 70%),
     radial-gradient(50% 40% at 0% 20%, color-mix(in oklab, var(--color-brand-800) 8%, transparent), transparent 70%);
+}
+
+/* Prevent any element from causing horizontal overflow */
+img, video, svg, iframe {
+  max-width: 100%;
 }
 
 .dark body {
@@ -239,6 +247,18 @@ body {
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ── Showcase / Hero 3D scene ── */

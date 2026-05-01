@@ -40,8 +40,8 @@ export function PricingCards({ locale, dict }: Props) {
                 key={t.key}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px -80px 0px" }}
+                transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className={`relative overflow-hidden rounded-3xl border bg-surface p-8 ${
                   t.featured
                     ? "border-brand-500/40 ring-1 ring-brand-500/30"

@@ -100,10 +100,11 @@ export function Navbar({ locale, dict }: Props) {
         >
           <span className="relative inline-flex h-10 w-10 overflow-hidden rounded-xl bg-brand-950 ring-1 ring-brand-700/40">
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo1.jpg"
               alt={dict.site.name}
               fill
               sizes="40px"
+              priority
               className="object-cover"
             />
           </span>
@@ -205,7 +206,7 @@ export function Navbar({ locale, dict }: Props) {
                 >
                   <span className="relative inline-flex h-10 w-10 overflow-hidden rounded-xl bg-white/10 ring-1 ring-white/20">
                     <Image
-                      src="/images/logo.jpg"
+                      src="/images/logo1.jpg"
                       alt={dict.site.name}
                       fill
                       sizes="40px"
