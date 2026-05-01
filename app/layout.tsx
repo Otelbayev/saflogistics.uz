@@ -13,9 +13,6 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://saflogistics.uz"),
-  verification: {
-    google: "kMhsNqHBmEreRqg7G4upchL42Tm8ksL361dsC8xZX3s",
-  },
   title: {
     default: "SAF Logistics",
     template: "%s | SAF Logistics",
@@ -39,6 +36,23 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "SAF Logistics",
+  url: "https://saflogistics.uz",
+  logo: "https://saflogistics.uz/images/logo1.jpg",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+998-77-173-03-30",
+    contactType: "customer service",
+  },
+  sameAs: [
+    "https://www.instagram.com/saflogistics.uz",
+    "https://www.facebook.com/people/Saflogisticsuz/61570887943696/",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -50,6 +64,10 @@ export default function RootLayout({
         <script
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="antialiased">{children}</body>
