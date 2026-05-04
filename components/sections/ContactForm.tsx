@@ -9,14 +9,7 @@ import { PhoneField } from "@/components/ui/PhoneField";
 
 type Props = { dict: Dictionary };
 
-const SERVICE_KEYS = [
-  "sea",
-  "air",
-  "road",
-  "customs",
-  "b2b",
-  "china",
-] as const;
+const SERVICE_KEYS = ["sea", "air", "road", "customs", "b2b", "china"] as const;
 
 export function ContactForm({ dict }: Props) {
   const [submitting, setSubmitting] = useState(false);
@@ -159,7 +152,7 @@ export function ContactForm({ dict }: Props) {
         <button
           type="submit"
           disabled={submitting}
-          className="mt-1 inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-700 via-brand-500 to-brand-800 px-6 text-base font-semibold text-white shadow-(--shadow-glow) transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 disabled:pointer-events-none disabled:opacity-60 dark:from-brand-500 dark:via-brand-400 dark:to-brand-200 dark:text-brand-950"
+          className="mt-1 inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-brand-700 via-brand-500 to-brand-800 px-6 text-base font-semibold text-white shadow-(--shadow-glow) transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 disabled:pointer-events-none disabled:opacity-60 dark:from-brand-500 dark:via-brand-400 dark:to-brand-200 dark:text-brand-950"
         >
           {submitting ? dict.contact.form.sending : dict.contact.form.submit}
           <Icon.ArrowRight size={18} />
