@@ -94,15 +94,28 @@ export default async function LocaleLayout({
   const dict = await getDictionary(locale);
 
   return (
-    <ThemeProvider>
-      <QuoteModalProvider dict={dict}>
-        <div lang={localeHtmlLang[locale]} className="relative">
-          <Navbar locale={locale} dict={dict} />
-          <main className="min-h-[70vh]">{children}</main>
-          <Footer locale={locale} dict={dict} />
-          <BusinessJsonLd locale={locale} dict={dict} />
-        </div>
-      </QuoteModalProvider>
-    </ThemeProvider>
+    <main>
+      <div className="flex items-center justify-center flex-col h-screen">
+        <a
+          className="font-bold text-3xl underline text-blue-600 md:text-5xl "
+          href="tel:+998935960246"
+        >
+          998 93 596 02 46
+        </a>
+      </div>
+    </main>
   );
+
+  // return (
+  //   <ThemeProvider>
+  //     <QuoteModalProvider dict={dict}>
+  //       <div lang={localeHtmlLang[locale]} className="relative">
+  //         <Navbar locale={locale} dict={dict} />
+  //         <main className="min-h-[70vh]">{children}</main>
+  //         <Footer locale={locale} dict={dict} />
+  //         <BusinessJsonLd locale={locale} dict={dict} />
+  //       </div>
+  //     </QuoteModalProvider>
+  //   </ThemeProvider>
+  // );
 }
