@@ -51,20 +51,18 @@ export function Hero({ locale, dict }: Props) {
   }, [showVideo]);
 
   useEffect(() => {
-    // Only desktop, only when the connection and user preferences allow it.
-    const wide = window.matchMedia("(min-width: 1024px)");
+    // Phones get the same clip as desktop. The only things that still hold it
+    // back are the visitor's own signals: reduced motion, data-saver, or a
+    // connection too slow to stream it without hurting the page.
     const calm = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const decide = () =>
-      setShowVideo(wide.matches && !calm.matches && canStream("heavy"));
+    const decide = () => setShowVideo(!calm.matches && canStream("heavy"));
 
     // Defer past first paint so the poster renders immediately.
     const idle =
       window.requestIdleCallback?.(decide) ?? window.setTimeout(decide, 900);
 
-    wide.addEventListener("change", decide);
     calm.addEventListener("change", decide);
     return () => {
-      wide.removeEventListener("change", decide);
       calm.removeEventListener("change", decide);
       if (window.cancelIdleCallback) window.cancelIdleCallback(idle as number);
       else clearTimeout(idle as number);
@@ -146,15 +144,15 @@ export function Hero({ locale, dict }: Props) {
       />
 
       {/* Floating info badges */}
-      <div className="hidden lg:block">
+      <div className="hidden 2xl:block">
         <FloatBox
-          className="right-[8vw] top-[30%]"
+          className="right-[5vw] top-[28%]"
           style={{ ["--dur" as string]: "3.4s" }}
         >
           <Icon.Sparkle size={12} /> {dict.hero.float1}
         </FloatBox>
         <FloatBox
-          className="right-[14vw] top-[46%]"
+          className="right-[10vw] top-[46%]"
           style={{ ["--dur" as string]: "4.2s" }}
         >
           <Icon.Truck size={12} /> {dict.hero.float2}
@@ -180,10 +178,16 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="mt-3 text-balance text-[clamp(1.75rem,6vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-brand-950 sm:mt-5 dark:text-white"
+            /* From lg up the headline is pinned to exactly two lines: each half
+               is its own nowrap line and the block is allowed to grow past the
+               copy column. Type size is unchanged — only the wrapping differs.
+               Below lg it wraps naturally as before. */
+            className="mt-3 text-balance text-[clamp(1.75rem,6vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-brand-950 sm:mt-5 lg:w-max lg:max-w-none dark:text-white"
           >
-            {dict.hero.titleLine1}
-            <span className="block">
+            <span className="block lg:whitespace-nowrap">
+              {dict.hero.titleLine1}
+            </span>
+            <span className="block lg:whitespace-nowrap">
               {dict.hero.titleLine2}{" "}
               <span className="bg-linear-to-r from-brand-700 via-brand-500 to-brand-800 bg-clip-text text-transparent dark:from-brand-200 dark:via-white dark:to-brand-300">
                 {dict.hero.titleAccent}
