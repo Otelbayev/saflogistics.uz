@@ -83,7 +83,7 @@ function QuoteModal({
   const [phoneError, setPhoneError] = useState(false);
 
   const input =
-    "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted/80 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30";
+    "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-base text-foreground placeholder:text-muted/80 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 sm:text-sm";
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -162,7 +162,10 @@ function QuoteModal({
                     "radial-gradient(60% 60% at 30% 20%, color-mix(in oklab, var(--color-brand-500) 50%, transparent) 0%, transparent 60%), radial-gradient(50% 50% at 80% 100%, color-mix(in oklab, var(--color-brand-300) 40%, transparent) 0%, transparent 60%)",
                 }}
               />
-              <div aria-hidden className="absolute inset-0 bg-grid opacity-20" />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-grid opacity-20"
+              />
               <div className="relative flex h-full flex-col">
                 <div className="text-xs uppercase tracking-[0.25em] text-white/75">
                   {dict.site.name}
@@ -206,9 +209,7 @@ function QuoteModal({
               <h3 className="text-2xl font-semibold text-foreground">
                 {dict.contact.form.title}
               </h3>
-              <p className="mt-2 text-sm text-muted">
-                {dict.contact.subtitle}
-              </p>
+              <p className="mt-2 text-sm text-muted">{dict.contact.subtitle}</p>
 
               <form onSubmit={onSubmit} className="mt-6 grid gap-4">
                 <label>
@@ -219,6 +220,9 @@ function QuoteModal({
                     required
                     name="name"
                     type="text"
+                    autoComplete="name"
+                    autoCapitalize="words"
+                    enterKeyHint="next"
                     placeholder={dict.contact.form.namePlaceholder}
                     className={input}
                   />
@@ -234,7 +238,10 @@ function QuoteModal({
                     required
                   />
                   {phoneError ? (
-                    <span className="mt-1.5 block text-xs text-red-600 dark:text-red-300">
+                    <span
+                      role="alert"
+                      className="mt-1.5 block text-xs text-red-600 dark:text-red-300"
+                    >
                       {dict.contact.form.phoneInvalid}
                     </span>
                   ) : null}
@@ -247,11 +254,18 @@ function QuoteModal({
                     required
                     name="message"
                     rows={4}
+                    enterKeyHint="done"
+                    maxLength={2000}
                     placeholder={dict.contact.form.messagePlaceholder}
-                    className={`${input} resize-none`}
+                    className={`${input} min-h-28 resize-y`}
                   />
                 </label>
-                <Button type="submit" size="lg" className="mt-2" disabled={submitting}>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="mt-2"
+                  disabled={submitting}
+                >
                   {submitting ? "…" : dict.contact.form.submit}
                   <Icon.ArrowRight size={16} />
                 </Button>

@@ -1,14 +1,8 @@
 "use client";
 
 import { forwardRef, useMemo, useState } from "react";
-import PhoneInput, {
-  type Country,
-  type Value,
-} from "react-phone-number-input";
-import {
-  getExampleNumber,
-  validatePhoneNumberLength,
-} from "libphonenumber-js";
+import PhoneInput, { type Country, type Value } from "react-phone-number-input";
+import { getExampleNumber, validatePhoneNumberLength } from "libphonenumber-js";
 import examples from "libphonenumber-js/examples.mobile.json";
 
 type Props = {

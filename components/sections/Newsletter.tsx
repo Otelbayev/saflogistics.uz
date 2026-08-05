@@ -53,9 +53,9 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
   }
 
   const lightInput =
-    "h-12 flex-1 rounded-full border border-border bg-background px-5 text-sm text-foreground placeholder:text-muted/80 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30";
+    "h-12 flex-1 rounded-full border border-border bg-background px-5 text-base sm:text-sm text-foreground placeholder:text-muted/80 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30";
   const darkInput =
-    "h-12 flex-1 rounded-full border border-white/15 bg-white/10 px-5 text-sm text-white placeholder:text-white/60 backdrop-blur outline-none transition focus:border-white/50 focus:ring-2 focus:ring-white/20";
+    "h-12 flex-1 rounded-full border border-white/15 bg-white/10 px-5 text-base sm:text-sm text-white placeholder:text-white/60 backdrop-blur outline-none transition focus:border-white/50 focus:ring-2 focus:ring-white/20";
 
   const buttonLabel = submitting
     ? "…"
@@ -74,6 +74,9 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
         <input
           name="name"
           type="text"
+          autoComplete="name"
+          autoCapitalize="words"
+          enterKeyHint="next"
           placeholder={dict.newsletter.namePlaceholder}
           required
           className={lightInput}
@@ -122,6 +125,9 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
             <input
               name="name"
               type="text"
+              autoComplete="name"
+              autoCapitalize="words"
+              enterKeyHint="next"
               placeholder={dict.newsletter.namePlaceholder}
               required
               className={darkInput}
@@ -144,7 +150,7 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
             </button>
           </form>
           {phoneError ? (
-            <span className="text-xs text-red-200">
+            <span role="alert" className="text-xs text-red-200">
               {dict.contact.form.phoneInvalid}
             </span>
           ) : null}

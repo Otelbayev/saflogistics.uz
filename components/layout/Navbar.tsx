@@ -75,104 +75,119 @@ export function Navbar({ locale, dict }: Props) {
   }, [mobileOpen]);
 
   const links = [
-    { href: `/${locale}`, label: dict.nav.home, icon: Icon.Sparkle },
-    { href: `/${locale}/services`, label: dict.nav.services, icon: Icon.Truck },
-    { href: `/${locale}#network`, label: dict.nav.track, icon: Icon.Globe },
-    { href: `/${locale}/contact`, label: dict.nav.contact, icon: Icon.Phone },
+    { href: `/${locale}#about`, label: dict.nav.about, icon: Icon.Sparkle },
+    { href: `/${locale}#tariffs`, label: dict.nav.tariffs, icon: Icon.Truck },
+    {
+      href: `/${locale}#calculator`,
+      label: dict.nav.calculator,
+      icon: Icon.Cpu,
+    },
+    { href: `/${locale}#route`, label: dict.nav.route, icon: Icon.MapPin },
+    { href: `/${locale}#contact`, label: dict.nav.contact, icon: Icon.Phone },
   ];
 
   return (
     <>
-    <header
-      className={clsx(
-        "fixed inset-x-0 top-0 z-90 w-full transition-all duration-300",
-        scrolled
-          ? "backdrop-blur-xl bg-[color-mix(in_oklab,var(--background)_88%,transparent)] border-b border-border"
-          : "backdrop-blur-md bg-[color-mix(in_oklab,var(--background)_60%,transparent)] md:bg-transparent md:backdrop-blur-none",
-      )}
-      style={{ pointerEvents: "auto" }}
-    >
-      <Container className="flex h-16 items-center justify-between sm:h-20">
-        <Link
-          href={`/${locale}`}
-          className="group flex items-center gap-3"
-          aria-label={dict.site.name}
-        >
-          <span className="relative inline-flex h-10 w-10 overflow-hidden rounded-xl bg-brand-950 ring-1 ring-brand-700/40">
-            <Image
-              src="/images/logo1.jpg"
-              alt={dict.site.name}
-              fill
-              sizes="40px"
-              priority
-              className="object-cover"
-            />
-          </span>
-          <span className="flex flex-col leading-tight">
-            <span className="text-sm font-semibold tracking-wide text-foreground sm:text-base">
-              {dict.site.name}
+      <header
+        className={clsx(
+          "fixed inset-x-0 top-0 z-90 w-full transition-all duration-300",
+          scrolled
+            ? "backdrop-blur-xl bg-[color-mix(in_oklab,var(--background)_88%,transparent)] border-b border-border"
+            : "backdrop-blur-md bg-[color-mix(in_oklab,var(--background)_60%,transparent)] md:bg-transparent md:backdrop-blur-none",
+        )}
+        style={{ pointerEvents: "auto" }}
+      >
+        <Container className="flex h-16 items-center justify-between sm:h-20">
+          <Link
+            href={`/${locale}`}
+            className="group flex items-center gap-3"
+            aria-label={dict.site.name}
+          >
+            <span className="relative inline-flex h-10 w-10 overflow-hidden rounded-xl bg-brand-950 ring-1 ring-brand-700/40">
+              <Image
+                src="/images/logo1.jpg"
+                alt={dict.site.name}
+                fill
+                sizes="40px"
+                priority
+                className="object-cover"
+              />
             </span>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-muted sm:text-[11px]">
-              {dict.site.tagline}
+            <span className="flex flex-col leading-tight">
+              <span className="text-sm font-semibold tracking-wide text-foreground sm:text-base">
+                {dict.site.name}
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-muted sm:text-[11px]">
+                {dict.site.tagline}
+              </span>
             </span>
-          </span>
-        </Link>
+          </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition hover:bg-surface-2 hover:text-foreground"
+          <nav className="hidden items-center gap-1 md:flex">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition hover:bg-surface-2 hover:text-foreground"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-2 md:flex">
+            <LocaleSwitcher current={locale} />
+            <ThemeToggle label={dict.theme.toggle} />
+            <Button onClick={openQuote} size="sm">
+              {dict.nav.getQuote}
+              <Icon.ArrowRight size={16} />
+            </Button>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label="Menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            className="relative inline-flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-(--shadow-soft) transition-transform active:scale-95 md:hidden"
+            style={{
+              touchAction: "manipulation",
+              WebkitTapHighlightColor: "transparent",
+            }}
+          >
+            <span
+              aria-hidden
+              className="pointer-events-none relative block h-3 w-5"
             >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
+              <motion.span
+                className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
+                style={{ top: "0%" }}
+                animate={
+                  mobileOpen ? { y: 5, rotate: 45 } : { y: 0, rotate: 0 }
+                }
+                transition={{ duration: 0.3 }}
+              />
+              <motion.span
+                className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
+                style={{ top: "calc(50% - 1px)" }}
+                animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+                transition={{ duration: 0.2 }}
+              />
+              <motion.span
+                className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
+                style={{ top: "calc(100% - 2px)" }}
+                animate={
+                  mobileOpen ? { y: -5, rotate: -45 } : { y: 0, rotate: 0 }
+                }
+                transition={{ duration: 0.3 }}
+              />
+            </span>
+          </button>
+        </Container>
+      </header>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <LocaleSwitcher current={locale} />
-          <ThemeToggle label={dict.theme.toggle} />
-          <Button onClick={openQuote} size="sm">
-            {dict.nav.getQuote}
-            <Icon.ArrowRight size={16} />
-          </Button>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setMobileOpen((o) => !o)}
-          aria-label="Menu"
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-menu"
-          className="relative inline-flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-(--shadow-soft) transition-transform active:scale-95 md:hidden"
-          style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
-        >
-          <span aria-hidden className="pointer-events-none relative block h-3 w-5">
-            <motion.span
-              className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
-              style={{ top: "0%" }}
-              animate={mobileOpen ? { y: 5, rotate: 45 } : { y: 0, rotate: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
-              style={{ top: "calc(50% - 1px)" }}
-              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className="absolute left-0 right-0 block h-0.5 rounded-full bg-current"
-              style={{ top: "calc(100% - 2px)" }}
-              animate={mobileOpen ? { y: -5, rotate: -45 } : { y: 0, rotate: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          </span>
-        </button>
-      </Container>
-    </header>
-
-    <AnimatePresence>
+      <AnimatePresence>
         {mobileOpen ? (
           <motion.div
             initial={{ opacity: 0 }}
@@ -243,7 +258,10 @@ export function Navbar({ locale, dict }: Props) {
                   variants={{
                     hidden: {},
                     visible: {
-                      transition: { staggerChildren: 0.04, delayChildren: 0.05 },
+                      transition: {
+                        staggerChildren: 0.04,
+                        delayChildren: 0.05,
+                      },
                     },
                   }}
                   className="flex flex-col gap-1.5"
@@ -376,7 +394,7 @@ export function Navbar({ locale, dict }: Props) {
             </div>
           </motion.div>
         ) : null}
-    </AnimatePresence>
+      </AnimatePresence>
     </>
   );
 }

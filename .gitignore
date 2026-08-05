@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# client-supplied brief and raw media (kept locally, not in the repo)
+/docs
+
 # debug
 npm-debug.log*
 yarn-debug.log*

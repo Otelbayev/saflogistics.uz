@@ -1,156 +1,103 @@
 {
   "site": {
     "name": "SAF Logistics",
-    "tagline": "O‘z vaqtida"
+    "tagline": "VAQTIDA"
   },
   "seo": {
-    "homeTitle": "SAF Logistics — Xitoydan Toshkentga ishonchli yuk tashish",
-    "homeDescription": "Xitoydan O‘zbekistonga aviayuk, dengiz konteyneri va avtomobil yetkazib berish. 5+ yillik tajriba, 500+ muvaffaqiyatli loyiha, sug‘urta va bojxona — bir tizimda. Bepul taklif oling.",
+    "homeTitle": "Xitoydan O‘zbekistonga fura bilan ekspress yetkazib berish — SAF",
+    "homeDescription": "Xitoydan O‘zbekistonga fura bilan ekspress yetkazib berish — 8–12 kun. Kafolatlangan muddat, sug‘urtalangan yuk, biriktirilgan shaxsiy menejer.",
     "keywords": [
-      "logistika",
-      "logistika O‘zbekiston",
-      "logistika Toshkent",
-      "yuk tashish",
-      "yuk tashish Xitoydan",
-      "Xitoydan yuk tashish",
       "Xitoydan O‘zbekistonga yuk",
-      "Guanchjou Toshkent",
-      "Guangzhou Tashkent",
-      "xalqaro logistika",
-      "xalqaro logistika O‘zbekiston",
-      "aviayuk",
-      "aviayuk Xitoy",
-      "dengiz konteyneri",
-      "avtoyo‘l yetkazib berish",
-      "B2B logistika",
-      "ekspeditor",
-      "yuk yetkazib berish",
+      "fura bilan yuk tashish",
+      "avtotransport Xitoy O‘zbekiston",
+      "ekspress yetkazib berish Xitoydan",
+      "Guanchjou Toshkent fura",
+      "tez kargo Xitoydan",
+      "B2B logistika O‘zbekiston",
       "bojxona rasmiylashtirish",
-      "карго",
-      "карго Ташкент",
-      "карго из Китая",
-      "логистика",
-      "логистика Узбекистан",
-      "грузоперевозки",
-      "грузоперевозки из Китая",
-      "доставка из Китая",
-      "logistics Uzbekistan",
-      "freight Tashkent",
-      "China to Uzbekistan freight",
+      "yuk sug‘urtasi",
+      "карго из Китая фурой",
+      "экспресс доставка из Китая",
+      "автоперевозки Китай Узбекистан",
+      "Гуанчжоу Ташкент доставка",
+      "быстрая доставка из Китая",
+      "express trucking China Uzbekistan",
+      "China to Uzbekistan road freight",
+      "Guangzhou Tashkent delivery",
       "SAF Logistics",
-      "SAF cargo",
+      "SAF EXPRESS LOGISTICS",
       "Saflogistics.uz",
       "Farrux Mashanpin",
       "Farrukh Mashanpin",
       "Фаррух Машанпин"
-    ]
+    ],
+    "alt": {
+      "logo": "SAF Logistics logotipi — Xitoydan O‘zbekistonga ekspress yuk tashish",
+      "founder": "Farrux Mashanpin — SAF Logistics asoschisi, Guanchjou hub rahbari",
+      "truckPort": "SAF Logistics furasi Xitoy portida yuk ortmoqda — Xitoydan O‘zbekistonga yetkazib berish",
+      "containerYard": "Guanchjoudagi konteyner maydoni — Xitoydan O‘zbekistonga yuk konsolidatsiyasi",
+      "operationsDusk": "Kechki logistika operatsiyalari — SAF Logistics furalarini yuklash",
+      "truckHighway": "Yirik yuk furasi magistralda — Xitoy–O‘zbekiston yo‘nalishi",
+      "truckForest": "Zamonaviy yuk furasi yo‘lda — SAF Logistics avtoparki",
+      "heroPoster": "Oq yuk furasi magistralda — Xitoydan O‘zbekistonga ekspress yetkazib berish",
+      "routePoster": "SAF Logistics furasi Guanchjou–Toshkent marshrutida",
+      "ctaPoster": "Yuk furasi tirkama bilan magistralda — SAF Logistics yetkazib berishi",
+      "fleetPoster": "SAF Logistics fura avtoparki — Xitoy–O‘zbekiston koridori"
+    },
+    "video": {
+      "hero": {
+        "title": "Xitoydan O‘zbekistonga fura bilan ekspress yetkazib berish",
+        "description": "SAF Logistics furasi magistralda — Guanchjoudan Toshkentgacha 8–12 kunda ekspress yetkazib berish."
+      },
+      "fleet": {
+        "title": "SAF Logistics fura avtoparki",
+        "description": "Xitoy–O‘zbekiston koridorida ishlaydigan SAF Logistics avtotransport parki."
+      },
+      "route": {
+        "title": "Guanchjou → Toshkent marshruti",
+        "description": "Xitoydan O‘zbekistonga faqat avtotransport (fura) orqali eshikdan-eshikgacha yetkazib berish."
+      },
+      "highway": {
+        "title": "Magistralda yuk tashish — SAF Logistics",
+        "description": "Tirkamali yuk furasi yo‘lda: kafolatlangan muddat va sug‘urtalangan yuk."
+      }
+    }
   },
   "nav": {
     "home": "Bosh sahifa",
-    "services": "Xizmatlar",
+    "tariffs": "Tariflar",
+    "calculator": "Kalkulyator",
+    "route": "Marshrut",
     "contact": "Aloqa",
     "about": "Biz haqimizda",
-    "getQuote": "Taklif olish",
-    "track": "Yukni kuzatish"
+    "getQuote": "Taklif olish"
   },
   "hero": {
-    "badge": "Xalqaro logistika kompaniyasi · 2019 yildan",
-    "titleLine1": "Xitoydan Toshkentga",
-    "titleLine2": "ishonchli yuk —",
-    "titleAccent": "o‘z vaqtida",
-    "subtitle": "SAF Logistics — Guanchjou ofisi orqali Xitoy va dunyoning istalgan nuqtasidan O‘zbekistonga aviayuk, dengiz konteyneri va avtoyo‘l bilan tezkor yetkazib berish. B2B mijozlar uchun shaxsiy menejer, sug‘urta va bojxona — bir tizimda.",
+    "badge": "Xitoy → O‘zbekiston ekspress-fura · 2019 yildan",
+    "titleLine1": "Xitoydan O‘zbekistonga",
+    "titleLine2": "fura bilan —",
+    "titleAccent": "aviatransport tezligida",
+    "subtitle": "SAF Logistics — Guanchjoudagi o‘z ofisi orqali Xitoydan O‘zbekistonga faqat avtotransport (fura) bilan ekspress yetkazib berish. Ekspress tarifda 8–12 kun, kafolatlangan muddat, sug‘urtalangan yuk va biriktirilgan shaxsiy menejer.",
     "ctaContact": "Bepul taklif olish",
-    "ctaServices": "Xizmatlarni ko‘rish",
+    "ctaServices": "Tariflarni ko‘rish",
     "tickerLabel": "Jonli yo‘nalish",
     "routeLabel": "Guanchjou → Toshkent",
     "routeValue": "Eshikdan-eshikgacha",
-    "badgeInsured": "Sug‘urtalangan yuk",
     "badgeInsuredValue": "100% sug‘urta",
-    "badgeExpress": "Ekspress tarif",
-    "badgeExpressValue": "7–14 kun",
-    "float1": "500+ muvaffaqiyatli yuk",
-    "float2": "Xitoy bo‘yicha mutaxassis",
+    "badgeExpressValue": "8–12 kun",
+    "float1": "500+ muvaffaqiyatli tashuv",
+    "float2": "Bitta yo‘nalish — chuqur ekspertiza",
     "stats": {
       "years": "Yillik tajriba",
-      "projects": "Muvaffaqiyatli loyihalar",
-      "countries": "Hamkor davlatlar",
+      "projects": "Muvaffaqiyatli tashuv",
+      "saved": "Kun tejaladi",
       "clients": "Doimiy mijozlar"
     }
   },
-  "showcase": {
-    "eyebrow": "Xizmatlar va yo‘nalishlar",
-    "title": "Tezkor va aniq yuk yetkazish — har bir mijoz uchun",
-    "description": "Biz tanlovchisiz yuk oqimlarini boshqaramiz: aviayuk, dengiz konteyneri, avtoyo‘l va multimodal kombinatsiya.",
-    "exploreCta": "Xizmatlarni ko‘rish",
-    "cards": {
-      "air": {
-        "title": "Aviayuk xizmati",
-        "meta": "Ekspress · 3–10 kun",
-        "cta": "Yukni buyurtma qilish"
-      },
-      "ocean": {
-        "title": "Dengiz konteyneri",
-        "meta": "FCL/LCL · 25–40 kun",
-        "bullet": "To‘liq konteyner — bir mijozga mo‘ljallangan"
-      }
-    },
-    "support": {
-      "name": "Edvard Beyk",
-      "role": "Mijozlar xizmati, SAF",
-      "message": "Salom, qanday yordam bera olaman?",
-      "cta": "Qo‘ng‘iroq va buyurtma",
-      "trust": "60 000+ mijoz ishonchiga sazovor"
-    },
-    "trust": {
-      "title": "Ishonch, xotirjamlik va tengsiz sifat bilan yetkazamiz",
-      "monthlyUsers": "Oylik mijozlar",
-      "totalBooking": "Jami buyurtma",
-      "today": "Bugun",
-      "rows": [
-        { "name": "Polat yadro jo‘natmasi", "client": "Jonathan Trott", "amount": "$248 750" },
-        { "name": "Mototsikl jo‘natmasi", "client": "Cameron Green", "amount": "$62 540" }
-      ],
-      "total": "Umumiy yuk"
-    }
-  },
-  "tech": {
-    "eyebrow": "Yangi avlod texnologiya",
-    "title": "Yangi avlod yuk tashish texnologiyasi bilan quvvatlangan",
-    "description": "Yukingizni kuzatish, raqamli hujjat aylanmasi va real vaqt monitoringi — barchasi bitta platformada.",
-    "badge": "Ishonchli bilan ishlaymiz",
-    "badgeSub": "Ilg‘or texnologiya",
-    "pinTitle": "Aniq yetkazib berish",
-    "pinSub": "va xavfsizlik",
-    "ctaQuote": "Bepul taklif olish",
-    "ctaDemo": "Demoni ko‘rish"
-  },
-  "process": {
-    "eyebrow": "Optimallashtirilgan jarayon",
-    "title": "Aniq mahsulot yetkazib berish uchun aniq boshqaruv",
-    "description": "Bizning ombor va logistika tizimi har bir yukni xavfsiz, aniq va o‘z vaqtida yetkazishni kafolatlaydi.",
-    "cta": "Jarayonni ko‘rish",
-    "steps": [
-      {
-        "num": "01",
-        "title": "Ombor",
-        "desc": "Guanchjou va Toshkentdagi zamonaviy omborlarda xavfsiz saqlash."
-      },
-      {
-        "num": "02",
-        "title": "Elektr pogruzchik",
-        "desc": "Precision yuk ko‘tarish — mahsulot shikastlanmasdan yuklanadi."
-      },
-      {
-        "num": "03",
-        "title": "Yetkazib berish",
-        "desc": "Mijozga qo‘l bilan topshiriladigan shaxsiy xizmat."
-      }
-    ]
-  },
   "about": {
     "title": "Biz haqimizda",
-    "subtitle": "Xalqaro logistikada ishonchli hamkor",
-    "description": "SAF Logistics — Xitoy va O‘zbekiston o‘rtasidagi xalqaro yuk tashish bo‘yicha 5 yildan ortiq tajribaga ega kompaniya. Biz mijozlarimizga tezkor, xavfsiz va shaffof yechimlarni taklif etamiz.",
+    "subtitle": "Xitoy–O‘zbekiston yo‘nalishidagi premium hamkor",
+    "description": "SAF Logistics — butun dunyo bo‘yicha ishlaydigan keng profilli ekspeditor emas. Biz bitta yo‘nalishga ixtisoslashganmiz: Xitoydan O‘zbekistonga fura bilan yetkazib berish. Aynan shuning uchun bizning muddatlarimiz tasodif emas — ular sinovdan o‘tgan marshrutlar va har bosqichdagi nazorat natijasi.",
     "highlight": {
       "hub": "Bosh hub",
       "city": "Guanchjou, Xitoy",
@@ -161,171 +108,237 @@
     "features": {
       "experience": {
         "title": "5 yillik tajriba",
-        "desc": "Xalqaro logistikada chuqur tajriba va ishonchli hamkorlar tarmog‘i."
+        "desc": "Xitoy–O‘zbekiston koridorida ishlab chiqilgan marshrutlar va sinovdan o‘tgan hamkorlar."
       },
       "b2b": {
-        "title": "B2B va to‘liq yuk",
-        "desc": "Biznes uchun keng qamrovli logistika xizmatlari va to‘liq yuk tashish."
+        "title": "Faqat B2B",
+        "desc": "Importyor kompaniyalar uchun to‘liq fura va yirik partiyalar bilan ishlaymiz."
       },
-      "projects": {
-        "title": "500+ loyiha",
-        "desc": "Yakunlangan muvaffaqiyatli loyihalar va minnatdor mijozlar."
+      "hub": {
+        "title": "Guanchjoudagi o‘z ofisi",
+        "desc": "Yukni joyida qabul qilish, tekshirish va konsolidatsiya — vositachilarsiz."
+      }
+    }
+  },
+  "philosophy": {
+    "eyebrow": "Brend falsafasi",
+    "title": "SAF VAQTIDA. Har doim. Aniq. Bahonasiz.",
+    "positioning": "Boshqalar yuk tashiydi. Biz biznesni tezlashtiramiz. Siz yetkazib berish uchun emas — tezlik, aylanma va o‘sish uchun investitsiya qilasiz.",
+    "reasonsTitle": "Nega bizning muddatlarimiz tasodif emas",
+    "reasons": {
+      "time": {
+        "title": "Biz yetkazib berishni emas, vaqtni boshqaramiz",
+        "desc": "Asosiy ko‘rsatkichimiz — mijozga necha kun tejab berilgani."
+      },
+      "routes": {
+        "title": "Faqat ishlab chiqilgan marshrutlar",
+        "desc": "Tasodifiy sxemalar yo‘q — faqat sinovdan o‘tgan, hisoblab chiqilgan yo‘nalishlar."
+      },
+      "control": {
+        "title": "Har bosqichda nazorat",
+        "desc": "Kuzatuv, ko‘p bosqichli tekshiruv va og‘ishlarga operativ javob."
+      },
+      "partnership": {
+        "title": "Hamkorlik modeli",
+        "desc": "Biz mijozning aylanmasi o‘sishidan manfaatdormiz, bir martalik jo‘natmadan emas."
       }
     }
   },
   "services": {
-    "title": "Bizning xizmatlar",
-    "subtitle": "Sizga mos tarifni tanlang",
-    "description": "Standart va Ekspress tariflarimiz orqali yukingizni dunyoning istalgan nuqtasiga yetkazib beramiz.",
-    "standard": {
-      "name": "Standart tarif",
-      "price": "Qulay narx",
-      "duration": "25–35 kun",
-      "description": "Katta hajmdagi yuklar uchun qulay va arzon yechim.",
-      "features": [
-        "Dengiz va quruqlik yo‘li",
-        "Keng hajm — to‘liq konteyner",
-        "Xavfsiz qadoqlash",
-        "Yuk kuzatuvi",
-        "Bojxona rasmiylashtirish"
-      ]
-    },
-    "express": {
-      "name": "Ekspress tarif",
-      "price": "Premium xizmat",
-      "duration": "7–14 kun",
-      "description": "Shoshilinch va tezkor yetkazib berishni talab qiladigan yuklar uchun.",
-      "features": [
-        "Aviayuk va quruqlik",
-        "Ustuvor yetkazib berish",
-        "24/7 monitoring",
-        "Shaxsiy menejer",
-        "Tezlashtirilgan bojxona"
-      ]
-    },
+    "title": "Tariflar",
+    "subtitle": "Faqat avtotransport — fura",
+    "description": "Uchta tarif, bitta yo‘nalish. Narx va muddatni solishtiring va biznesingizga mos darajani tanlang.",
+    "daysLabel": "kun",
+    "popular": "Eng ko‘p tanlanadi",
     "cta": "Tarifni tanlash",
     "compare": "Tariflarni solishtiring",
+    "express": {
+      "name": "Ekspress",
+      "price": "Premium ustuvorlik",
+      "description": "G‘ildirakdagi samolyot tezligi — muddat kritik bo‘lgan yuklar uchun.",
+      "features": [
+        "Ustuvor yuklash",
+        "Tezlashtirilgan bojxona rasmiylashtiruvi",
+        "Biriktirilgan shaxsiy menejer",
+        "24/7 monitoring",
+        "Kafolatlangan muddat"
+      ]
+    },
+    "standard": {
+      "name": "Standart",
+      "price": "Optimal nisbat",
+      "description": "Rejali yetkazib berishlar uchun narx va tezlikning optimal nisbati.",
+      "features": [
+        "Faqat avtotransport — fura",
+        "Rejali jo‘natish jadvali",
+        "Yuk kuzatuvi",
+        "Bojxona rasmiylashtirish",
+        "Yuk sug‘urtasi"
+      ]
+    },
+    "econom": {
+      "name": "Ekonom",
+      "price": "Byudjet yechimi",
+      "description": "Shoshilinch bo‘lmagan, rejali yirik partiyalar uchun — ustuvorlik narxda.",
+      "features": [
+        "Yirik partiyalar uchun qulay narx",
+        "Faqat avtotransport — fura",
+        "Yuk kuzatuvi",
+        "Bojxona rasmiylashtirish",
+        "Yuk sug‘urtasi"
+      ]
+    },
     "compareTable": {
       "feature": "Xususiyat",
-      "standard": "Standart",
-      "express": "Ekspress",
       "rows": {
         "delivery": "Yetkazib berish muddati",
+        "transport": "Transport turi",
         "tracking": "Yuk kuzatuvi",
         "manager": "Shaxsiy menejer",
         "customs": "Bojxona xizmati",
         "insurance": "Yuk sug‘urtasi",
-        "priority": "Ustuvor yo‘nalish"
+        "priority": "Ustuvor yuklash"
+      },
+      "truckOnly": "Fura"
+    }
+  },
+  "calculator": {
+    "eyebrow": "Foyda kalkulyatori",
+    "title": "Tezlik sizga qancha pul keltiradi?",
+    "description": "Bitim siklini qisqartirish yiliga qancha qo‘shimcha foyda berishini hisoblang. Ro‘yxatdan o‘tish shart emas.",
+    "inputs": {
+      "investment": "Bitta partiyaga sarmoya",
+      "investmentHint": "AQSH dollarida",
+      "margin": "Partiyadan o‘rtacha marja",
+      "marginHint": "foizda",
+      "cycle": "Joriy to‘liq sikl (xarid → sotish)",
+      "cycleHint": "kunda",
+      "tariff": "SAF tarifi"
+    },
+    "results": {
+      "title": "Natija",
+      "saved": "Tejaladigan vaqt",
+      "perBatch": "Bitta partiyadan foyda",
+      "turnsWithout": "Yillik aylanma — SAFsiz",
+      "turnsWith": "Yillik aylanma — SAF bilan",
+      "extraTurns": "Qo‘shimcha aylanmalar",
+      "extraProfit": "Yiliga qo‘shimcha foyda",
+      "days": "kun",
+      "turns": "marta",
+      "emphasis": "Va bularning barchasi — sarmoyangizni oshirmasdan. Faqat tezlik hisobiga."
+    },
+    "warning": {
+      "tooFast": "Sizning joriy siklingiz tanlangan tarif muddatidan qisqa. Boshqa tarifni tanlang yoki haqiqiy sikl muddatini kiriting.",
+      "invalid": "Hisoblash uchun barcha maydonlarni noldan katta qiymat bilan to‘ldiring."
+    },
+    "cta": "Buni qanday qilishimizni ko‘rsating",
+    "ctaSecondary": "Menejer bilan muhokama qilish"
+  },
+  "route": {
+    "title": "Guanchjou → Toshkent",
+    "subtitle": "Bitta yo‘nalish — chuqur ekspertiza",
+    "description": "Biz o‘nlab davlatlar bo‘yicha tarqalmaymiz. Butun resursimiz bitta koridorga jamlangan — shuning uchun bu yo‘nalishda muddat va narxni eng yaxshi shaklda beramiz.",
+    "originLabel": "Jo‘natish nuqtasi",
+    "destinationLabel": "Yetkazib berish nuqtasi",
+    "origin": "Guanchjou, Xitoy",
+    "destination": "Toshkent, O‘zbekiston",
+    "hubTag": "HUB",
+    "transportLabel": "Transport",
+    "transportValue": "Faqat fura",
+    "doorToDoor": "Eshikdan-eshikgacha"
+  },
+  "individual": {
+    "eyebrow": "Individual yondashuv",
+    "title": "Har bir mijoz uchun alohida yechim",
+    "description": "Bizda standart taklif yo‘q. Har bir B2B-mijoz o‘z yukining hajmi va xususiyatidan kelib chiqib alohida shartlar oladi.",
+    "items": {
+      "route": {
+        "title": "Individual marshrut",
+        "desc": "Yukingizning turi va shoshilinchligiga qarab optimal yo‘nalish tuziladi."
+      },
+      "terms": {
+        "title": "Individual xizmat shartlari",
+        "desc": "Qadoqlash, konsolidatsiya va hujjatlar — sizning jarayoningizga moslanadi."
+      },
+      "pricing": {
+        "title": "Individual narx va muddat",
+        "desc": "Hajm va muntazamlikka qarab shaxsiy tarif hisoblab chiqiladi."
+      },
+      "manager": {
+        "title": "Biriktirilgan shaxsiy menejer",
+        "desc": "Bitta aloqa nuqtasi — jo‘natishdan yukni topshirishgacha."
       }
     }
   },
-  "globe": {
-    "title": "Global tarmog‘imiz",
-    "subtitle": "Dunyo bo‘ylab hamkor davlatlar",
-    "description": "Guanchjou (Xitoy) bosh ofisimiz orqali 15 dan ortiq davlatga yuk yetkazamiz.",
-    "hub": "Guanchjou, Xitoy — bosh hub",
-    "hubTag": "HUB",
-    "partners": "Hamkor davlatlar",
-    "activeRoutes": "Faol yo‘nalishlar",
-    "deliveries": "Yetkazib berish"
+  "guarantees": {
+    "eyebrow": "Kafolatlar",
+    "title": "Biz nima uchun javob beramiz",
+    "description": "Sifat va muddat bo‘yicha majburiyatlarimiz shartnomada qayd etiladi.",
+    "items": {
+      "deadline": {
+        "title": "Muddat kafolati",
+        "desc": "E’lon qilingan yetkazib berish muddatiga rioya qilinishi kafolatlanadi."
+      },
+      "cargo": {
+        "title": "Yukning saqlanishi",
+        "desc": "Har bir jo‘natma sug‘urtalanadi — yuk to‘liq va shikastsiz yetib boradi."
+      },
+      "transparency": {
+        "title": "Shaffoflik",
+        "desc": "Yashirin to‘lovlarsiz: narx boshida kelishiladi va o‘zgarmaydi."
+      }
+    }
+  },
+  "forWhom": {
+    "eyebrow": "SAF kim uchun",
+    "title": "Agar siz shu ro‘yxatda bo‘lsangiz — bu siz haqingizda",
+    "description": "Biz aylanma tezligi bevosita foydaga aylanadigan biznes bilan ishlaymiz.",
+    "items": [
+      "Tadbirkorlar",
+      "Onlayn-do‘konlar",
+      "Importyorlar va optovik savdogarlar",
+      "Ishlab chiqarish korxonalari",
+      "Kengaytiriladigan loyihalar"
+    ],
+    "note": "Mijozlar cheksiz «ertaga»lardan, bo‘sh va’dalardan va buzilgan muddatlardan charchagan. Biz yetkazib beramiz, javob beramiz, xavflar haqida oldindan ogohlantiramiz va mas’uliyatni o‘z zimmamizga olamiz — bularning barchasi VAQTIDA."
   },
   "why": {
     "title": "Nega aynan bizni tanlashadi?",
     "subtitle": "Bizning ustunliklarimiz",
     "items": {
       "fast": {
-        "title": "Tezkor yetkazib berish",
-        "desc": "Optimallashtirilgan marshrutlar va tezkor jo‘natish tizimi."
+        "title": "Bozordagi eng tez fura",
+        "desc": "Ekspress tarifda 8–12 kun — bu yo‘nalishdagi avtotransport uchun eng yaxshi ko‘rsatkich."
       },
       "secure": {
         "title": "To‘liq xavfsizlik",
-        "desc": "Har bir yuk sug‘urtalangan va kuzatib boriladi."
+        "desc": "Har bir yuk sug‘urtalangan va har bosqichda nazorat qilinadi."
       },
       "price": {
-        "title": "Qulay narxlar",
-        "desc": "Shaffof narx siyosati va yashirin to‘lovlar yo‘q."
+        "title": "Shaffof narx",
+        "desc": "Narx boshida kelishiladi — yashirin to‘lovlar va qo‘shimcha hisoblar yo‘q."
       },
       "support": {
-        "title": "24/7 qo‘llab-quvvatlash",
-        "desc": "Har qanday vaqtda siz bilan bog‘lanishga tayyormiz."
+        "title": "Biriktirilgan menejer",
+        "desc": "24/7 aloqa: har qanday savolga bitta mas’ul odam javob beradi."
       },
       "expert": {
-        "title": "Xitoy bo‘yicha mutaxassis",
-        "desc": "Guanchjou bo‘yicha chuqur tajriba va shaxsiy aloqalar."
+        "title": "Bitta yo‘nalish bo‘yicha ekspert",
+        "desc": "Guanchjou–Toshkent koridori bo‘yicha chuqur tajriba va shaxsiy aloqalar."
       },
       "tech": {
-        "title": "Zamonaviy texnologiyalar",
-        "desc": "Yuk kuzatuvi va onlayn boshqaruv tizimi."
+        "title": "Har bosqichda kuzatuv",
+        "desc": "Yuk holati va muddatlarni onlayn nazorat qilish tizimi."
       }
     }
-  },
-  "testimonials": {
-    "eyebrow": "Mijozlar fikri",
-    "title": "Bizning mijozlarning fikrlari",
-    "items": [
-      {
-        "name": "Martin Edvards",
-        "role": "Bosh menejer",
-        "rating": "4.8",
-        "badge": "Ishonchli ekspert",
-        "quote": "Yuklarni tashishda eng yuqori darajadagi mutaxassislik va qo‘llab-quvvatlov. Hamkorlikdan juda mamnunmiz."
-      },
-      {
-        "name": "Jeyms Atkinson",
-        "role": "Biznes egasi",
-        "rating": "4.7",
-        "badge": "To‘g‘ri qo‘llab-quvvatlov",
-        "quote": "SAF jamoasiga to‘liq ishonamiz va ularni yetakchi yuk ekspeditori sifatida tavsiya qilamiz."
-      },
-      {
-        "name": "Natasha Portman",
-        "role": "Kompaniya egasi",
-        "rating": "4.9",
-        "badge": "24/7 xizmat",
-        "quote": "Ajoyib 24/7 logistika qo‘llab-quvvatlov, professional va to‘liq bag‘ishlangan jamoa."
-      },
-      {
-        "name": "Aziz Abdullayev",
-        "role": "Import bo‘limi boshlig‘i",
-        "rating": "5.0",
-        "badge": "Aniq bajarilgan",
-        "quote": "Guanchjoudan Toshkentgacha bo‘lgan hamma protseduralarni o‘zlari hal qilishdi."
-      }
-    ]
   },
   "founder": {
     "title": "Asoschi",
     "name": "Farrux Mashanpin",
-    "role": "Xalqaro logistika bo‘yicha ekspert",
-    "specialty": "Xitoy yo‘nalishi mutaxassisi",
-    "bio": "Yillar davomida Xitoy va O‘zbekiston o‘rtasidagi yuk oqimlarini shakllantirgan ekspert. Guanchjou bozorini ichkaridan biladi va mijozlarga eng qulay yechimlarni taklif qiladi.",
+    "role": "Xitoy–O‘zbekiston yo‘nalishi bo‘yicha ekspert",
+    "specialty": "Guanchjou hub rahbari",
+    "bio": "Yillar davomida Xitoy va O‘zbekiston o‘rtasidagi yuk oqimlarini shakllantirgan ekspert. Guanchjou bozorini ichkaridan biladi va har bir mijozga marshrutni shaxsan hisoblab beradi.",
     "instagram": "Instagram profili"
-  },
-  "faq": {
-    "eyebrow": "Ko‘p so‘raladigan savollar",
-    "title": "Siz bilishingiz mumkin bo‘lgan savollar",
-    "items": [
-      {
-        "q": "Yukni qancha vaqt ichida yetkazib berasiz?",
-        "a": "Standart tarifda 25–35 kun, Ekspress tarifda 7–14 kun ichida yetkazib beramiz."
-      },
-      {
-        "q": "Yukni qanday kuzatsam bo‘ladi?",
-        "a": "Buyurtma raqami orqali onlayn real vaqt monitoringi va shaxsiy menejer xabarlari orqali kuzatiladi."
-      },
-      {
-        "q": "Bojxona rasmiylashtirish sizdan amalga oshiriladimi?",
-        "a": "Ha, barcha tariflarimiz bojxona rasmiylashtirishni o‘z ichiga oladi."
-      },
-      {
-        "q": "Qanday turdagi yuklarni qabul qilasiz?",
-        "a": "Tijorat, sanoat va maxsus yuklar — xavfli yuklardan tashqari — barcha turdagi yuklarni qabul qilamiz."
-      },
-      {
-        "q": "Yuk sug‘urtalanadimi?",
-        "a": "Ha, har bir jo‘natma avtomatik tarzda sug‘urtalanadi."
-      }
-    ]
   },
   "ctaBanner": {
     "title": "Yukingizni bugun yo‘lga qo‘ying",
@@ -336,13 +349,13 @@
   "contact": {
     "title": "Biz bilan bog‘laning",
     "subtitle": "Savollaringiz bo‘lsa, bizga yozing",
-    "description": "Mutaxassislarimiz sizga eng mos yechimni taklif qilishadi.",
+    "description": "Mutaxassislarimiz yukingiz uchun eng mos tarif va muddatni hisoblab berishadi.",
     "phoneLabel": "Telefon raqamlar",
     "hoursLabel": "Ish vaqti",
     "hoursWeek": "Dushanba–Shanba: 10:00–19:00",
     "hoursSun": "Yakshanba: Dam olish kuni",
     "addressLabel": "Manzil",
-    "address": "Toshkent, O‘zbekiston",
+    "address": "Toshkent sh., Abu Sulaymon Banokatiy ko‘chasi, 209",
     "mapTitle": "Bizni xaritada toping",
     "mapCta": "Google xaritada ochish",
     "socialLabel": "Ijtimoiy tarmoqlar",
@@ -351,19 +364,16 @@
       "subtitle": "Ish soatlarida 30 daqiqa ichida shaxsiy menejer aloqaga chiqadi.",
       "name": "Ismingiz",
       "namePlaceholder": "To‘liq ismingiz",
-      "email": "Email",
-      "emailPlaceholder": "email@example.com",
       "phone": "Telefon",
       "phonePlaceholder": "+998 __ ___ __ __",
       "phoneInvalid": "Telefon raqam noto‘g‘ri. Davlat kodini tanlang va raqamni to‘liq kiriting.",
-      "service": "Xizmat turi",
+      "service": "Qiziqtirgan tarif",
       "services": {
-        "sea": "Dengiz yuk tashish",
-        "air": "Aviayuk · Ekspress",
-        "road": "Avtomobil yetkazish",
+        "express": "Ekspress · 8–12 kun",
+        "standard": "Standart · 14–18 kun",
+        "econom": "Ekonom · 20–30 kun",
         "customs": "Bojxona rasmiylashtirish",
-        "b2b": "B2B hamkorlik",
-        "china": "Xitoy bo‘yicha konsultatsiya"
+        "b2b": "B2B hamkorlik"
       },
       "message": "Xabar (ixtiyoriy)",
       "messagePlaceholder": "Yuk hajmi, jo‘natish va manzil haqida qisqacha…",
@@ -374,43 +384,29 @@
       "disclaimer": "Yuborish orqali biz bilan bog‘lanishga rozilik bildirasiz. Ma‘lumotlaringiz uchinchi shaxslarga uzatilmaydi."
     }
   },
-  "servicesPage": {
-    "hero": {
-      "title": "Keng qamrovli logistika xizmatlari",
-      "subtitle": "Xitoydan O‘zbekistonga va undan tashqariga",
-      "description": "Har qanday hajm va muddatdagi yuklar uchun professional yechim."
-    },
-    "pricing": {
-      "title": "Tarif rejalari",
-      "subtitle": "Biznesingizga mos rejani tanlang",
-      "popular": "Mashhur",
-      "month": "Buyurtma",
-      "cta": "Tanlash"
-    }
-  },
   "newsletter": {
-    "title": "Bizning takliflarni olish uchun ro‘yxatdan o‘ting",
-    "subtitle": "Yangiliklar va maxsus tariflardan birinchi bo‘lib xabar toping.",
+    "title": "Tarif va muddatlar bo‘yicha shaxsiy hisob-kitob oling",
+    "subtitle": "Raqamingizni qoldiring — menejer yukingiz uchun aniq narx va muddatni hisoblab beradi.",
     "namePlaceholder": "Ismingiz",
     "phonePlaceholder": "+998 __ ___ __ __",
     "submit": "Yuborish",
-    "success": "Rahmat! Ro‘yxatdan o‘tdingiz.",
+    "success": "Rahmat! Tez orada bog‘lanamiz.",
     "error": "Xatolik. Iltimos, qayta urinib ko‘ring."
   },
   "footer": {
-    "about": "SAF Logistics — O‘z vaqtida ishonchli yuk tashish.",
+    "about": "SAF EXPRESS LOGISTICS — Xitoydan O‘zbekistonga fura bilan ekspress yetkazib berish. VAQTIDA.",
     "rights": "Barcha huquqlar himoyalangan.",
     "quickLinks": "Tezkor havolalar",
     "contacts": "Kontaktlar",
+    "legalLabel": "Yuridik ma’lumot",
     "follow": "Ijtimoiy tarmoqlar",
     "madeWith": "Mehr bilan ishlangan",
-    "signupTitle": "Takliflar va yangiliklarni olish uchun ro‘yxatdan o‘ting",
     "links": {
-      "services": "Xizmatlar",
-      "contact": "Bog‘lanish",
-      "tracking": "Kuzatuv",
-      "about": "Biz haqimizda",
-      "privacy": "Maxfiylik siyosati"
+      "tariffs": "Tariflar",
+      "calculator": "Foyda kalkulyatori",
+      "route": "Marshrut",
+      "guarantees": "Kafolatlar",
+      "contact": "Bog‘lanish"
     }
   },
   "theme": {

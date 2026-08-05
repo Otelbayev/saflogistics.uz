@@ -126,19 +126,6 @@ export const Icon = {
       <path d="M6 9l6 6 6-6" />
     </svg>
   ),
-  Plane: (p: IconProps) => (
-    <svg {...base(p)}>
-      <path d="M10 13L3 10l2-2 6 1 4-5 2 1-2 6 5 4-1 2-6-2-3 7-2-1z" />
-    </svg>
-  ),
-  Ship: (p: IconProps) => (
-    <svg {...base(p)}>
-      <path d="M3 17l3-6h12l3 6" />
-      <path d="M5 17s2 3 7 3 7-3 7-3" />
-      <path d="M12 3v8" />
-      <path d="M8 7h8" />
-    </svg>
-  ),
   Sparkle: (p: IconProps) => (
     <svg {...base(p)}>
       <path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" />

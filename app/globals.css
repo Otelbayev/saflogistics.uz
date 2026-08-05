@@ -250,6 +250,17 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Anchor targets must clear the fixed navbar (h-16, h-20 from sm up). */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+@media (min-width: 640px) {
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -370,6 +381,237 @@ html {
     rgba(95, 215, 255, 0.4),
     transparent
   );
+}
+
+/* ---------------------------------------------------------------------------
+   3D logistics scene — a rotating shipping container above a perspective road.
+   Pure CSS transforms, no WebGL. The scene always sits on a dark navy panel,
+   so its palette is fixed here rather than following the light/dark theme.
+   ------------------------------------------------------------------------- */
+
+@keyframes cargo-spin {
+  from { transform: rotateX(-16deg) rotateY(0deg); }
+  to   { transform: rotateX(-16deg) rotateY(360deg); }
+}
+@keyframes cargo-hover {
+  0%, 100% { transform: translateY(6px); }
+  50%      { transform: translateY(-14px); }
+}
+@keyframes road-rush {
+  from { background-position: 50% 0, 50% 0, 50% 0, 50% 0; }
+  to   { background-position: 50% 0, 50% 0, 50% 0, 50% 74px; }
+}
+@keyframes beacon {
+  0%, 100% { opacity: 0.3; transform: scale(0.92); }
+  50%      { opacity: 0.8; transform: scale(1.1); }
+}
+
+.scene-3d {
+  --scene-edge: rgba(140, 215, 255, 0.85);
+  --scene-fill-a: rgb(16, 58, 122);
+  --scene-fill-b: rgb(29, 96, 178);
+  --scene-lane: rgba(140, 215, 255, 0.55);
+  perspective: 1200px;
+  perspective-origin: 50% 40%;
+}
+
+/* Anchor holds the centering translate so the box stays put even when the
+   spin animation is disabled by prefers-reduced-motion. */
+.cargo-anchor {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
+.cargo-float {
+  animation: cargo-hover 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+.cargo {
+  position: relative;
+  width: var(--cargo-w, 150px);
+  height: var(--cargo-h, 96px);
+  transform-style: preserve-3d;
+  /* Static pose is already 3/4 view, so reduced motion still reads as a box. */
+  transform: rotateX(-16deg) rotateY(-34deg);
+  animation: cargo-spin var(--cargo-dur, 22s) linear infinite;
+}
+.cargo-face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--scene-edge);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--scene-fill-a) 0 7px,
+      var(--scene-fill-b) 7px 15px
+    );
+  box-shadow: inset 0 0 30px rgba(120, 205, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Lid and floor read as plain plates, not corrugated walls. */
+.cargo-face--plate {
+  background: linear-gradient(180deg, rgb(45, 120, 200), rgb(14, 50, 108));
+}
+.cargo-mark {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.36em;
+  text-indent: 0.36em;
+  color: rgba(226, 244, 255, 0.95);
+  text-shadow: 0 0 18px rgba(120, 205, 255, 0.6);
+}
+
+/* Perspective road receding toward the horizon. */
+.road-3d {
+  position: absolute;
+  inset: auto 0 -14% 0;
+  height: 150%;
+  transform: rotateX(80deg);
+  transform-origin: 50% 100%;
+  background-image:
+    /* road surface */
+    linear-gradient(
+      to bottom,
+      rgba(10, 40, 90, 0) 0%,
+      rgba(12, 48, 104, 0.85) 45%,
+      rgba(14, 56, 120, 0.95) 100%
+    ),
+    /* left edge line */
+    linear-gradient(
+      to right,
+      transparent 0 21%,
+      var(--scene-lane) 21% calc(21% + 2px),
+      transparent calc(21% + 2px) 100%
+    ),
+    /* right edge line */
+    linear-gradient(
+      to right,
+      transparent 0 79%,
+      var(--scene-lane) 79% calc(79% + 2px),
+      transparent calc(79% + 2px) 100%
+    ),
+    /* centre lane dashes */
+    repeating-linear-gradient(
+      to bottom,
+      rgba(160, 225, 255, 0.9) 0 26px,
+      transparent 26px 74px
+    );
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    4px 74px;
+  background-position:
+    50% 0,
+    50% 0,
+    50% 0,
+    50% 0;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat-y;
+  animation: road-rush 1.8s linear infinite;
+  mask-image: linear-gradient(
+    to top,
+    #000 0%,
+    rgba(0, 0, 0, 0.85) 30%,
+    transparent 78%
+  );
+}
+
+/* Contact shadow so the container reads as sitting above the road. */
+.cargo-shadow {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  width: 46%;
+  height: 42px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(4, 16, 40, 0.75),
+    transparent 70%
+  );
+  filter: blur(6px);
+}
+
+.beacon {
+  animation: beacon 3.2s ease-in-out infinite;
+}
+
+/* Pointer-tracked card tilt; JS sets --rx/--ry, CSS does the rest. */
+.tilt {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
+    translate3d(0, var(--ty, 0px), 0);
+  transform-style: preserve-3d;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cargo,
+  .cargo-float,
+  .road-3d,
+  .beacon {
+    animation: none !important;
+  }
+  .tilt {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+/* Subtle film grain over video backdrops — hides gradient banding and gives
+   the footage a graded, intentional look rather than raw stock video. */
+.video-grain {
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/>\
+<feColorMatrix type='saturate' values='0'/></filter>\
+<rect width='120' height='120' filter='url(%23n)' opacity='0.55'/></svg>");
+  background-size: 160px 160px;
+}
+
+/* Scanning sweep used on dark media panels */
+@keyframes sheen-sweep {
+  0%   { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+  12%  { opacity: 0.55; }
+  60%  { opacity: 0.35; }
+  100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+}
+.sheen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 28%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(150, 215, 255, 0.28),
+    transparent
+  );
+  animation: sheen-sweep 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheen {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* iOS Safari zooms the whole page when a focused control is under 16px.
+   Force 16px on phones regardless of the utility class used. */
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea,
+  .phone-field .PhoneInputInput {
+    font-size: 16px !important;
+  }
 }
 
 .phone-field {

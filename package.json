@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-     "dev": "next dev --webpack",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "cobe": "^2.0.1",
     "framer-motion": "^12.38.0",
     "libphonenumber-js": "^1.12.41",
     "next": "16.2.3",

@@ -9,7 +9,13 @@ import { PhoneField } from "@/components/ui/PhoneField";
 
 type Props = { dict: Dictionary };
 
-const SERVICE_KEYS = ["sea", "air", "road", "customs", "b2b", "china"] as const;
+const SERVICE_KEYS = [
+  "express",
+  "standard",
+  "econom",
+  "customs",
+  "b2b",
+] as const;
 
 export function ContactForm({ dict }: Props) {
   const [submitting, setSubmitting] = useState(false);
@@ -19,7 +25,7 @@ export function ContactForm({ dict }: Props) {
   const [phoneError, setPhoneError] = useState(false);
 
   const inputClass =
-    "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-sm text-foreground placeholder:text-muted/80 outline-none transition focus:border-brand-500 focus:bg-surface focus:ring-2 focus:ring-brand-500/30";
+    "w-full rounded-xl border border-border bg-background px-4 py-3.5 text-base text-foreground placeholder:text-muted/80 outline-none transition focus:border-brand-500 focus:bg-surface focus:ring-2 focus:ring-brand-500/30 sm:text-sm";
 
   const labelClass =
     "mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.2em] text-muted";
@@ -41,9 +47,7 @@ export function ContactForm({ dict }: Props) {
         (dict.contact.form.services as Record<string, string>)[serviceKey] ??
         serviceKey;
       const userMsg = String(fd.get("message") ?? "").trim();
-      const composed = serviceLabel
-        ? `[${serviceLabel}]${userMsg ? `\n${userMsg}` : ""}`
-        : userMsg;
+      const composed = [serviceLabel, userMsg].filter(Boolean).join("\n");
 
       const res = await fetch("/api/lead", {
         method: "POST",
@@ -99,6 +103,9 @@ export function ContactForm({ dict }: Props) {
               required
               name="name"
               type="text"
+              autoComplete="name"
+              autoCapitalize="words"
+              enterKeyHint="next"
               placeholder={dict.contact.form.namePlaceholder}
               className={inputClass}
             />
@@ -112,7 +119,10 @@ export function ContactForm({ dict }: Props) {
               required
             />
             {phoneError ? (
-              <span className="mt-1.5 block text-xs text-red-600 dark:text-red-300">
+              <span
+                role="alert"
+                className="mt-1.5 block text-xs text-red-600 dark:text-red-300"
+              >
                 {dict.contact.form.phoneInvalid}
               </span>
             ) : null}
@@ -144,8 +154,10 @@ export function ContactForm({ dict }: Props) {
           <textarea
             name="message"
             rows={4}
+            enterKeyHint="done"
+            maxLength={2000}
             placeholder={dict.contact.form.messagePlaceholder}
-            className={`${inputClass} resize-none`}
+            className={`${inputClass} min-h-28 resize-y`}
           />
         </label>
 

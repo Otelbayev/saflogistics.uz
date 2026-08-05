@@ -9,11 +9,11 @@ import { Icon } from "@/components/ui/Icon";
 
 type Props = { dict: Dictionary };
 
-const featureKeys = ["experience", "b2b", "projects"] as const;
+const featureKeys = ["experience", "b2b", "hub"] as const;
 const featureIcons = {
   experience: Icon.Sparkle,
   b2b: Icon.Truck,
-  projects: Icon.Shield,
+  hub: Icon.MapPin,
 } as const;
 
 export function About({ dict }: Props) {
@@ -29,11 +29,11 @@ export function About({ dict }: Props) {
       />
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="relative lg:col-span-6">
+          <Reveal from="left" className="relative lg:col-span-6">
             <div className="relative aspect-4/5 overflow-hidden rounded-[2.25rem] border border-border shadow-(--shadow-elevated) sm:aspect-5/6">
               <Image
                 src="/images/industrial-port-container-yard.jpg"
-                alt="Container yard"
+                alt={dict.seo.alt.containerYard}
                 fill
                 sizes="(min-width: 1024px) 48vw, 100vw"
                 className="object-cover"

@@ -1,415 +1,409 @@
 {
   "site": {
     "name": "SAF Logistics",
-    "tagline": "On time, every time"
+    "tagline": "ON TIME"
   },
   "seo": {
-    "homeTitle": "SAF Logistics — Reliable freight from China to Tashkent",
-    "homeDescription": "Air, sea and road freight from China and worldwide to Uzbekistan. 5+ years of experience, 500+ successful shipments, insurance and customs in one system. Get a free quote.",
+    "homeTitle": "SAF Logistics — express truck delivery from China to Uzbekistan",
+    "homeDescription": "Express truck delivery from China to Uzbekistan — 8–12 days. Guaranteed transit times, insured cargo, a dedicated personal manager.",
     "keywords": [
-      "logistics",
-      "logistics Uzbekistan",
-      "logistics Tashkent",
-      "freight forwarding",
-      "freight from China",
-      "freight from China to Uzbekistan",
-      "China to Uzbekistan shipping",
-      "Guangzhou Tashkent shipping",
-      "international logistics",
-      "international logistics Uzbekistan",
-      "air freight",
-      "China air freight",
-      "sea container shipping",
-      "road freight Central Asia",
-      "B2B logistics",
-      "customs clearance",
-      "customs broker",
-      "cargo",
-      "cargo from China",
-      "cargo Tashkent",
-      "freight forwarder Uzbekistan",
-      "logistika",
-      "logistika O‘zbekiston",
-      "yuk tashish",
-      "Xitoydan yuk",
-      "логистика",
-      "логистика Узбекистан",
-      "грузоперевозки",
-      "грузоперевозки из Китая",
+      "China to Uzbekistan road freight",
+      "express trucking China Uzbekistan",
+      "truck delivery from China",
+      "Guangzhou Tashkent delivery",
+      "fast cargo from China",
+      "B2B logistics Uzbekistan",
+      "customs clearance Uzbekistan",
+      "cargo insurance",
+      "Xitoydan O‘zbekistonga yuk",
+      "fura bilan yuk tashish",
+      "ekspress yetkazib berish Xitoydan",
+      "доставка из Китая в Узбекистан",
+      "автоперевозки Китай Узбекистан",
+      "Гуанчжоу Ташкент доставка",
       "SAF Logistics",
-      "SAF cargo",
+      "SAF EXPRESS LOGISTICS",
       "Saflogistics.uz",
       "Farrukh Mashanpin",
       "Farrux Mashanpin",
       "Фаррух Машанпин"
-    ]
+    ],
+    "alt": {
+      "logo": "SAF Logistics logo — express road freight from China to Uzbekistan",
+      "founder": "Farrukh Mashanpin — founder of SAF Logistics, head of the Guangzhou hub",
+      "truckPort": "SAF Logistics truck loading at a Chinese port — China to Uzbekistan delivery",
+      "containerYard": "Container yard in Guangzhou — cargo consolidation from China to Uzbekistan",
+      "operationsDusk": "Evening logistics operations — loading SAF Logistics trucks",
+      "truckHighway": "Heavy cargo truck on the highway — China–Uzbekistan corridor",
+      "truckForest": "Modern cargo truck en route — SAF Logistics fleet",
+      "heroPoster": "White semi truck on the highway — express delivery from China to Uzbekistan",
+      "routePoster": "SAF Logistics truck on the Guangzhou–Tashkent route",
+      "ctaPoster": "Cargo truck with trailer on the highway — SAF Logistics delivery",
+      "fleetPoster": "SAF Logistics truck fleet — China–Uzbekistan corridor"
+    },
+    "video": {
+      "hero": {
+        "title": "Express truck delivery from China to Uzbekistan",
+        "description": "A SAF Logistics truck on the highway — express delivery from Guangzhou to Tashkent in 8–12 days."
+      },
+      "fleet": {
+        "title": "SAF Logistics truck fleet",
+        "description": "The SAF Logistics road fleet working the China–Uzbekistan corridor."
+      },
+      "route": {
+        "title": "Guangzhou → Tashkent route",
+        "description": "China to Uzbekistan by truck only, door to door."
+      },
+      "highway": {
+        "title": "Road freight on the highway — SAF Logistics",
+        "description": "A cargo truck with trailer en route: guaranteed transit times and insured cargo."
+      }
+    }
   },
   "nav": {
     "home": "Home",
-    "services": "Services",
+    "tariffs": "Tariffs",
+    "calculator": "Calculator",
+    "route": "Route",
     "contact": "Contact",
     "about": "About",
-    "getQuote": "Get a quote",
-    "track": "Track shipment"
+    "getQuote": "Get a quote"
   },
   "hero": {
-    "badge": "International logistics company · since 2019",
-    "titleLine1": "From China to Tashkent —",
-    "titleLine2": "freight you can trust,",
-    "titleAccent": "on time",
-    "subtitle": "SAF Logistics moves your cargo from China and the rest of the world to Uzbekistan via our Guangzhou hub — air, sea container and road freight, with a dedicated manager, full insurance and customs in one place.",
+    "badge": "China → Uzbekistan express trucking · since 2019",
+    "titleLine1": "From China to Uzbekistan",
+    "titleLine2": "by truck —",
+    "titleAccent": "at air freight speed",
+    "subtitle": "SAF Logistics delivers from China to Uzbekistan by truck only, through our own office in Guangzhou. Express tariff — 8–12 days, guaranteed transit time, insured cargo and a dedicated personal manager.",
     "ctaContact": "Get a free quote",
-    "ctaServices": "Explore services",
-    "tickerLabel": "Live route",
+    "ctaServices": "See tariffs",
+    "tickerLabel": "Live corridor",
     "routeLabel": "Guangzhou → Tashkent",
-    "routeValue": "Door-to-door delivery",
-    "badgeInsured": "Insured freight",
+    "routeValue": "Door to door",
     "badgeInsuredValue": "100% insured",
-    "badgeExpress": "Express tariff",
-    "badgeExpressValue": "7–14 days",
+    "badgeExpressValue": "8–12 days",
     "float1": "500+ shipments delivered",
-    "float2": "China sourcing expert",
+    "float2": "One corridor — deep expertise",
     "stats": {
       "years": "Years of experience",
-      "projects": "Successful projects",
-      "countries": "Partner countries",
-      "clients": "Repeat clients"
+      "projects": "Shipments delivered",
+      "saved": "Days saved",
+      "clients": "Recurring clients"
     }
-  },
-  "showcase": {
-    "eyebrow": "Services and routes",
-    "title": "Fast, precise cargo delivery — for every customer",
-    "description": "We orchestrate end-to-end freight flows: air, sea containers, trucking and multimodal combinations.",
-    "exploreCta": "Explore services",
-    "cards": {
-      "air": {
-        "title": "Charter air freight",
-        "meta": "Express · 3–10 days",
-        "cta": "Book a shipment"
-      },
-      "ocean": {
-        "title": "Continental ocean freight",
-        "meta": "FCL/LCL · 25–40 days",
-        "bullet": "One customer can fill a full container load"
-      }
-    },
-    "support": {
-      "name": "Edward Blake",
-      "role": "Customer Support, SAF",
-      "message": "Hi, how can I help you?",
-      "cta": "Call and book cargo",
-      "trust": "Trusted by 60 000+ customers"
-    },
-    "trust": {
-      "title": "Delivering faith, peace of mind, and unparalleled quality",
-      "monthlyUsers": "Monthly users",
-      "totalBooking": "Total booking",
-      "today": "Today",
-      "rows": [
-        { "name": "Steel core shipment", "client": "Jonathan Trott", "amount": "$248,750" },
-        { "name": "Motorcar shipment", "client": "Cameron Green", "amount": "$62,540" }
-      ],
-      "total": "Total shipment"
-    }
-  },
-  "tech": {
-    "eyebrow": "Next-gen technology",
-    "title": "Powered by next-gen cargo shipping technology",
-    "description": "Shipment tracking, digital document flow and real-time monitoring — all in a single platform.",
-    "badge": "Collaborated with",
-    "badgeSub": "Tech crafted by clear vision",
-    "pinTitle": "Pinpoint delivery",
-    "pinSub": "accuracy and safety",
-    "ctaQuote": "Get free quote",
-    "ctaDemo": "Watch a demo"
-  },
-  "process": {
-    "eyebrow": "Optimized handling",
-    "title": "Precision handling for accurate product delivery",
-    "description": "Our warehouse and logistics system ensures safe, precise and on-time delivery of every product.",
-    "cta": "Explore process",
-    "steps": [
-      {
-        "num": "01",
-        "title": "Warehouse",
-        "desc": "Safe storage in modern warehouses in Guangzhou and Tashkent."
-      },
-      {
-        "num": "02",
-        "title": "Electric lifter",
-        "desc": "Precision handling — goods are loaded without damage."
-      },
-      {
-        "num": "03",
-        "title": "Delivery service",
-        "desc": "Personal hand-over delivery service to every customer."
-      }
-    ]
   },
   "about": {
     "title": "About us",
-    "subtitle": "A trusted partner in international logistics",
-    "description": "SAF Logistics has over 5 years of experience moving freight between China and Uzbekistan. We offer our clients fast, safe and transparent solutions.",
+    "subtitle": "Premium partner on the China–Uzbekistan corridor",
+    "description": "SAF Logistics is not a broad-profile forwarder covering the whole world. We specialise in a single corridor: China to Uzbekistan by truck. That is exactly why our transit times are no accident — they are the result of proven routes and control at every stage.",
     "highlight": {
       "hub": "Main hub",
       "city": "Guangzhou, China",
-      "since": "Since 2019",
+      "since": "since 2019",
       "projectsNumber": "500+",
       "projectsLabel": "shipments delivered on time"
     },
     "features": {
       "experience": {
         "title": "5 years of experience",
-        "desc": "Deep expertise in international logistics and a reliable partner network."
+        "desc": "Proven routes and vetted partners across the China–Uzbekistan corridor."
       },
       "b2b": {
-        "title": "B2B and full truckload",
-        "desc": "Comprehensive logistics services for business and full-truck shipping."
+        "title": "B2B only",
+        "desc": "We work with importing companies: full truckloads and large consignments."
       },
-      "projects": {
-        "title": "500+ projects",
-        "desc": "Successfully completed projects and grateful clients."
+      "hub": {
+        "title": "Our own Guangzhou office",
+        "desc": "Cargo received, inspected and consolidated on site — no middlemen."
+      }
+    }
+  },
+  "philosophy": {
+    "eyebrow": "Brand philosophy",
+    "title": "SAF ON TIME. Always. Precisely. No excuses.",
+    "positioning": "Others move cargo. We accelerate business. You are not investing in delivery — you are investing in speed, turnover and growth.",
+    "reasonsTitle": "Why our transit times are no accident",
+    "reasons": {
+      "time": {
+        "title": "We manage time, not just delivery",
+        "desc": "Our key metric is how many days the client has saved."
+      },
+      "routes": {
+        "title": "Proven routes only",
+        "desc": "No improvised schemes — only tested, calculated corridors."
+      },
+      "control": {
+        "title": "Control at every stage",
+        "desc": "Tracking, multi-step verification and fast response to any deviation."
+      },
+      "partnership": {
+        "title": "A partnership model",
+        "desc": "We are invested in the growth of your turnover, not in a one-off shipment."
       }
     }
   },
   "services": {
-    "title": "Our services",
-    "subtitle": "Choose the tariff that fits you",
-    "description": "Standard and Express — we deliver your cargo anywhere in the world.",
-    "standard": {
-      "name": "Standard tariff",
-      "price": "Best value",
-      "duration": "25–35 days",
-      "description": "A convenient and affordable solution for bulk cargo.",
-      "features": [
-        "Sea and land freight",
-        "Full container load",
-        "Secure packaging",
-        "Shipment tracking",
-        "Customs clearance"
-      ]
-    },
+    "title": "Tariffs",
+    "subtitle": "Road freight only — by truck",
+    "description": "Three tariffs, one corridor. Compare price and transit time, then pick the level that fits your business.",
+    "daysLabel": "days",
+    "popular": "Most chosen",
+    "cta": "Choose this tariff",
+    "compare": "Compare the tariffs",
     "express": {
-      "name": "Express tariff",
-      "price": "Premium service",
-      "duration": "7–14 days",
-      "description": "For urgent, time-sensitive shipments.",
+      "name": "Express",
+      "price": "Premium priority",
+      "description": "A plane on wheels — for cargo where the deadline is critical.",
       "features": [
-        "Air and land freight",
-        "Priority delivery",
+        "Priority loading",
+        "Accelerated customs clearance",
+        "Dedicated personal manager",
         "24/7 monitoring",
-        "Personal manager",
-        "Fast-track customs"
+        "Guaranteed transit time"
       ]
     },
-    "cta": "Choose tariff",
-    "compare": "Compare tariffs",
+    "standard": {
+      "name": "Standard",
+      "price": "Optimal balance",
+      "description": "The best price-to-speed ratio for planned deliveries.",
+      "features": [
+        "Road freight only — by truck",
+        "Scheduled departures",
+        "Cargo tracking",
+        "Customs clearance",
+        "Cargo insurance"
+      ]
+    },
+    "econom": {
+      "name": "Econom",
+      "price": "Budget solution",
+      "description": "For non-urgent, planned bulk consignments — price is the priority.",
+      "features": [
+        "Competitive rate on bulk consignments",
+        "Road freight only — by truck",
+        "Cargo tracking",
+        "Customs clearance",
+        "Cargo insurance"
+      ]
+    },
     "compareTable": {
       "feature": "Feature",
-      "standard": "Standard",
-      "express": "Express",
       "rows": {
-        "delivery": "Delivery time",
-        "tracking": "Shipment tracking",
+        "delivery": "Transit time",
+        "transport": "Transport mode",
+        "tracking": "Cargo tracking",
         "manager": "Personal manager",
-        "customs": "Customs service",
+        "customs": "Customs clearance",
         "insurance": "Cargo insurance",
-        "priority": "Priority routing"
+        "priority": "Priority loading"
+      },
+      "truckOnly": "Truck"
+    }
+  },
+  "calculator": {
+    "eyebrow": "Profit calculator",
+    "title": "How much money will speed bring you?",
+    "description": "Calculate how much extra annual profit a shorter deal cycle delivers. No sign-up required.",
+    "inputs": {
+      "investment": "Investment per consignment",
+      "investmentHint": "in US dollars",
+      "margin": "Average margin per consignment",
+      "marginHint": "in percent",
+      "cycle": "Current full cycle (purchase → sale)",
+      "cycleHint": "in days",
+      "tariff": "SAF tariff"
+    },
+    "results": {
+      "title": "Result",
+      "saved": "Time saved",
+      "perBatch": "Profit per consignment",
+      "turnsWithout": "Turns per year — without SAF",
+      "turnsWith": "Turns per year — with SAF",
+      "extraTurns": "Additional turns",
+      "extraProfit": "Additional profit per year",
+      "days": "days",
+      "turns": "times",
+      "emphasis": "And all of it — without increasing your investment. Purely through speed."
+    },
+    "warning": {
+      "tooFast": "Your current cycle is shorter than the selected tariff's transit time. Pick another tariff or enter your real cycle length.",
+      "invalid": "Fill in every field with a value greater than zero to calculate."
+    },
+    "cta": "Show me how you do it",
+    "ctaSecondary": "Discuss with a manager"
+  },
+  "route": {
+    "title": "Guangzhou → Tashkent",
+    "subtitle": "One corridor — deep expertise",
+    "description": "We do not spread ourselves across dozens of countries. Every resource is focused on a single corridor — which is why we deliver the best transit time and price on it.",
+    "originLabel": "Departure point",
+    "destinationLabel": "Delivery point",
+    "origin": "Guangzhou, China",
+    "destination": "Tashkent, Uzbekistan",
+    "hubTag": "HUB",
+    "transportLabel": "Transport",
+    "transportValue": "Truck only",
+    "doorToDoor": "Door to door"
+  },
+  "individual": {
+    "eyebrow": "Individual approach",
+    "title": "A separate solution for every client",
+    "description": "We have no off-the-shelf offer. Every B2B client gets its own terms based on the volume and nature of the cargo.",
+    "items": {
+      "route": {
+        "title": "Individual routing",
+        "desc": "The optimal corridor is built around your cargo type and urgency."
+      },
+      "terms": {
+        "title": "Individual service terms",
+        "desc": "Packing, consolidation and paperwork — shaped around your process."
+      },
+      "pricing": {
+        "title": "Individual price and transit time",
+        "desc": "A personal rate is calculated from your volume and shipping frequency."
+      },
+      "manager": {
+        "title": "Dedicated personal manager",
+        "desc": "One point of contact — from dispatch to handover."
       }
     }
   },
-  "globe": {
-    "title": "Our global network",
-    "subtitle": "Partner countries worldwide",
-    "description": "From our Guangzhou (China) hub we ship to more than 15 countries.",
-    "hub": "Guangzhou, China — main hub",
-    "hubTag": "HUB",
-    "partners": "Partner countries",
-    "activeRoutes": "Active routes",
-    "deliveries": "Deliveries"
+  "guarantees": {
+    "eyebrow": "Guarantees",
+    "title": "What we are accountable for",
+    "description": "Our quality and transit-time commitments are fixed in the contract.",
+    "items": {
+      "deadline": {
+        "title": "Transit time guarantee",
+        "desc": "We guarantee the delivery window we quote."
+      },
+      "cargo": {
+        "title": "Cargo integrity",
+        "desc": "Every shipment is insured — cargo arrives complete and undamaged."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "desc": "No hidden fees: the price is agreed up front and does not change."
+      }
+    }
+  },
+  "forWhom": {
+    "eyebrow": "Who SAF is for",
+    "title": "If you are on this list — this is about you",
+    "description": "We work with businesses where turnover speed converts directly into profit.",
+    "items": [
+      "Entrepreneurs",
+      "Online stores",
+      "Importers and wholesalers",
+      "Manufacturing companies",
+      "Scaling projects"
+    ],
+    "note": "Clients are tired of endless “tomorrows”, empty promises and missed deadlines. We deliver, we answer, we flag risks in advance and we take responsibility — all of it ON TIME."
   },
   "why": {
-    "title": "Why choose us?",
+    "title": "Why clients choose us",
     "subtitle": "Our advantages",
     "items": {
       "fast": {
-        "title": "Fast delivery",
-        "desc": "Optimized routes and fast dispatch system."
+        "title": "The fastest truck on the market",
+        "desc": "8–12 days on the express tariff — the best road-freight figure on this corridor."
       },
       "secure": {
         "title": "Full security",
-        "desc": "Every shipment is insured and tracked."
+        "desc": "Every shipment is insured and controlled at every stage."
       },
       "price": {
-        "title": "Competitive pricing",
-        "desc": "Transparent pricing, no hidden fees."
+        "title": "Transparent pricing",
+        "desc": "The price is agreed up front — no hidden fees or surprise charges."
       },
       "support": {
-        "title": "24/7 support",
-        "desc": "We are ready to help you any time of day."
+        "title": "Dedicated manager",
+        "desc": "24/7 contact: one accountable person answers every question."
       },
       "expert": {
-        "title": "China specialist",
-        "desc": "Deep experience and personal connections in Guangzhou."
+        "title": "Expert on a single corridor",
+        "desc": "Deep experience and personal connections on the Guangzhou–Tashkent route."
       },
       "tech": {
-        "title": "Modern technology",
-        "desc": "Shipment tracking and online management."
+        "title": "Tracking at every stage",
+        "desc": "Online control of cargo status and transit-time compliance."
       }
     }
-  },
-  "testimonials": {
-    "eyebrow": "Client testimonials",
-    "title": "What our clients say",
-    "items": [
-      {
-        "name": "Martin Edwards",
-        "role": "General Manager",
-        "rating": "4.8",
-        "badge": "Reliable & expert",
-        "quote": "Top-notch logistics with expert and dedicated support for all your cargo transport needs."
-      },
-      {
-        "name": "James Atkinson",
-        "role": "Business Proprietor",
-        "rating": "4.7",
-        "badge": "Accurate support",
-        "quote": "We trust SAF's dedicated team and highly recommend them as a leading freight forwarder."
-      },
-      {
-        "name": "Natasha Portman",
-        "role": "Business Owner",
-        "rating": "4.9",
-        "badge": "24/7 service",
-        "quote": "Exceptional 24/7 logistics support — a professional, fully committed team."
-      },
-      {
-        "name": "Aziz Abdullayev",
-        "role": "Head of Imports",
-        "rating": "5.0",
-        "badge": "On time",
-        "quote": "All procedures from Guangzhou to Tashkent were handled by them — truly end-to-end."
-      }
-    ]
   },
   "founder": {
     "title": "Founder",
     "name": "Farrukh Mashanpin",
-    "role": "International logistics expert",
-    "specialty": "China route specialist",
-    "bio": "An expert who has shaped freight flows between China and Uzbekistan for years. Knows the Guangzhou market inside out and offers clients the most convenient solutions.",
+    "role": "Expert on the China–Uzbekistan corridor",
+    "specialty": "Head of the Guangzhou hub",
+    "bio": "An expert who has shaped cargo flows between China and Uzbekistan for years. He knows the Guangzhou market from the inside and personally calculates the route for every client.",
     "instagram": "Instagram profile"
-  },
-  "faq": {
-    "eyebrow": "Frequently asked questions",
-    "title": "Questions you may have",
-    "items": [
-      {
-        "q": "How quickly do you deliver cargo?",
-        "a": "Standard tariff takes 25–35 days, Express tariff takes 7–14 days."
-      },
-      {
-        "q": "How can I track my shipment?",
-        "a": "By your order number through online real-time monitoring and personal manager messages."
-      },
-      {
-        "q": "Is customs clearance included?",
-        "a": "Yes, all our tariffs include customs clearance."
-      },
-      {
-        "q": "What kinds of cargo do you accept?",
-        "a": "Commercial, industrial and special cargo — apart from hazardous — we accept all kinds."
-      },
-      {
-        "q": "Is the cargo insured?",
-        "a": "Yes, every shipment is automatically insured."
-      }
-    ]
   },
   "ctaBanner": {
     "title": "Put your cargo on the road today",
-    "subtitle": "Contact us for a free consultation and an accurate quote.",
+    "subtitle": "Contact us for a free consultation and an exact quote.",
     "button": "Get a quote",
     "secondary": "Call us"
   },
   "contact": {
     "title": "Get in touch",
-    "subtitle": "Have a question? Send us a message",
-    "description": "Our specialists will offer you the most suitable solution.",
+    "subtitle": "Have questions? Write to us",
+    "description": "Our specialists will calculate the right tariff and transit time for your cargo.",
     "phoneLabel": "Phone numbers",
     "hoursLabel": "Working hours",
-    "hoursWeek": "Mon–Sat: 10:00–19:00",
-    "hoursSun": "Sunday: Closed",
+    "hoursWeek": "Monday–Saturday: 10:00–19:00",
+    "hoursSun": "Sunday: closed",
     "addressLabel": "Address",
-    "address": "Tashkent, Uzbekistan",
+    "address": "209 Abu Sulaymon Banokatiy street, Tashkent",
     "mapTitle": "Find us on the map",
     "mapCta": "Open in Google Maps",
     "socialLabel": "Social networks",
     "form": {
-      "title": "Get a free quote",
-      "subtitle": "A dedicated manager will reach out within 30 minutes during business hours.",
+      "title": "Request a free quote",
+      "subtitle": "During working hours a personal manager replies within 30 minutes.",
       "name": "Your name",
       "namePlaceholder": "Full name",
-      "email": "Email",
-      "emailPlaceholder": "email@example.com",
       "phone": "Phone",
       "phonePlaceholder": "+998 __ ___ __ __",
-      "phoneInvalid": "Invalid phone number. Pick a country and enter the full number.",
-      "service": "Service type",
+      "phoneInvalid": "Invalid phone number. Select the country code and enter the full number.",
+      "service": "Tariff of interest",
       "services": {
-        "sea": "Sea freight",
-        "air": "Air · Express",
-        "road": "Road transport",
+        "express": "Express · 8–12 days",
+        "standard": "Standard · 14–18 days",
+        "econom": "Econom · 20–30 days",
         "customs": "Customs clearance",
-        "b2b": "B2B partnership",
-        "china": "China sourcing"
+        "b2b": "B2B partnership"
       },
       "message": "Message (optional)",
-      "messagePlaceholder": "Volume, dispatch date and destination…",
+      "messagePlaceholder": "A few words about cargo volume, dispatch and destination…",
       "submit": "Send request",
       "sending": "Sending…",
-      "success": "Thanks! We'll be in touch shortly.",
-      "error": "Couldn't send. Please try again.",
-      "disclaimer": "By submitting, you agree to be contacted. We never share your details with third parties."
-    }
-  },
-  "servicesPage": {
-    "hero": {
-      "title": "End-to-end logistics services",
-      "subtitle": "From China to Uzbekistan and beyond",
-      "description": "Professional solutions for cargo of any size and timeline."
-    },
-    "pricing": {
-      "title": "Pricing plans",
-      "subtitle": "Pick the plan that fits your business",
-      "popular": "Popular",
-      "month": "Order",
-      "cta": "Choose"
+      "success": "Request received. We will contact you shortly!",
+      "error": "Could not send. Please try again.",
+      "disclaimer": "By submitting you agree to be contacted. Your data is never shared with third parties."
     }
   },
   "newsletter": {
-    "title": "Signup to receive our offer and stay up to date",
-    "subtitle": "Be the first to know about news and special tariffs.",
+    "title": "Get a personal quote on tariff and transit time",
+    "subtitle": "Leave your number — a manager will calculate the exact price and timing for your cargo.",
     "namePlaceholder": "Your name",
     "phonePlaceholder": "+998 __ ___ __ __",
-    "submit": "Submit",
-    "success": "Thanks! You are subscribed.",
+    "submit": "Send",
+    "success": "Thank you! We will be in touch shortly.",
     "error": "Something went wrong. Please try again."
   },
   "footer": {
-    "about": "SAF Logistics — reliable freight, on time, every time.",
+    "about": "SAF EXPRESS LOGISTICS — express truck delivery from China to Uzbekistan. ON TIME.",
     "rights": "All rights reserved.",
     "quickLinks": "Quick links",
     "contacts": "Contacts",
-    "follow": "Follow us",
+    "legalLabel": "Legal information",
+    "follow": "Social networks",
     "madeWith": "Made with care",
-    "signupTitle": "Signup to receive our offer and stay up to date",
     "links": {
-      "services": "Services",
-      "contact": "Contact us",
-      "tracking": "Tracking",
-      "about": "About us",
-      "privacy": "Privacy policy"
+      "tariffs": "Tariffs",
+      "calculator": "Profit calculator",
+      "route": "Route",
+      "guarantees": "Guarantees",
+      "contact": "Contact"
     }
   },
   "theme": {

@@ -6,7 +6,7 @@ type Variant = "primary" | "secondary" | "ghost" | "outline";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-full text-center font-medium leading-snug transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-60 [&>svg]:shrink-0";
 
 const variants: Record<Variant, string> = {
   primary:
@@ -18,10 +18,12 @@ const variants: Record<Variant, string> = {
     "border border-brand-800 text-brand-800 hover:bg-brand-800 hover:text-white dark:border-brand-400 dark:text-brand-200 dark:hover:bg-brand-800 dark:hover:text-white",
 };
 
+// min-h rather than h: Uzbek and Russian labels are long and must be allowed to
+// wrap to a second line instead of spilling out of a fixed-height pill.
 const sizes: Record<Size, string> = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-6 text-sm",
-  lg: "h-14 px-8 text-base",
+  sm: "min-h-9 px-4 py-2 text-sm",
+  md: "min-h-11 px-6 py-2.5 text-sm",
+  lg: "min-h-14 px-8 py-3.5 text-base",
 };
 
 type CommonProps = {
@@ -53,8 +55,13 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
       </Link>
     );
   }
-  const { variant: _v, size: _s, className: _c, children: _ch, ...rest } =
-    props as ButtonAsButton;
+  const {
+    variant: _v,
+    size: _s,
+    className: _c,
+    children: _ch,
+    ...rest
+  } = props as ButtonAsButton;
   void _v;
   void _s;
   void _c;

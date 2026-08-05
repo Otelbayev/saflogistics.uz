@@ -3,13 +3,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import type { Dictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/locales";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { useQuoteModal } from "@/components/ui/QuoteModal";
+import { canStream } from "@/components/ui/VideoBackdrop";
 
 type Props = {
   locale: Locale;
@@ -19,75 +26,81 @@ type Props = {
 const stats = [
   { key: "years", value: "5+" },
   { key: "projects", value: "500+" },
-  { key: "countries", value: "15+" },
+  { key: "saved", value: "15–20" },
   { key: "clients", value: "120+" },
 ] as const;
 
-const PARTICLE_COUNT = 36;
-
+/**
+ * The hero is sized to exactly one viewport (h-svh) and never scrolls
+ * internally: every block below shrinks rather than pushing content out.
+ */
 export function Hero({ locale, dict }: Props) {
   const { open: openQuote } = useQuoteModal();
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Start playback from JS rather than `autoplay`, which would make the
+  // browser fetch the file during initial load no matter the preload hint.
+  useEffect(() => {
+    if (!showVideo) return;
+    videoRef.current?.play().catch(() => {});
+  }, [showVideo]);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 640px)");
-    const update = () => setIsDesktop(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
+    // Only desktop, only when the connection and user preferences allow it.
+    const wide = window.matchMedia("(min-width: 1024px)");
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const decide = () =>
+      setShowVideo(wide.matches && !calm.matches && canStream("heavy"));
 
-  const particles = useMemo(
-    () =>
-      Array.from({ length: PARTICLE_COUNT }, (_, i) => {
-        const seed = i * 9301 + 49297;
-        const r1 = ((seed * 233280 + 1) % 1000) / 1000;
-        const r2 = ((seed * 16807 + 1) % 1000) / 1000;
-        const r3 = ((seed * 65539 + 1) % 1000) / 1000;
-        const r4 = ((seed * 1103515245 + 12345) % 1000) / 1000;
-        const r5 = ((seed * 22695477 + 1) % 1000) / 1000;
-        return {
-          left: `${r1 * 100}%`,
-          top: `${r2 * 100}%`,
-          dur: `${6 + r3 * 9}s`,
-          dx: `${(r4 - 0.5) * 80}px`,
-          delay: `${r5 * 9}s`,
-          size: `${1 + r3 * 2}px`,
-        };
-      }),
-    [],
-  );
+    // Defer past first paint so the poster renders immediately.
+    const idle =
+      window.requestIdleCallback?.(decide) ?? window.setTimeout(decide, 900);
+
+    wide.addEventListener("change", decide);
+    calm.addEventListener("change", decide);
+    return () => {
+      wide.removeEventListener("change", decide);
+      calm.removeEventListener("change", decide);
+      if (window.cancelIdleCallback) window.cancelIdleCallback(idle as number);
+      else clearTimeout(idle as number);
+    };
+  }, []);
 
   return (
     <section
       id="showcase"
-      className="relative isolate flex min-h-svh w-full flex-col overflow-hidden pt-20 pb-14 sm:pt-28 sm:pb-20"
+      className="relative isolate flex h-svh min-h-[34rem] w-full flex-col overflow-hidden pb-6 pt-16 sm:pb-10 sm:pt-24"
     >
-      {isDesktop ? (
+      {/* Poster paints first (optimised by next/image); the clip fades in
+          later, desktop only. The <video> gets no `poster` attribute — that
+          would refetch the raw PNG straight from /public. */}
+      <Image
+        src="/images/poster.png"
+        alt={dict.seo.alt.fleetPoster}
+        fill
+        priority
+        fetchPriority="high"
+        quality={70}
+        sizes="100vw"
+        className="absolute inset-0 -z-30 h-full w-full object-cover"
+      />
+      {showVideo ? (
         <video
-          className="absolute inset-0 -z-30 h-full w-full object-cover"
-          autoPlay
+          ref={videoRef}
+          className="absolute inset-0 -z-30 h-full w-full object-cover opacity-0 transition-opacity duration-700"
           muted
           loop
           playsInline
-          preload="metadata"
-          poster="/images/poster.png"
-        >
-          <source src="/videos/15373444_3840_2160_25fps.mp4" type="video/mp4" />
-        </video>
-      ) : (
-        <Image
-          src="/images/poster.png"
-          alt=""
-          aria-hidden
-          fill
-          priority
-          sizes="100vw"
-          className="absolute inset-0 -z-30 h-full w-full object-cover"
+          preload="auto"
+          onCanPlay={(e) => {
+            e.currentTarget.style.opacity = "1";
+          }}
+          src="/videos/15373444_3840_2160_25fps.mp4"
         />
-      )}
+      ) : null}
 
-      {/* Theme-aware video overlay — stronger on mobile for readability */}
+      {/* Theme-aware overlay — stronger on mobile for readability */}
       <div
         aria-hidden
         className="absolute inset-0 -z-20 sm:hidden dark:hidden"
@@ -123,95 +136,34 @@ export function Hero({ locale, dict }: Props) {
         }}
       />
 
-      {/* Animated grid — desktop only */}
       <div
         aria-hidden
         className="showcase-grid pointer-events-none absolute inset-0 -z-10 hidden sm:block"
       />
 
-      {/* Particles — desktop only */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 hidden sm:block"
-      >
-        {particles.map((p, i) => (
-          <span
-            key={i}
-            className="showcase-particle"
-            style={{
-              left: p.left,
-              top: p.top,
-              width: p.size,
-              height: p.size,
-              animationDuration: p.dur,
-              animationDelay: p.delay,
-              ["--dx" as string]: p.dx,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* 3D Cube + Orbits */}
-      <div
-        aria-hidden
-        className="showcase-cube-wrap pointer-events-none absolute right-[5vw] top-1/2 hidden h-[420px] w-[420px] -translate-y-1/2 lg:block"
-      >
-        <div className="showcase-orbit h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2">
-          <div className="showcase-orbit-dot" />
-        </div>
-        <div
-          className="showcase-orbit h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2"
-          style={{ animationDuration: "16s", animationDirection: "reverse" }}
-        >
-          <div className="showcase-orbit-dot" />
-        </div>
-        <div
-          className="showcase-orbit h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 opacity-60"
-          style={{ animationDuration: "20s" }}
-        >
-          <div className="showcase-orbit-dot" />
-        </div>
-        <div className="showcase-cube">
-          <div className="showcase-face showcase-face--front">
-            <CubeIcon variant="cross" />
-          </div>
-          <div className="showcase-face showcase-face--back">
-            <CubeIcon variant="grid" />
-          </div>
-          <div className="showcase-face showcase-face--left">
-            <CubeIcon variant="triangle" />
-          </div>
-          <div className="showcase-face showcase-face--right">
-            <CubeIcon variant="circles" />
-          </div>
-          <div className="showcase-face showcase-face--top" />
-          <div className="showcase-face showcase-face--bottom" />
-        </div>
-      </div>
-
-      {/* Floating info boxes */}
-      <div className="hidden md:block">
+      {/* Floating info badges */}
+      <div className="hidden lg:block">
         <FloatBox
-          className="right-[42%] bottom-[26%] inline-flex"
+          className="right-[8vw] top-[30%]"
           style={{ ["--dur" as string]: "3.4s" }}
         >
           <Icon.Sparkle size={12} /> {dict.hero.float1}
         </FloatBox>
         <FloatBox
-          className="right-[26%] top-[24%] inline-flex"
+          className="right-[14vw] top-[46%]"
           style={{ ["--dur" as string]: "4.2s" }}
         >
-          <Icon.Globe size={12} /> {dict.hero.float2}
+          <Icon.Truck size={12} /> {dict.hero.float2}
         </FloatBox>
       </div>
 
-      <Container className="relative flex flex-1 flex-col justify-center">
+      <Container className="relative flex min-h-0 flex-1 flex-col justify-center">
         <div className="max-w-2xl">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="w-fit items-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-800 backdrop-blur inline-flex sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.22em] dark:border-white/15 dark:bg-white/10 dark:text-brand-200"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-800 backdrop-blur sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em] dark:border-white/15 dark:bg-white/10 dark:text-brand-200"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500/80" />
@@ -224,12 +176,12 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="mt-5 text-balance text-3xl font-semibold leading-[1.08] tracking-tight text-brand-950 sm:mt-6 sm:text-6xl sm:leading-[1.05] md:text-7xl dark:text-white"
+            className="mt-3 text-balance text-[clamp(1.75rem,6vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-brand-950 sm:mt-5 dark:text-white"
           >
             {dict.hero.titleLine1}
             <span className="block">
               {dict.hero.titleLine2}{" "}
-              <span className="bg-gradient-to-r from-brand-700 via-brand-500 to-brand-800 bg-clip-text text-transparent dark:from-brand-200 dark:via-white dark:to-brand-300">
+              <span className="bg-linear-to-r from-brand-700 via-brand-500 to-brand-800 bg-clip-text text-transparent dark:from-brand-200 dark:via-white dark:to-brand-300">
                 {dict.hero.titleAccent}
               </span>
             </span>
@@ -239,7 +191,7 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-4 max-w-xl text-sm leading-relaxed text-brand-950/85 sm:mt-8 sm:text-lg dark:text-white/85"
+            className="mt-3 line-clamp-4 max-w-xl text-sm leading-relaxed text-brand-950/85 sm:mt-6 sm:text-lg dark:text-white/85"
           >
             {dict.hero.subtitle}
           </motion.p>
@@ -248,15 +200,15 @@ export function Hero({ locale, dict }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-7 flex flex-col items-stretch gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center"
+            className="mt-5 flex flex-col items-stretch gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center"
           >
             <Button onClick={openQuote} size="lg" className="w-full sm:w-auto">
               {dict.hero.ctaContact}
               <Icon.ArrowRight size={18} />
             </Button>
             <Link
-              href={`/${locale}/services`}
-              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-6 text-base font-medium text-brand-900 backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-700/60 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:px-8 dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/45 dark:hover:bg-white/20"
+              href={`/${locale}#tariffs`}
+              className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-6 py-3.5 text-base font-medium text-brand-900 backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-700/60 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto sm:px-8 dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/45 dark:hover:bg-white/20"
             >
               {dict.hero.ctaServices}
             </Link>
@@ -265,8 +217,8 @@ export function Hero({ locale, dict }: Props) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45 }}
-            className="mt-9 hidden flex-wrap items-center gap-2.5 text-brand-950/85 sm:flex dark:text-white/85"
+            transition={{ duration: 0.8, delay: 0.42 }}
+            className="mt-5 flex flex-wrap items-center gap-2 text-brand-950/85 sm:mt-7 sm:gap-2.5 dark:text-white/85"
           >
             <Pill>
               <Icon.Shield size={12} /> {dict.hero.badgeInsuredValue}
@@ -274,14 +226,22 @@ export function Hero({ locale, dict }: Props) {
             <Pill>
               <Icon.Lightning size={12} /> {dict.hero.badgeExpressValue}
             </Pill>
-            <Pill>
+            <Pill className="hidden sm:inline-flex">
               <Icon.Truck size={12} /> {dict.hero.routeValue}
+            </Pill>
+            <Pill className="gap-2">
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500/70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
+              <span className="truncate">{dict.hero.routeLabel}</span>
+              <span className="sr-only">{dict.hero.tickerLabel}</span>
             </Pill>
           </motion.div>
         </div>
       </Container>
 
-      <Container className="relative mt-8 sm:mt-12">
+      <Container className="relative mt-4 shrink-0 sm:mt-8">
         <motion.ul
           initial="hidden"
           animate="visible"
@@ -291,7 +251,7 @@ export function Hero({ locale, dict }: Props) {
               transition: { staggerChildren: 0.08, delayChildren: 0.55 },
             },
           }}
-          className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4"
+          className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4"
         >
           {stats.map((s, idx) => (
             <motion.li
@@ -300,9 +260,11 @@ export function Hero({ locale, dict }: Props) {
                 hidden: { opacity: 0, y: 18 },
                 visible: { opacity: 1, y: 0 },
               }}
-              className={`rounded-2xl border border-brand-700/20 bg-white/60 p-3 backdrop-blur-md sm:p-4 dark:border-white/15 dark:bg-white/10 ${idx >= 2 ? "hidden sm:block" : ""}`}
+              className={`rounded-2xl border border-brand-700/20 bg-white/60 px-3 py-2 backdrop-blur-md sm:p-4 dark:border-white/15 dark:bg-white/10 ${
+                idx >= 2 ? "hidden sm:block" : ""
+              }`}
             >
-              <div className="text-2xl font-semibold text-brand-950 sm:text-4xl dark:text-white">
+              <div className="text-xl font-semibold text-brand-950 sm:text-4xl dark:text-white">
                 {s.value}
               </div>
               <div className="mt-0.5 text-[9px] font-medium uppercase tracking-widest text-brand-900/75 sm:mt-1 sm:text-[11px] dark:text-white/75">
@@ -313,17 +275,10 @@ export function Hero({ locale, dict }: Props) {
         </motion.ul>
       </Container>
 
-      {/* Animated road accent */}
+      {/* Sits above the backdrop but below the copy, so it never veils text. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-16 left-0 right-0 z-0 h-[2px]"
-      >
-        <div className="showcase-road h-full w-full" />
-      </div>
-
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-28"
+        className="pointer-events-none absolute bottom-0 left-0 right-0 -z-10 h-16 sm:h-20"
         style={{
           background:
             "linear-gradient(180deg, transparent 0%, var(--background) 100%)",
@@ -337,12 +292,12 @@ function Pill({
   children,
   className,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border border-brand-700/25 bg-white/65 px-2.5 py-1 text-[11px] backdrop-blur sm:gap-2 sm:px-3 sm:py-1.5 sm:text-xs dark:border-white/20 dark:bg-white/10 ${className ?? ""}`}
+      className={`inline-flex max-w-full items-center gap-1.5 rounded-full border border-brand-700/25 bg-white/65 px-2.5 py-1 text-[11px] backdrop-blur sm:gap-2 sm:px-3 sm:py-1.5 sm:text-xs dark:border-white/20 dark:bg-white/10 ${className ?? ""}`}
     >
       {children}
     </span>
@@ -354,9 +309,9 @@ function FloatBox({
   className,
   style,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }) {
   return (
     <div
@@ -365,72 +320,5 @@ function FloatBox({
     >
       {children}
     </div>
-  );
-}
-
-function CubeIcon({
-  variant,
-}: {
-  variant: "cross" | "grid" | "triangle" | "circles";
-}) {
-  const stroke = "currentColor";
-  const props = {
-    width: 70,
-    height: 70,
-    viewBox: "0 0 60 60",
-    fill: "none",
-    className: "text-brand-700 dark:text-cyan-300",
-  } as const;
-  if (variant === "cross") {
-    return (
-      <svg {...props}>
-        <path
-          d="M5 30 L55 30 M30 5 L30 55 M10 10 L50 50 M50 10 L10 50"
-          stroke={stroke}
-          strokeWidth={1.5}
-          strokeLinecap="round"
-        />
-        <circle cx="30" cy="30" r="12" stroke={stroke} strokeWidth={1.5} />
-        <circle cx="30" cy="30" r="22" stroke={stroke} strokeWidth={1} />
-      </svg>
-    );
-  }
-  if (variant === "grid") {
-    return (
-      <svg {...props}>
-        <rect
-          x="10"
-          y="10"
-          width="40"
-          height="40"
-          stroke={stroke}
-          strokeWidth={1.5}
-          rx={4}
-        />
-        <path
-          d="M10 25 L50 25 M10 35 L50 35 M25 10 L25 50 M35 10 L35 50"
-          stroke={stroke}
-          strokeWidth={1}
-        />
-      </svg>
-    );
-  }
-  if (variant === "triangle") {
-    return (
-      <svg {...props}>
-        <polygon
-          points="30,5 55,50 5,50"
-          stroke={stroke}
-          strokeWidth={1.5}
-          fill="none"
-        />
-      </svg>
-    );
-  }
-  return (
-    <svg {...props}>
-      <circle cx="30" cy="30" r="20" stroke={stroke} strokeWidth={1.5} />
-      <circle cx="30" cy="30" r="5" fill={stroke} opacity={0.5} />
-    </svg>
   );
 }

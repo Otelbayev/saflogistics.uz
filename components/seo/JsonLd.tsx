@@ -1,14 +1,51 @@
 import type { Dictionary } from "@/lib/i18n";
 import type { Locale } from "@/lib/locales";
-import { siteConfig } from "@/lib/site";
+import {
+  indexableImages,
+  indexableVideos,
+  primaryImage,
+  route,
+  siteConfig,
+  tariffs,
+} from "@/lib/site";
 
 type Props = { locale: Locale; dict: Dictionary };
 
 export function BusinessJsonLd({ locale, dict }: Props) {
   const url = `${siteConfig.url}/${locale}`;
-  const logoUrl = `${siteConfig.url}${siteConfig.logo}`;
-  const ogImage = `${siteConfig.url}${siteConfig.ogImage}`;
-  const founderImage = `${siteConfig.url}${siteConfig.founderImage}`;
+  const abs = (path: string) => `${siteConfig.url}${path}`;
+  const logoUrl = abs(siteConfig.logo);
+  const founderImage = abs(siteConfig.founderImage);
+
+  /** Every indexable photo as a full ImageObject, so Google can attribute
+   *  captions and dimensions instead of guessing from the markup. */
+  const imageObjects = indexableImages.map((img) => ({
+    "@type": "ImageObject",
+    "@id": `${abs(img.path)}#image`,
+    contentUrl: abs(img.path),
+    url: abs(img.path),
+    width: img.width,
+    height: img.height,
+    caption: dict.seo.alt[img.altKey],
+    representativeOfPage: img.altKey === primaryImage.altKey,
+    creditText: siteConfig.name,
+    license: `${siteConfig.url}/${locale}`,
+    acquireLicensePage: `${siteConfig.url}/${locale}#contact`,
+  }));
+
+  const videoObjects = indexableVideos.map((v) => ({
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${abs(v.path)}#video`,
+    name: dict.seo.video[v.titleKey].title,
+    description: dict.seo.video[v.titleKey].description,
+    thumbnailUrl: [abs(v.thumbnail)],
+    contentUrl: abs(v.path),
+    uploadDate: "2026-08-05T00:00:00+05:00",
+    isFamilyFriendly: true,
+    inLanguage: locale,
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+  }));
 
   const founderPerson = {
     "@context": "https://schema.org",
@@ -41,6 +78,7 @@ export function BusinessJsonLd({ locale, dict }: Props) {
     "@type": ["LocalBusiness", "MovingCompany"],
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
+    legalName: siteConfig.legalName,
     alternateName: [
       "SAF Logistics Uzbekistan",
       "САФ Логистикс",
@@ -56,12 +94,21 @@ export function BusinessJsonLd({ locale, dict }: Props) {
       width: 1080,
       height: 1080,
     },
-    image: [logoUrl, ogImage, `${siteConfig.url}/images/semi-truck-port-sunset.jpg`],
+    image: imageObjects,
+    photo: imageObjects,
     telephone: siteConfig.phones,
     email: siteConfig.email,
+    contactPoint: siteConfig.phones.map((phone) => ({
+      "@type": "ContactPoint",
+      telephone: phone,
+      contactType: "customer service",
+      areaServed: [route.origin.code, route.destination.code],
+      availableLanguage: ["uz", "ru", "en"],
+    })),
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Abu Sulaymon Banokatiy street, 209",
       addressLocality: "Tashkent",
       addressCountry: "UZ",
     },
@@ -83,26 +130,22 @@ export function BusinessJsonLd({ locale, dict }: Props) {
     founder: { "@id": `${siteConfig.url}/#founder` },
     employee: { "@id": `${siteConfig.url}/#founder` },
     sameAs: [siteConfig.instagram],
-    areaServed: siteConfig.partnerCountries.map((c) => ({
+    areaServed: [route.origin, route.destination].map((p) => ({
       "@type": "Country",
-      name: c.name,
+      name: p.country,
     })),
     serviceType: [
-      "Air freight",
-      "Sea freight",
       "Road freight",
+      "Express road freight China to Uzbekistan",
       "Customs clearance",
       "B2B logistics",
-      "China sourcing",
-      "Aviayuk Xitoy",
-      "Dengiz konteyneri",
-      "Avtoyo'l yetkazib berish",
+      "Cargo insurance",
+      "Avtotransport (fura) yetkazib berish",
+      "Xitoydan O'zbekistonga ekspress yetkazib berish",
       "Bojxona rasmiylashtirish",
-      "Авиаперевозки из Китая",
-      "Морские контейнерные перевозки",
       "Автомобильные грузоперевозки",
+      "Экспресс-доставка из Китая в Узбекистан",
       "Таможенное оформление",
-      "Международная логистика",
     ],
     aggregateRating: {
       "@type": "AggregateRating",
@@ -110,19 +153,35 @@ export function BusinessJsonLd({ locale, dict }: Props) {
       reviewCount: "120",
     },
     knowsAbout: [
-      "Freight forwarding",
+      "Road freight forwarding",
       "Guangzhou Tashkent route",
       "Customs clearance Uzbekistan",
-      "International logistics",
-      "Logistika",
-      "Yuk tashish",
+      "Fura bilan yuk tashish",
       "Xitoydan O'zbekistonga yuk",
-      "Логистика",
-      "Грузоперевозки",
-      "Международная доставка",
-      "Доставка из Китая",
-      "Логистика Узбекистан",
+      "Автоперевозки Китай Узбекистан",
+      "Доставка из Китая фурой",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: dict.services.title,
+      itemListElement: (["express", "standard", "econom"] as const).map(
+        (key) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: `${dict.services[key].name} — ${route.origin.city} → ${route.destination.city}`,
+            description: dict.services[key].description,
+            serviceType: "Road freight",
+          },
+          deliveryLeadTime: {
+            "@type": "QuantitativeValue",
+            minValue: tariffs[key].min,
+            maxValue: tariffs[key].max,
+            unitCode: "DAY",
+          },
+        }),
+      ),
+    },
   };
 
   const website = {
@@ -145,43 +204,47 @@ export function BusinessJsonLd({ locale, dict }: Props) {
         name: dict.nav.home,
         item: url,
       },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: dict.nav.services,
-        item: `${url}/services`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: dict.nav.contact,
-        item: `${url}/contact`,
-      },
     ],
   };
 
+  /** Binds the page to one representative photo — this is the association
+   *  Google uses when deciding which image to show beside the result. */
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: dict.seo.homeTitle,
+    description: dict.seo.homeDescription,
+    inLanguage: locale,
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    about: { "@id": `${siteConfig.url}/#organization` },
+    primaryImageOfPage: { "@id": `${abs(primaryImage.path)}#image` },
+    image: imageObjects,
+    thumbnailUrl: abs(primaryImage.path),
+    breadcrumb: { "@id": `${url}#breadcrumb` },
+    datePublished: "2019-01-01",
+    dateModified: new Date().toISOString().slice(0, 10),
+  };
+
+  const graphs = [
+    founderPerson,
+    business,
+    website,
+    { ...breadcrumb, "@id": `${url}#breadcrumb` },
+    webPage,
+    ...videoObjects,
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(founderPerson) }}
-      />
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(business) }}
-      />
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
-      />
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
-      />
+      {graphs.map((node, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }}
+        />
+      ))}
     </>
   );
 }

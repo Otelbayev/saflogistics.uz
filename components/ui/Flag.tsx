@@ -1,20 +1,8 @@
 import Image from "next/image";
 import clsx from "clsx";
 
-const PNG_FLAGS = new Set([
-  "ae",
-  "de",
-  "gb",
-  "in",
-  "jp",
-  "kr",
-  "kz",
-  "ru",
-  "tr",
-  "us",
-  "uz",
-  "cn",
-]);
+// Only the two countries on the real route ship with the site.
+const PNG_FLAGS = new Set(["cn", "uz"]);
 
 type Props = {
   code: string;

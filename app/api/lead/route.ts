@@ -26,6 +26,11 @@ function escapeMdV2(s: string): string {
   return s.replace(/([_*\[\]()~`>#+\-=|{}.!\\])/g, "\\$1");
 }
 
+/** Inside a MarkdownV2 link target only ')' and '\' need escaping. */
+function escapeMdV2Url(s: string): string {
+  return s.replace(/([)\\])/g, "\\$1");
+}
+
 function isRateLimited(key: string): boolean {
   const now = Date.now();
   const hits = (recent.get(key) ?? []).filter((t) => now - t < rateWindowMs);
@@ -38,34 +43,21 @@ function isRateLimited(key: string): boolean {
   return false;
 }
 
-function sourceLabel(s: LeadSource): string {
-  switch (s) {
-    case "contact":
-      return "📬 Contact form";
-    case "quote":
-      return "⚡ Quote modal";
-    case "newsletter":
-      return "📰 Newsletter";
-  }
-}
-
+/**
+ * Kept deliberately short: the manager reads these on a phone and needs the
+ * name, a tappable number and the note — nothing else competing for attention.
+ * The phone goes on its own line as a tel: link so it dials in one tap.
+ */
 function buildMessage(body: LeadBody): string {
-  const src = body.source ?? "contact";
-  const lines: string[] = [
-    `*${escapeMdV2(sourceLabel(src))}*`,
-    `_SAF Logistics · new lead_`,
-    "",
-  ];
-  if (body.name) lines.push(`👤 *Name:* ${escapeMdV2(body.name)}`);
-  if (body.phone) lines.push(`📞 *Phone:* ${escapeMdV2(body.phone)}`);
-  if (body.message)
-    lines.push("", `💬 *Message:*`, escapeMdV2(body.message));
-  lines.push("");
-  const meta: string[] = [];
-  if (body.locale) meta.push(`lang: ${body.locale}`);
-  if (body.page) meta.push(`page: ${body.page}`);
-  meta.push(`at: ${new Date().toISOString()}`);
-  lines.push(`\`${escapeMdV2(meta.join(" · "))}\``);
+  const lines: string[] = [];
+
+  if (body.name) lines.push(`*${escapeMdV2(body.name)}*`);
+  if (body.phone) {
+    const dial = body.phone.replace(/[^\d+]/g, "");
+    lines.push(`[${escapeMdV2(body.phone)}](tel:${escapeMdV2Url(dial)})`);
+  }
+  if (body.message) lines.push("", escapeMdV2(body.message));
+
   return lines.join("\n");
 }
 
@@ -94,10 +86,7 @@ async function sendToTelegram(text: string): Promise<void> {
 export async function POST(request: NextRequest) {
   const key = getClientKey(request);
   if (isRateLimited(key)) {
-    return Response.json(
-      { ok: false, error: "rate_limited" },
-      { status: 429 },
-    );
+    return Response.json({ ok: false, error: "rate_limited" }, { status: 429 });
   }
 
   let body: LeadBody;
@@ -119,10 +108,7 @@ export async function POST(request: NextRequest) {
   const phone = body.phone?.trim() ?? "";
 
   if (!name) {
-    return Response.json(
-      { ok: false, error: "missing_name" },
-      { status: 400 },
-    );
+    return Response.json({ ok: false, error: "missing_name" }, { status: 400 });
   }
   if (!phone || !isValidPhoneNumber(phone)) {
     return Response.json(
@@ -145,9 +131,6 @@ export async function POST(request: NextRequest) {
     return Response.json({ ok: true });
   } catch (err) {
     console.error("telegram send failed", err);
-    return Response.json(
-      { ok: false, error: "send_failed" },
-      { status: 500 },
-    );
+    return Response.json({ ok: false, error: "send_failed" }, { status: 500 });
   }
 }

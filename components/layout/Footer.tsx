@@ -52,7 +52,10 @@ export function Footer({ locale, dict }: Props) {
             <p className="mt-5 max-w-md text-sm text-muted">
               {dict.footer.about}
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+              {dict.footer.follow}
+            </div>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
               <a
                 href={siteConfig.instagram}
                 target="_blank"
@@ -80,46 +83,24 @@ export function Footer({ locale, dict }: Props) {
               {dict.footer.quickLinks}
             </h4>
             <ul className="mt-4 space-y-2 text-sm text-muted">
-              <li>
-                <Link
-                  href={`/${locale}/services`}
-                  className="hover:text-foreground"
-                >
-                  {dict.footer.links.services}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/contact`}
-                  className="hover:text-foreground"
-                >
-                  {dict.footer.links.contact}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}#network`}
-                  className="hover:text-foreground"
-                >
-                  {dict.footer.links.tracking}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}#about`}
-                  className="hover:text-foreground"
-                >
-                  {dict.footer.links.about}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}#`}
-                  className="hover:text-foreground"
-                >
-                  {dict.footer.links.privacy}
-                </Link>
-              </li>
+              {(
+                [
+                  ["tariffs", "tariffs"],
+                  ["calculator", "calculator"],
+                  ["route", "route"],
+                  ["guarantees", "guarantees"],
+                  ["contact", "contact"],
+                ] as const
+              ).map(([key, anchor]) => (
+                <li key={key}>
+                  <Link
+                    href={`/${locale}#${anchor}`}
+                    className="hover:text-foreground"
+                  >
+                    {dict.footer.links[key]}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -128,9 +109,19 @@ export function Footer({ locale, dict }: Props) {
               {dict.footer.contacts}
             </h4>
             <ul className="mt-4 space-y-3 text-sm text-muted">
-              <li className="flex items-center gap-2">
-                <Icon.MapPin size={16} />
-                <span>{dict.contact.address}</span>
+              <li className="flex items-start gap-2">
+                <span className="mt-0.5 shrink-0">
+                  <Icon.MapPin size={16} />
+                </span>
+                <span>
+                  <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-muted/80">
+                    {dict.footer.legalLabel}
+                  </span>
+                  <span className="mt-0.5 block font-medium text-foreground">
+                    {siteConfig.legalName}
+                  </span>
+                  {siteConfig.legalAddress}
+                </span>
               </li>
               <li className="flex items-center gap-2">
                 <Icon.Clock size={16} />
@@ -157,7 +148,7 @@ export function Footer({ locale, dict }: Props) {
       <div className="relative border-t border-border">
         <Container className="flex flex-col items-center justify-between gap-3 py-6 text-xs text-muted sm:flex-row">
           <span>
-            © {year} {dict.site.name}. {dict.footer.rights}
+            © {year} {siteConfig.legalName}. {dict.footer.rights}
           </span>
           <span>{dict.footer.madeWith} · SAF Logistics</span>
         </Container>

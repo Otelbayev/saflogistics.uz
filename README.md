@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# saflogistics.uz
 
-## Getting Started
+Single-page landing site for **SAF EXPRESS LOGISTICS MChJ** — express road freight (truck only) on one corridor: **Guangzhou, China → Tashkent, Uzbekistan**.
 
-First, run the development server:
+Built with Next.js 16 (App Router, Turbopack build / webpack dev), React 19, Tailwind CSS 4 and framer-motion. Three locales: `uz` (default), `ru`, `en`.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000 → redirects to /uz
+npm run build   # production build + type check
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Path | Purpose |
+| --- | --- |
+| `app/[locale]/page.tsx` | The landing page — composes every section in order |
+| `app/[locale]/layout.tsx` | Locale layout, metadata, theme + quote-modal providers |
+| `app/api/lead/route.ts` | Lead endpoint used by all three forms |
+| `components/sections/` | Page sections |
+| `components/ui/` | Shared primitives (`Container`, `SectionHeading`, `Reveal`, `Button`, `Icon`, …) |
+| `lib/site.ts` | **Single source of truth**: route, tariffs, legal and contact details |
+| `messages/{uz,ru,en}.json` | All copy. `uz.json` defines the `Dictionary` type — keys must match across all three |
+| `proxy.ts` | Next 16 proxy (formerly middleware): prefixes locale-less paths with `/uz` |
+| `docs/` | Client-supplied brief and media (git-ignored) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Positioning rules
 
-## Learn More
+The site is deliberately narrow. Two rules come straight from the client brief and must survive every future edit:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Road freight only.** Air and sea delivery must never appear as a company service anywhere on the site — copy, SEO keywords or JSON-LD.
+2. **One corridor only.** China → Uzbekistan. No country lists, no "15+ partner countries".
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Editing tariffs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Transit times live in `lib/site.ts` (`tariffs`) and nowhere else — the tariff cards, comparison table, route section and profit calculator all derive from them. Tariff **names and descriptions** live in `messages/*.json` under `services.{express,standard,econom}`.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Current windows: Express 8–12, Standard 14–18, Econom 20–30 days.

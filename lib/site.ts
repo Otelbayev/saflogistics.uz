@@ -1,31 +1,56 @@
 import type { Locale } from "./locales";
+import type { Dictionary } from "./i18n";
 
-export type PartnerCountry = {
+export type RoutePoint = {
   code: string;
-  name: string;
+  country: string;
+  city: string;
   lat: number;
   lng: number;
-  hub?: boolean;
 };
 
-const partnerCountries: PartnerCountry[] = [
-  { code: "CN", name: "China", lat: 23.1291, lng: 113.2644, hub: true },
-  { code: "UZ", name: "Uzbekistan", lat: 41.3111, lng: 69.2797 },
-  { code: "KZ", name: "Kazakhstan", lat: 51.1605, lng: 71.4704 },
-  { code: "RU", name: "Russia", lat: 55.7558, lng: 37.6173 },
-  { code: "TR", name: "Türkiye", lat: 41.0082, lng: 28.9784 },
-  { code: "KR", name: "South Korea", lat: 37.5665, lng: 126.978 },
-  { code: "JP", name: "Japan", lat: 35.6762, lng: 139.6503 },
-  { code: "DE", name: "Germany", lat: 52.52, lng: 13.405 },
-  { code: "AE", name: "UAE", lat: 25.2048, lng: 55.2708 },
-  { code: "IN", name: "India", lat: 28.6139, lng: 77.209 },
-  { code: "US", name: "USA", lat: 38.9072, lng: -77.0369 },
-  { code: "GB", name: "United Kingdom", lat: 51.5072, lng: -0.1276 },
-];
+/**
+ * The company runs a single corridor: China → Uzbekistan, trucks only.
+ * Every geography-facing block (route diagram, JSON-LD areaServed, flags)
+ * reads from here — adding a direction means editing this object alone.
+ */
+export const route: { origin: RoutePoint; destination: RoutePoint } = {
+  origin: {
+    code: "CN",
+    country: "China",
+    city: "Guangzhou",
+    lat: 23.1291,
+    lng: 113.2644,
+  },
+  destination: {
+    code: "UZ",
+    country: "Uzbekistan",
+    city: "Tashkent",
+    lat: 41.3111,
+    lng: 69.2797,
+  },
+};
+
+export const tariffKeys = ["express", "standard", "econom"] as const;
+export type TariffKey = (typeof tariffKeys)[number];
+
+/**
+ * Delivery windows in days. These numbers live only here — cards, the
+ * comparison table and the profit calculator all derive from them.
+ */
+export const tariffs: Record<
+  TariffKey,
+  { min: number; max: number; featured?: boolean }
+> = {
+  express: { min: 8, max: 12, featured: true },
+  standard: { min: 14, max: 18 },
+  econom: { min: 20, max: 30 },
+};
 
 export const siteConfig = {
   name: "SAF Logistics",
   shortName: "SAF",
+  legalName: "SAF EXPRESS LOGISTICS MChJ",
   url: "https://saflogistics.uz",
   founder: "Farrukh Mashanpin",
   founderAlt: ["Farrux Mashanpin", "Фаррух Машанпин", "Фаррух Машанпин SAF"],
@@ -35,14 +60,118 @@ export const siteConfig = {
   phones: ["+998935118484", "+998771730303"],
   email: "info@saflogistics.uz",
   address: "Tashkent, Uzbekistan",
+  legalAddress: "Toshkent sh., Abu Sulaymon Banokatiy ko‘chasi, 209",
   mapUrl: "https://maps.app.goo.gl/u8wdkLZBd8cnEKNz7",
   mapEmbed:
     "https://www.google.com/maps?q=Tashkent%2C+Uzbekistan&output=embed",
   instagram: "https://www.instagram.com/farrukh_mashanpin",
   instagramHandle: "farrukh_mashanpin",
   hub: { city: "Guangzhou", country: "China", lat: 23.1291, lng: 113.2644 },
-  partnerCountries,
 };
+
+/**
+ * Media that should be discoverable in Google Images / Video.
+ *
+ * These point at the original files in /public, not the `/_next/image`
+ * transform URLs — the originals are stable, cacheable and are what Google
+ * indexes. `altKey` maps into `dict.seo.alt.*` so captions stay translated.
+ */
+export type IndexableImage = {
+  path: string;
+  altKey: keyof Dictionary["seo"]["alt"];
+  width: number;
+  height: number;
+};
+
+export const indexableImages: IndexableImage[] = [
+  { path: "/images/logo1.jpg", altKey: "logo", width: 1080, height: 1080 },
+  { path: "/images/boss.jpg", altKey: "founder", width: 1000, height: 1000 },
+  {
+    path: "/images/semi-truck-port-sunset.jpg",
+    altKey: "truckPort",
+    width: 1920,
+    height: 1280,
+  },
+  {
+    path: "/images/industrial-port-container-yard.jpg",
+    altKey: "containerYard",
+    width: 1920,
+    height: 1280,
+  },
+  {
+    path: "/images/truck-logistics-operations-dusk.jpg",
+    altKey: "operationsDusk",
+    width: 1920,
+    height: 1280,
+  },
+  {
+    path: "/images/large-cargo-truck-driving-rural-highway-with-trailer-logistics-freight-transport.jpg",
+    altKey: "truckHighway",
+    width: 1920,
+    height: 1280,
+  },
+  {
+    path: "/images/emerald-green-truck-forest-highway-modern-power-transport.jpg",
+    altKey: "truckForest",
+    width: 1920,
+    height: 1280,
+  },
+  {
+    path: "/images/a-large-white-semi-truck-is-driving-down-a-highway-free-video-poster.png",
+    altKey: "heroPoster",
+    width: 1920,
+    height: 1080,
+  },
+  {
+    path: "/images/5secondtuck-poster.png",
+    altKey: "routePoster",
+    width: 1920,
+    height: 1080,
+  },
+  {
+    path: "/images/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046-poster.png",
+    altKey: "ctaPoster",
+    width: 1920,
+    height: 1080,
+  },
+  { path: "/images/poster.png", altKey: "fleetPoster", width: 1920, height: 1080 },
+];
+
+/** The landscape image used for social cards and as the page's primary image. */
+export const primaryImage = indexableImages.find(
+  (i) => i.altKey === "truckPort",
+)!;
+
+export type IndexableVideo = {
+  path: string;
+  thumbnail: string;
+  titleKey: keyof Dictionary["seo"]["video"];
+};
+
+export const indexableVideos: IndexableVideo[] = [
+  {
+    path: "/videos/a-large-white-semi-truck-is-driving-down-a-highway-free-video.mp4",
+    thumbnail:
+      "/images/a-large-white-semi-truck-is-driving-down-a-highway-free-video-poster.png",
+    titleKey: "hero",
+  },
+  {
+    path: "/videos/15373444_3840_2160_25fps.mp4",
+    thumbnail: "/images/poster.png",
+    titleKey: "fleet",
+  },
+  {
+    path: "/videos/5secondtuck.mp4",
+    thumbnail: "/images/5secondtuck-poster.png",
+    titleKey: "route",
+  },
+  {
+    path: "/videos/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046.mp4",
+    thumbnail:
+      "/images/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046-poster.png",
+    titleKey: "highway",
+  },
+];
 
 export const localeHtmlLang: Record<Locale, string> = {
   uz: "uz-UZ",

@@ -35,7 +35,7 @@ export function Founder({ dict }: Props) {
               <div className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-2xl border border-white/20 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]">
                 <Image
                   src="/images/boss.jpg"
-                  alt={dict.founder.name}
+                  alt={dict.seo.alt.founder}
                   fill
                   sizes="(min-width: 1024px) 420px, 80vw"
                   className="object-cover"
