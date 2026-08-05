@@ -14,6 +14,7 @@ import { WhyUs } from "@/components/sections/WhyUs";
 import { Founder } from "@/components/sections/Founder";
 import { Contact } from "@/components/sections/Contact";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { HomePageJsonLd } from "@/components/seo/JsonLd";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -36,6 +37,11 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Founder dict={dict} />
       <Contact dict={dict} />
       <CtaBanner dict={dict} />
+      {/* Page-level structured data. Previously emitted by the layout, which
+          meant every route claimed to be the landing page; it lives here now
+          so the topic pages can describe themselves. Visible output for this
+          page is unchanged. */}
+      <HomePageJsonLd locale={locale} dict={dict} />
     </>
   );
 }

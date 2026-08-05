@@ -11,6 +11,13 @@ import {
 
 type Props = { locale: Locale; dict: Dictionary };
 
+/**
+ * Site-wide nodes: the organisation, the website, the founder and the videos.
+ * These describe the business rather than the current URL, so the layout can
+ * safely render them on every page. Anything that describes *one page* — the
+ * `WebPage` and `BreadcrumbList` nodes — belongs to that page instead, or two
+ * pages end up claiming the same `@id` with different content.
+ */
 export function BusinessJsonLd({ locale, dict }: Props) {
   const url = `${siteConfig.url}/${locale}`;
   const abs = (path: string) => `${siteConfig.url}${path}`;
@@ -194,16 +201,38 @@ export function BusinessJsonLd({ locale, dict }: Props) {
     publisher: { "@id": `${siteConfig.url}/#organization` },
   };
 
+  const graphs = [founderPerson, business, website, ...videoObjects];
+
+  return (
+    <>
+      {graphs.map((node, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }}
+        />
+      ))}
+    </>
+  );
+}
+
+/**
+ * The landing page's own `WebPage` and `BreadcrumbList`. Split out of
+ * `BusinessJsonLd` so it stays on the landing page only: the topic pages under
+ * `[locale]/[slug]` emit their own equivalents via `TopicJsonLd`, and two
+ * `WebPage` nodes describing different URLs on one document is exactly the
+ * inconsistency that makes Google discard the markup.
+ */
+export function HomePageJsonLd({ locale, dict }: Props) {
+  const url = `${siteConfig.url}/${locale}`;
+  const abs = (path: string) => `${siteConfig.url}${path}`;
+
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: dict.nav.home,
-        item: url,
-      },
+      { "@type": "ListItem", position: 1, name: dict.nav.home, item: url },
     ],
   };
 
@@ -220,25 +249,15 @@ export function BusinessJsonLd({ locale, dict }: Props) {
     isPartOf: { "@id": `${siteConfig.url}/#website` },
     about: { "@id": `${siteConfig.url}/#organization` },
     primaryImageOfPage: { "@id": `${abs(primaryImage.path)}#image` },
-    image: imageObjects,
     thumbnailUrl: abs(primaryImage.path),
     breadcrumb: { "@id": `${url}#breadcrumb` },
     datePublished: "2019-01-01",
     dateModified: new Date().toISOString().slice(0, 10),
   };
 
-  const graphs = [
-    founderPerson,
-    business,
-    website,
-    { ...breadcrumb, "@id": `${url}#breadcrumb` },
-    webPage,
-    ...videoObjects,
-  ];
-
   return (
     <>
-      {graphs.map((node, i) => (
+      {[breadcrumb, webPage].map((node, i) => (
         <script
           key={i}
           type="application/ld+json"

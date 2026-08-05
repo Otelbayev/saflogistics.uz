@@ -1,15 +1,18 @@
 import type { MetadataRoute } from "next";
 import { getDictionary } from "@/lib/i18n";
 import { locales } from "@/lib/locales";
+import { topicLanguages, topicPath, topics } from "@/lib/pages";
 import { indexableImages, indexableVideos, siteConfig } from "@/lib/site";
 
 const abs = (path: string) => `${siteConfig.url}${path}`;
 
 /**
- * The site is a single landing page in three languages, so it has exactly
- * three canonical URLs. Rather than padding that with thin pages, each URL
- * carries the full image and video sitemap extensions — that is what actually
- * gets the photography into Google Images and the clips into Video search.
+ * Three landing-page URLs plus one URL per topic page per locale.
+ *
+ * The landing pages carry the full image and video sitemap extensions — that
+ * is what gets the photography into Google Images and the clips into Video
+ * search. The topic pages carry a single representative image each; padding
+ * them with the whole media library would only dilute the signal.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
@@ -23,7 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     locales.map((l) => [l, `${siteConfig.url}/${l}`]),
   );
 
-  return locales.map((locale) => {
+  const landing: MetadataRoute.Sitemap = locales.map((locale) => {
     const dict = dicts[locale];
 
     return {
@@ -50,4 +53,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })),
     };
   });
+
+  const topicPages: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    topics.map((topic) => ({
+      url: `${siteConfig.url}${topicPath(topic, locale)}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: topic.priority,
+      alternates: { languages: topicLanguages(topic, siteConfig.url) },
+      images: [abs(topic.image)],
+    })),
+  );
+
+  return [...landing, ...topicPages];
 }
