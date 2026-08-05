@@ -193,7 +193,7 @@ export function ProfitCalculator({ dict }: Props) {
 
         <Reveal
           from="zoom"
-          className="mx-auto mt-14 max-w-5xl overflow-hidden rounded-4xl border border-border bg-surface p-6 shadow-(--shadow-elevated) sm:p-10"
+          className="mx-auto mt-14 max-w-6xl overflow-hidden rounded-4xl border border-border bg-surface p-6 shadow-(--shadow-elevated) sm:p-10 xl:max-w-7xl"
         >
           <div className="grid gap-10 lg:grid-cols-2">
             {/* Inputs */}

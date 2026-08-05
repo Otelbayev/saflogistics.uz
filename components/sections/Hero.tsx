@@ -17,18 +17,22 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { useQuoteModal } from "@/components/ui/QuoteModal";
 import { canStream } from "@/components/ui/VideoBackdrop";
+import { CountUp } from "@/components/ui/CountUp";
 
 type Props = {
   locale: Locale;
   dict: Dictionary;
 };
 
+/** `value` is the number that counts up; prefix/suffix frame it. */
 const stats = [
-  { key: "years", value: "5+" },
-  { key: "projects", value: "500+" },
-  { key: "saved", value: "15–20" },
-  { key: "clients", value: "120+" },
+  { key: "years", value: 5, suffix: "+" },
+  { key: "projects", value: 500, suffix: "+" },
+  { key: "saved", value: 20, prefix: "15–" },
+  { key: "clients", value: 120, suffix: "+" },
 ] as const;
+
+const whole = (n: number) => String(Math.round(n));
 
 /**
  * The hero is sized to exactly one viewport (h-svh) and never scrolls
@@ -265,7 +269,12 @@ export function Hero({ locale, dict }: Props) {
               }`}
             >
               <div className="text-xl font-semibold text-brand-950 sm:text-4xl dark:text-white">
-                {s.value}
+                <CountUp
+                  value={s.value}
+                  format={whole}
+                  prefix={"prefix" in s ? s.prefix : ""}
+                  suffix={"suffix" in s ? s.suffix : ""}
+                />
               </div>
               <div className="mt-0.5 text-[9px] font-medium uppercase tracking-widest text-brand-900/75 sm:mt-1 sm:text-[11px] dark:text-white/75">
                 {dict.hero.stats[s.key]}
