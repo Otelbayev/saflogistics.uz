@@ -74,7 +74,7 @@ export function Hero({ locale, dict }: Props) {
   return (
     <section
       id="showcase"
-      className="relative isolate flex h-svh min-h-[34rem] w-full flex-col overflow-hidden pb-6 pt-16 sm:pb-10 sm:pt-24"
+      className="relative isolate flex h-svh min-h-136 w-full flex-col overflow-hidden pb-6 pt-16 sm:pb-10 sm:pt-24"
     >
       {/* Poster paints first (optimised by next/image); the clip fades in
           later, desktop only. The <video> gets no `poster` attribute — that
