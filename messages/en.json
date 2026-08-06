@@ -21,6 +21,10 @@
       "доставка из Китая в Узбекистан",
       "автоперевозки Китай Узбекистан",
       "Гуанчжоу Ташкент доставка",
+      "Yiwu Tashkent delivery",
+      "Yiwu Tashkent cargo",
+      "Иу Ташкент доставка",
+      "Iu Toshkent yuk",
       "SAF Logistics",
       "SAF EXPRESS LOGISTICS",
       "Saflogistics.uz",
@@ -39,7 +43,9 @@
       "heroPoster": "White semi truck on the highway — express delivery from China to Uzbekistan",
       "routePoster": "SAF Logistics truck on the Guangzhou–Tashkent route",
       "ctaPoster": "Cargo truck with trailer on the highway — SAF Logistics delivery",
-      "fleetPoster": "SAF Logistics truck fleet — China–Uzbekistan corridor"
+      "fleetPoster": "SAF Logistics truck fleet — China–Uzbekistan corridor",
+      "guangzhou": "Guangzhou, China — city panorama where the SAF Logistics warehouse is located",
+      "yiwu": "Yiwu, China — the international wholesale market city hosting the SAF Logistics warehouse"
     },
     "video": {
       "hero": {
@@ -51,7 +57,7 @@
         "description": "The SAF Logistics road fleet working the China–Uzbekistan corridor."
       },
       "route": {
-        "title": "Guangzhou → Tashkent route",
+        "title": "China → Tashkent route",
         "description": "China to Uzbekistan by truck only, door to door."
       },
       "highway": {
@@ -74,16 +80,16 @@
     "titleLine1": "From China to Uzbekistan",
     "titleLine2": "by truck —",
     "titleAccent": "at air freight speed",
-    "subtitle": "SAF Logistics delivers from China to Uzbekistan by truck only, through our own office in Guangzhou. Express tariff — 8–12 days, guaranteed transit time, insured cargo and a dedicated personal manager.",
+    "subtitle": "SAF Logistics delivers from China to Uzbekistan by truck only, through two own warehouses in China: Guangzhou and Yiwu. Express tariff — 8–12 days, guaranteed transit time, insured cargo and a dedicated personal manager.",
     "ctaContact": "Get a free quote",
     "ctaServices": "See tariffs",
     "tickerLabel": "Live corridor",
-    "routeLabel": "Guangzhou → Tashkent",
+    "routeLabel": "Guangzhou · Yiwu → Tashkent",
     "routeValue": "Door to door",
     "badgeInsuredValue": "100% insured",
     "badgeExpressValue": "8–12 days",
     "float1": "500+ shipments delivered",
-    "float2": "One corridor — deep expertise",
+    "float2": "Deep expertise — Guangzhou and Yiwu",
     "stats": {
       "years": "Years of experience",
       "projects": "Shipments delivered",
@@ -97,7 +103,7 @@
     "description": "SAF Logistics is not a broad-profile forwarder covering the whole world. We specialise in a single corridor: China to Uzbekistan by truck. That is exactly why our transit times are no accident — they are the result of proven routes and control at every stage.",
     "highlight": {
       "hub": "Main hub",
-      "city": "Guangzhou, China",
+      "city": "Guangzhou & Yiwu, China",
       "since": "since 2019",
       "projectsNumber": "500+",
       "projectsLabel": "shipments delivered on time"
@@ -112,8 +118,8 @@
         "desc": "We work with importing companies: full truckloads and large consignments."
       },
       "hub": {
-        "title": "Our own Guangzhou office",
-        "desc": "Cargo received, inspected and consolidated on site — no middlemen."
+        "title": "Two own warehouses in China",
+        "desc": "Cargo received, inspected and consolidated on site in Guangzhou and Yiwu — no middlemen."
       }
     }
   },
@@ -202,42 +208,49 @@
   "calculator": {
     "eyebrow": "Profit calculator",
     "title": "How much money will speed bring you?",
-    "description": "Calculate how much extra annual profit a shorter deal cycle delivers. No sign-up required.",
+    "description": "Calculate how much extra annual profit faster delivery brings by turning your capital over more often. No sign-up required.",
     "inputs": {
-      "investment": "Investment per consignment",
-      "investmentHint": "in US dollars",
-      "margin": "Average margin per consignment",
-      "marginHint": "in percent",
-      "cycle": "Current full cycle (purchase → sale)",
-      "cycleHint": "in days",
+      "investment": "Investment per batch",
+      "investmentHint": "in US dollars, per consignment",
+      "margin": "Average margin",
+      "marginHint": "in percent — per consignment",
+      "cycle": "Current full cycle",
+      "cycleHint": "in days — from purchase to sale",
+      "delivery": "Current delivery time",
+      "deliveryHint": "in days — how long shipping from China takes you now",
       "tariff": "SAF tariff"
     },
     "results": {
       "title": "Result",
       "saved": "Time saved",
-      "perBatch": "Profit per consignment",
+      "newCycle": "New cycle with SAF",
       "turnsWithout": "Turns per year — without SAF",
       "turnsWith": "Turns per year — with SAF",
       "extraTurns": "Additional turns",
+      "perBatch": "Profit per consignment",
       "extraProfit": "Additional profit per year",
       "days": "days",
       "turns": "times",
       "emphasis": "And all of it — without increasing your investment. Purely through speed."
     },
     "warning": {
-      "tooFast": "Your current cycle is shorter than the selected tariff's transit time. Pick another tariff or enter your real cycle length.",
+      "tooFast": "Your current delivery is already faster than the selected tariff. Pick a faster tariff or enter your real transit time.",
+      "deliveryTooLong": "Delivery time cannot be longer than the full cycle — delivery is one leg inside it. Check the values.",
       "invalid": "Fill in every field with a value greater than zero to calculate."
     },
     "cta": "Show me how you do it",
     "ctaSecondary": "Discuss with a manager"
   },
   "route": {
-    "title": "Guangzhou → Tashkent",
-    "subtitle": "One corridor — deep expertise",
-    "description": "We do not spread ourselves across dozens of countries. Every resource is focused on a single corridor — which is why we deliver the best transit time and price on it.",
-    "originLabel": "Departure point",
+    "title": "Guangzhou & Yiwu → Tashkent",
+    "subtitle": "Two warehouses — one corridor",
+    "description": "We do not spread ourselves across dozens of countries. Every resource is focused on a single corridor — China to Uzbekistan. We run two own warehouses in China: Guangzhou and Yiwu. That is why we deliver the best transit times and prices on this route.",
+    "originLabel": "Departure points",
     "destinationLabel": "Delivery point",
-    "origin": "Guangzhou, China",
+    "origins": {
+      "guangzhou": "Guangzhou, China",
+      "yiwu": "Yiwu, China"
+    },
     "destination": "Tashkent, Uzbekistan",
     "hubTag": "HUB",
     "transportLabel": "Transport",
@@ -320,8 +333,8 @@
         "desc": "24/7 contact: one accountable person answers every question."
       },
       "expert": {
-        "title": "Expert on a single corridor",
-        "desc": "Deep experience and personal connections on the Guangzhou–Tashkent route."
+        "title": "Expert",
+        "desc": "Deep experience on the China–Uzbekistan corridor and personal connections in Guangzhou and Yiwu."
       },
       "tech": {
         "title": "Tracking at every stage",
@@ -334,7 +347,7 @@
     "name": "Farrukh Mashanpin",
     "role": "Expert on the China–Uzbekistan corridor",
     "specialty": "Head of the Guangzhou hub",
-    "bio": "An expert who has shaped cargo flows between China and Uzbekistan for years. He knows the Guangzhou market from the inside and personally calculates the route for every client.",
+    "bio": "An expert who has shaped cargo flows between China and Uzbekistan for years. He knows the Guangzhou and Yiwu markets from the inside and personally calculates the route for every client.",
     "instagram": "Instagram profile"
   },
   "ctaBanner": {
@@ -349,16 +362,16 @@
     "description": "Our specialists will calculate the right tariff and transit time for your cargo.",
     "phoneLabel": "Phone numbers",
     "hoursLabel": "Working hours",
-    "hoursWeek": "Monday–Saturday: 10:00–19:00",
-    "hoursSun": "Sunday: closed",
+    "hoursWeek": "24/7 — round the clock",
+    "hoursSun": "No days off",
     "addressLabel": "Address",
     "address": "209 Abu Sulaymon Banokatiy street, Tashkent",
     "mapTitle": "Find us on the map",
-    "mapCta": "Open in Google Maps",
+    "mapCta": "Open in Yandex Maps",
     "socialLabel": "Social networks",
     "form": {
       "title": "Request a free quote",
-      "subtitle": "During working hours a personal manager replies within 30 minutes.",
+      "subtitle": "A personal manager replies within 30 minutes.",
       "name": "Your name",
       "namePlaceholder": "Full name",
       "phone": "Phone",
@@ -426,12 +439,12 @@
       "emailLabel": "Email",
       "addressLabel": "Address",
       "hoursLabel": "Working hours",
-      "hoursValue": "Monday–Saturday, 10:00–19:00"
+      "hoursValue": "24/7, no days off"
     },
     "items": {
       "chinaFreight": {
         "title": "Freight from China to Uzbekistan — by truck, door to door",
-        "description": "SAF Logistics moves cargo from China to Uzbekistan by road only: our own office in Guangzhou, transit from 8–12 days, insurance and customs clearance in one contract.",
+        "description": "SAF Logistics moves cargo from China to Uzbekistan by road only: our own warehouses in Guangzhou and Yiwu, transit from 8–12 days, insurance and customs clearance in one contract.",
         "eyebrow": "Core service",
         "h1": "Freight from China to Uzbekistan",
         "intro": "There are three ways to move goods from China to Uzbekistan: air is fast but expensive, rail is cheap but tied to a schedule, and road sits in between as the most practical option. SAF Logistics does only the third, and puts every resource into a single corridor.",
@@ -439,14 +452,14 @@
           {
             "h2": "Why road freight",
             "body": [
-              "A truck is loaded at the warehouse in Guangzhou and unloaded at your warehouse in Tashkent. In between there is no transshipment, no lifting a container from a train onto a chassis, and no waiting for a berth. Every handling step is another day, another cost and another chance of damage.",
+              "A truck is loaded at our warehouse in Guangzhou or Yiwu and unloaded at your warehouse in Tashkent. In between there is no transshipment, no lifting a container from a train onto a chassis, and no waiting for a berth. Every handling step is another day, another cost and another chance of damage.",
               "Rail runs on a schedule: the train does not leave until it is full. A truck leaves the day the cargo is ready. In time-sensitive importing that difference is often two weeks."
             ]
           },
           {
             "h2": "How the process runs",
             "body": [
-              "Stage one: our Guangzhou office takes delivery from your supplier. No intermediary — our own staff member sees the goods, checks quantity and packaging, photographs them where needed and sends you a report. A discrepancy caught here costs ten times less than the same discrepancy caught in transit.",
+              "Stage one: our office in Guangzhou or Yiwu takes delivery from your supplier. No intermediary — our own staff member sees the goods, checks quantity and packaging, photographs them where needed and sends you a report. A discrepancy caught here costs ten times less than the same discrepancy caught in transit.",
               "Stage two is consolidation and loading. If you buy from several suppliers, their shipments are combined into one truck. Stage three is the road and the border. Stage four is customs clearance and handover in Tashkent.",
               "Through all of it you have a single point of contact — a dedicated manager. They do not wait for you to call chasing your cargo; they report each time the status changes."
             ]
@@ -469,7 +482,7 @@
         "facts": [
           {
             "label": "Corridor",
-            "value": "Guangzhou → Tashkent"
+            "value": "Guangzhou & Yiwu → Tashkent"
           },
           {
             "label": "Mode",
@@ -487,11 +500,11 @@
         "faq": [
           {
             "q": "Do you collect cargo from other Chinese cities?",
-            "a": "Our hub is in Guangzhou. Delivery from suppliers in nearby provinces to our Guangzhou warehouse can be arranged — agree it with your manager."
+            "a": "We have hubs in Guangzhou and Yiwu. Delivery from suppliers in nearby provinces to whichever warehouse suits you can be arranged — agree it with your manager."
           },
           {
             "q": "Can you combine shipments from several suppliers?",
-            "a": "Yes, consolidation is a standard service. Your suppliers ship to our Guangzhou warehouse and we build them into one consignment."
+            "a": "Yes, consolidation is a standard service. Your suppliers ship to our Guangzhou or Yiwu warehouse and we build them into one consignment."
           },
           {
             "q": "Is there a minimum volume?",
@@ -505,7 +518,7 @@
       },
       "express": {
         "title": "Express delivery from China — 8–12 days, guaranteed transit",
-        "description": "Express tariff: Guangzhou to Tashkent in 8–12 days by truck. Priority loading, accelerated customs, a dedicated manager and 24/7 monitoring.",
+        "description": "Express tariff: China (Guangzhou and Yiwu) to Tashkent in 8–12 days by truck. Priority loading, accelerated customs, a dedicated manager and 24/7 monitoring.",
         "eyebrow": "Tariff",
         "h1": "Express delivery: 8–12 days",
         "intro": "Express does not simply mean faster. It means your cargo is first in every queue: first to load, first at the border, first through clearance. The transit time is written into the contract.",
@@ -553,7 +566,7 @@
         "faq": [
           {
             "q": "What do the 8–12 days measure?",
-            "a": "From the day the cargo leaves our Guangzhou warehouse to the day it is handed to you in Tashkent, customs clearance included."
+            "a": "From the day the cargo leaves our Guangzhou or Yiwu warehouse to the day it is handed to you in Tashkent, customs clearance included."
           },
           {
             "q": "What happens if the transit time is missed?",
@@ -571,7 +584,7 @@
       },
       "standard": {
         "title": "Standard delivery from China — 14–18 days, balanced option",
-        "description": "Standard tariff: Guangzhou to Tashkent in 14–18 days. A balance of price and speed, scheduled departures, customs and insurance included in the rate.",
+        "description": "Standard tariff: China to Tashkent in 14–18 days. A balance of price and speed, scheduled departures, customs and insurance included in the rate.",
         "eyebrow": "Tariff",
         "h1": "Standard delivery: 14–18 days",
         "intro": "Standard is the tariff most of our clients choose, for a straightforward reason: it is meaningfully cheaper than Express and close to twice as fast as Economy.",
@@ -587,7 +600,7 @@
             "h2": "How it differs from Express",
             "body": [
               "The transport is identical — same truck, same route. The only difference is the queue: a standard shipment waits for a full truckload to form, and customs paperwork is prepared on the normal cycle.",
-              "The service content is the same: tracking, customs clearance and cargo insurance are all included here too. A manager is still assigned, working business hours rather than 24/7."
+              "The service content is the same: tracking, customs clearance and cargo insurance are all included here too. A manager is still assigned and we are reachable 24/7 — the difference is that loading is not prioritised the way it is on express."
             ]
           },
           {
@@ -631,13 +644,13 @@
           },
           {
             "q": "Is Standard also door to door?",
-            "a": "Yes, on all three tariffs the cargo goes from the Guangzhou warehouse to your address in Tashkent."
+            "a": "Yes, on all three tariffs the cargo goes from our warehouse in China to your address in Tashkent."
           }
         ]
       },
       "econom": {
         "title": "Economy delivery from China — 20–30 days, budget option",
-        "description": "Economy tariff: Guangzhou to Tashkent in 20–30 days. The lowest rate, for large consignments and non-urgent planned purchasing.",
+        "description": "Economy tariff: China to Tashkent in 20–30 days. The lowest rate, for large consignments and non-urgent planned purchasing.",
         "eyebrow": "Tariff",
         "h1": "Economy delivery: 20–30 days",
         "intro": "Economy is for the case where price is the priority. The cargo still moves by truck and still door to door — the schedule is simply looser.",
@@ -702,17 +715,24 @@
         ]
       },
       "route": {
-        "title": "Guangzhou–Tashkent route: the road, the border and the timings",
-        "description": "The road route from Guangzhou to Tashkent: over 7,000 km, crossing at the China–Kazakhstan or China–Kyrgyzstan border, explained stage by stage.",
+        "title": "China–Tashkent route: Guangzhou and Yiwu, the border and transit times",
+        "description": "The road route from Guangzhou and Yiwu to Tashkent: over 6,000–7,000 km, the China–Kazakhstan or China–Kyrgyzstan border, explained stage by stage.",
         "eyebrow": "Corridor",
-        "h1": "Guangzhou → Tashkent: how the route works",
-        "intro": "This page answers one question: how a truck gets from Guangzhou to Tashkent, and where the time is actually spent. Understanding the route is what makes planning realistic.",
+        "h1": "Guangzhou and Yiwu → Tashkent: how the route works",
+        "intro": "This page answers one question: how a truck travels from our warehouses in China — Guangzhou and Yiwu — to Tashkent, and where exactly the time goes. Understanding the route makes transit planning realistic.",
         "sections": [
           {
-            "h2": "Distance and the overall picture",
+            "h2": "Distance and the wider picture",
             "body": [
-              "Guangzhou sits in southern China; Tashkent is in Central Asia. By road the distance between them is over 7,000 kilometres — the truck crosses China from south to north-west, then exits toward the border through Xinjiang.",
-              "One truck covers that entire distance without a transshipment stop. The cargo is never moved onto another vehicle, and that is precisely what makes the transit time predictable."
+              "Guangzhou sits in southern China, Yiwu in the east, in Zhejiang province. Tashkent is in Central Asia. By road the distance from either point exceeds 6,000 kilometres: the truck crosses China heading north-west and reaches the border through Xinjiang.",
+              "One truck covers that distance without a break in the chain. The cargo is never moved onto another vehicle in transit — that is what makes the transit time predictable."
+            ]
+          },
+          {
+            "h2": "Why two departure points",
+            "body": [
+              "Guangzhou is a major manufacturing and trading centre in southern China: electronics, furniture, clothing, building materials. Yiwu is the world's largest small-commodity market — accessories, toys, stationery, household goods.",
+              "We run our own warehouse in both cities. Cargo goes to whichever is closer to your supplier, so you do not pay for unnecessary domestic haulage. Tariffs, transit times and terms are identical at both: Express 8–12, Standard 14–18, Economy 20–30 days."
             ]
           },
           {
@@ -725,15 +745,15 @@
           {
             "h2": "Why only one corridor",
             "body": [
-              "A forwarder covering dozens of countries knows each lane superficially. We chose the opposite: one corridor, but one where we know every border post, every partner and every seasonal bottleneck.",
+              "A forwarder working across dozens of countries knows every route superficially. We chose the opposite: one corridor — China to Uzbekistan — where we know every border post, every partner and every seasonal bottleneck.",
               "We have run this route since 2019 and delivered more than 500 shipments on time. Knowing a route means seeing a disruption coming and telling the client before it lands on them."
             ]
           }
         ],
         "facts": [
           {
-            "label": "Origin",
-            "value": "Guangzhou, China"
+            "label": "Departure points",
+            "value": "Guangzhou and Yiwu, China"
           },
           {
             "label": "Destination",
@@ -741,7 +761,7 @@
           },
           {
             "label": "Distance",
-            "value": "Over 7,000 km"
+            "value": "over 6,000 km"
           },
           {
             "label": "On this route",
@@ -756,6 +776,10 @@
           {
             "q": "Does winter extend the transit time?",
             "a": "Weather and border congestion can affect it. In those cases your manager warns you in advance."
+          },
+          {
+            "q": "Can I deliver cargo to the Yiwu warehouse?",
+            "a": "Yes. The Yiwu and Guangzhou warehouses work identically: same tariffs, same transit times, same service. You pick whichever is closer to your supplier — your manager provides the address."
           },
           {
             "q": "Do you deliver to other cities in Uzbekistan?",
@@ -851,7 +875,7 @@
           {
             "h2": "How the cargo is actually protected",
             "body": [
-              "Insurance is the last line of defence, not the first. The first is the inspection when we take delivery in Guangzhou: quantity, packaging condition and the visible state of the goods are documented.",
+              "Insurance is the last line of defence, not the first. The first is the inspection when we take delivery at our warehouse in China: quantity, packaging condition and the visible state of the goods are documented.",
               "The second is the absence of transshipment. A large share of damage happens during handling, and there is none in our scheme.",
               "The third is monitoring and fast reaction to deviations. When something goes wrong we know the same day, not several days later."
             ]
@@ -1001,13 +1025,13 @@
           },
           {
             "label": "Response",
-            "value": "Business days, 10:00–19:00"
+            "value": "24/7"
           }
         ],
         "faq": [
           {
             "q": "How long does delivery take?",
-            "a": "It depends on the tariff: Express 8–12 days, Standard 14–18 days, Economy 20–30 days. The clock runs from our Guangzhou warehouse to handover in Tashkent."
+            "a": "It depends on the tariff: Express 8–12 days, Standard 14–18 days, Economy 20–30 days. The clock runs from our warehouse in China to handover in Tashkent."
           },
           {
             "q": "How is the price calculated?",
@@ -1023,11 +1047,11 @@
           },
           {
             "q": "Is the cargo transshipped in transit?",
-            "a": "No. It is loaded in Guangzhou and unloaded in Tashkent — between those points it never moves onto another vehicle."
+            "a": "No. It is loaded in Guangzhou or Yiwu and unloaded in Tashkent — between those points it never moves onto another vehicle."
           },
           {
             "q": "Can you combine shipments from several suppliers?",
-            "a": "Yes. Your suppliers deliver to our Guangzhou warehouse and we consolidate there."
+            "a": "Yes. Your suppliers deliver to our Guangzhou or Yiwu warehouse and we consolidate there."
           },
           {
             "q": "Can I track my cargo?",
@@ -1035,7 +1059,7 @@
           },
           {
             "q": "Can you check a supplier in China?",
-            "a": "Our Guangzhou office verifies quantity and packaging on receipt and sends a report. A full supplier audit is arranged separately."
+            "a": "Our offices in Guangzhou and Yiwu verify quantity and packaging on receipt and sends a report. A full supplier audit is arranged separately."
           },
           {
             "q": "Is there a contract?",
@@ -1049,7 +1073,7 @@
       },
       "company": {
         "title": "SAF Logistics — on the China–Uzbekistan corridor since 2019",
-        "description": "About SAF Logistics: our own office in Guangzhou, 500+ shipments delivered on time, founded by Farrukh Mashanpin, a forwarder specialising in one corridor.",
+        "description": "About SAF Logistics: our own warehouses in Guangzhou and Yiwu, 500+ shipments delivered on time, founded by Farrukh Mashanpin, a forwarder specialising in one corridor.",
         "eyebrow": "Company",
         "h1": "About SAF Logistics",
         "intro": "SAF is a company built on one promise: on time. That is not a slogan but the operating model — we measure ourselves in days saved for the client, not tonnes moved.",
@@ -1063,10 +1087,10 @@
             ]
           },
           {
-            "h2": "Our own office in Guangzhou",
+            "h2": "Our own warehouses in China",
             "body": [
               "Many forwarders operate in China through a local intermediary. It is cheaper and it costs you control: nobody actually looks at the cargo, and a problem surfaces only after it has reached Uzbekistan.",
-              "Our Guangzhou office is our own. Our staff receive the cargo, inspect it, consolidate it and supervise loading. When something goes wrong it is resolved in China, not 7,000 kilometres later."
+              "Our offices and warehouses in China — in Guangzhou and Yiwu — are our own. Our staff receive the cargo, inspect it, consolidate it and supervise loading. When something goes wrong it is resolved in China, not 7,000 kilometres later."
             ]
           },
           {
@@ -1096,7 +1120,7 @@
           },
           {
             "label": "China hub",
-            "value": "Guangzhou — our own office"
+            "value": "Guangzhou & Yiwu — our own warehouses"
           },
           {
             "label": "Founder",
@@ -1106,11 +1130,11 @@
         "faq": [
           {
             "q": "Which lanes does SAF cover?",
-            "a": "One only: China → Uzbekistan, the Guangzhou–Tashkent corridor, by road."
+            "a": "One only: China → Uzbekistan. Departures from our Guangzhou and Yiwu warehouses, by road."
           },
           {
             "q": "Do you have your own office in China?",
-            "a": "Yes, in Guangzhou. Receipt, inspection and consolidation are done on site without intermediaries."
+            "a": "Yes, in Guangzhou and Yiwu. Receipt, inspection and consolidation are done on site without intermediaries."
           },
           {
             "q": "Do you work with private individuals?",
@@ -1118,7 +1142,7 @@
           },
           {
             "q": "Can I visit your office?",
-            "a": "Yes — 209 Abu Sulaymon Banokatiy Street, Tashkent. Open Monday to Saturday, 10:00–19:00."
+            "a": "Yes — 209 Abu Sulaymon Banokatiy Street, Tashkent. We are reachable 24/7; an office visit is arranged with your manager in advance."
           }
         ]
       }

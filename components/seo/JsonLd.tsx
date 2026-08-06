@@ -3,8 +3,9 @@ import type { Locale } from "@/lib/locales";
 import {
   indexableImages,
   indexableVideos,
+  destination,
   primaryImage,
-  route,
+  routePoints,
   siteConfig,
   tariffs,
 } from "@/lib/site";
@@ -109,7 +110,7 @@ export function BusinessJsonLd({ locale, dict }: Props) {
       "@type": "ContactPoint",
       telephone: phone,
       contactType: "customer service",
-      areaServed: [route.origin.code, route.destination.code],
+      areaServed: [...new Set(routePoints.map((p) => p.code))],
       availableLanguage: ["uz", "ru", "en"],
     })),
     priceRange: "$$",
@@ -119,6 +120,13 @@ export function BusinessJsonLd({ locale, dict }: Props) {
       addressLocality: "Tashkent",
       addressCountry: "UZ",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: siteConfig.office.lat,
+      longitude: siteConfig.office.lng,
+    },
+    hasMap: siteConfig.mapUrl,
+    // Open around the clock — schema.org expresses that as every day 00:00–23:59.
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -129,18 +137,18 @@ export function BusinessJsonLd({ locale, dict }: Props) {
           "Thursday",
           "Friday",
           "Saturday",
+          "Sunday",
         ],
-        opens: "10:00",
-        closes: "19:00",
+        opens: "00:00",
+        closes: "23:59",
       },
     ],
     founder: { "@id": `${siteConfig.url}/#founder` },
     employee: { "@id": `${siteConfig.url}/#founder` },
     sameAs: [siteConfig.instagram],
-    areaServed: [route.origin, route.destination].map((p) => ({
-      "@type": "Country",
-      name: p.country,
-    })),
+    areaServed: [...new Set(routePoints.map((p) => p.country))].map(
+      (name) => ({ "@type": "Country", name }),
+    ),
     serviceType: [
       "Road freight",
       "Express road freight China to Uzbekistan",
@@ -162,6 +170,7 @@ export function BusinessJsonLd({ locale, dict }: Props) {
     knowsAbout: [
       "Road freight forwarding",
       "Guangzhou Tashkent route",
+      "Yiwu Tashkent route",
       "Customs clearance Uzbekistan",
       "Fura bilan yuk tashish",
       "Xitoydan O'zbekistonga yuk",
@@ -176,7 +185,7 @@ export function BusinessJsonLd({ locale, dict }: Props) {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: `${dict.services[key].name} — ${route.origin.city} → ${route.destination.city}`,
+            name: `${dict.services[key].name} — China → ${destination.city}`,
             description: dict.services[key].description,
             serviceType: "Road freight",
           },

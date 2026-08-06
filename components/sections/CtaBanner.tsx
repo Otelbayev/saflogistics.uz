@@ -14,7 +14,7 @@ export function CtaBanner({ dict }: Props) {
   const { open } = useQuoteModal();
 
   return (
-    <section className="relative py-24">
+    <section className="relative py-16 sm:py-24">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

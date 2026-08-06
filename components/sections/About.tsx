@@ -18,7 +18,7 @@ const featureIcons = {
 
 export function About({ dict }: Props) {
   return (
-    <section id="about" className="relative py-24 sm:py-32">
+    <section id="about" className="relative py-16 sm:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"

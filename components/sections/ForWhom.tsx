@@ -10,7 +10,7 @@ type Props = { dict: Dictionary };
 
 export function ForWhom({ dict }: Props) {
   return (
-    <section id="for-whom" className="relative py-24 sm:py-32">
+    <section id="for-whom" className="relative py-16 sm:py-32">
       <Container>
         <SectionHeading
           eyebrow={dict.forWhom.eyebrow}
@@ -18,7 +18,7 @@ export function ForWhom({ dict }: Props) {
           subtitle={dict.forWhom.description}
         />
 
-        <ul className="mx-auto mt-14 flex max-w-4xl flex-wrap justify-center gap-3">
+        <ul className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-3 sm:mt-14">
           {dict.forWhom.items.map((item, i) => (
             <li key={item}>
               <Reveal

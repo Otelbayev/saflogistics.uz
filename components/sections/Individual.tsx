@@ -71,7 +71,7 @@ export function Individual({ dict }: Props) {
     <section
       id="individual"
       ref={sectionRef}
-      className="relative py-24 sm:py-32"
+      className="relative py-16 sm:py-32"
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -94,7 +94,7 @@ export function Individual({ dict }: Props) {
           className="max-w-3xl"
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+        <div className="mt-10 grid gap-6 sm:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           {/* Selector list */}
           <Reveal from="left" className="flex flex-col gap-2">
             {itemKeys.map((key, i) => {

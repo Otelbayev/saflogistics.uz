@@ -18,7 +18,7 @@ const reasonIcons = {
 
 export function Philosophy({ dict }: Props) {
   return (
-    <section id="philosophy" className="relative py-24 sm:py-32">
+    <section id="philosophy" className="relative py-16 sm:py-32">
       <Container>
         <Reveal
           from="zoom"

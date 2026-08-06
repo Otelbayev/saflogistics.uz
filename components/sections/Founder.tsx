@@ -11,7 +11,7 @@ type Props = { dict: Dictionary };
 
 export function Founder({ dict }: Props) {
   return (
-    <section id="founder" className="relative py-24 sm:py-32">
+    <section id="founder" className="relative py-16 sm:py-32">
       <Container>
         <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-brand p-8 text-white sm:p-14">
           <div

@@ -16,7 +16,7 @@ export function Footer({ locale, dict }: Props) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-24 overflow-hidden border-t border-border bg-surface">
+    <footer className="relative mt-16 overflow-hidden border-t border-border bg-surface sm:mt-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-60"
@@ -25,8 +25,8 @@ export function Footer({ locale, dict }: Props) {
             "radial-gradient(60% 40% at 20% 0%, color-mix(in oklab, var(--color-brand-800) 25%, transparent), transparent), radial-gradient(40% 40% at 100% 100%, color-mix(in oklab, var(--color-brand-500) 18%, transparent), transparent)",
         }}
       />
-      <Container className="relative py-16">
-        <div className="mb-12">
+      <Container className="relative py-12 sm:py-16">
+        <div className="mb-10 sm:mb-12">
           <Newsletter dict={dict} />
         </div>
 
@@ -120,16 +120,14 @@ export function Footer({ locale, dict }: Props) {
                   <span className="mt-0.5 block font-medium text-foreground">
                     {siteConfig.legalName}
                   </span>
-                  {siteConfig.legalAddress}
+                  {dict.contact.address}
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <Icon.Clock size={16} />
-                <span>{dict.contact.hoursWeek}</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Icon.Clock size={16} />
-                <span>{dict.contact.hoursSun}</span>
+                <span>
+                  {dict.contact.hoursWeek} · {dict.contact.hoursSun}
+                </span>
               </li>
               <li className="flex items-center gap-2">
                 <Icon.Mail size={16} />

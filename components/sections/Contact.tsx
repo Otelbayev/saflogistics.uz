@@ -34,7 +34,7 @@ function InfoCard({
 
 export function Contact({ dict }: Props) {
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
+    <section id="contact" className="relative py-16 sm:py-32">
       <Container>
         <SectionHeading
           eyebrow={dict.contact.subtitle}
@@ -43,7 +43,7 @@ export function Contact({ dict }: Props) {
         />
       </Container>
 
-      <Container className="mt-14 grid gap-10 lg:grid-cols-5">
+      <Container className="mt-10 grid gap-10 sm:mt-14 lg:grid-cols-5">
         <div className="space-y-6 lg:col-span-2">
           <InfoCard
             icon={<Icon.Phone size={18} />}
@@ -110,7 +110,7 @@ export function Contact({ dict }: Props) {
         </div>
       </Container>
 
-      <Container className="mt-12">
+      <Container className="mt-8 sm:mt-12">
         <div className="overflow-hidden rounded-3xl border border-border shadow-(--shadow-soft)">
           <div className="flex items-center justify-between gap-3 border-b border-border bg-surface px-6 py-4">
             <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export function Contact({ dict }: Props) {
             </a>
           </div>
           <iframe
-            title="SAF Logistics on Google Maps"
+            title="SAF Logistics on Yandex Maps"
             src={siteConfig.mapEmbed}
             className="h-[420px] w-full border-0"
             loading="lazy"

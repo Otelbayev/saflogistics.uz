@@ -30,11 +30,11 @@ const items = [
 
 export function WhyUs({ dict }: Props) {
   return (
-    <section id="why" className="relative py-24 sm:py-32">
+    <section id="why" className="relative py-16 sm:py-32">
       <Container>
         <SectionHeading eyebrow={dict.why.subtitle} title={dict.why.title} />
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-4">
           {items.map((item, i) => {
             const Ico = item.icon;
             const hero = i === 0;

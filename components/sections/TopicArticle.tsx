@@ -21,7 +21,7 @@ export function TopicArticle({ locale, dict, topic }: Props) {
   const home = `/${locale}`;
 
   return (
-    <article className="pb-24">
+    <article className="pb-16 sm:pb-24">
       <header className="relative overflow-hidden border-b border-border bg-surface">
         <Image
           src={topic.image}

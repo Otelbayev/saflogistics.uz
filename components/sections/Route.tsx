@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Dictionary } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
@@ -8,9 +9,16 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import { Flag } from "@/components/ui/Flag";
 import { VideoBackdrop } from "@/components/ui/VideoBackdrop";
-import { route, tariffKeys, tariffs } from "@/lib/site";
+import { destination, originKeys, origins, tariffKeys, tariffs } from "@/lib/site";
 
 type Props = { dict: Dictionary };
+
+/** Where each origin's connector leaves the left edge of the 128×80 viewBox. */
+const MERGE_Y = 40;
+const CONNECTORS = [
+  { from: 18, delay: 0 },
+  { from: 62, delay: 1.2 },
+];
 
 function Endpoint({
   code,
@@ -18,20 +26,39 @@ function Endpoint({
   place,
   hubTag,
   align,
+  image,
 }: {
   code: string;
   label: string;
   place: string;
   hubTag?: string;
   align: "start" | "end";
+  image?: { src: string; alt: string };
 }) {
   return (
     <div
-      className={`flex items-center gap-4 rounded-3xl border border-white/20 bg-brand-950/50 p-5 backdrop-blur-md ${
-        align === "end" ? "md:flex-row-reverse md:text-right" : ""
-      }`}
+      className={`relative isolate flex items-center gap-4 overflow-hidden rounded-3xl border border-white/20 p-5 ${
+        image ? "" : "bg-brand-950/50 backdrop-blur-md"
+      } ${align === "end" ? "md:flex-row-reverse md:text-right" : ""}`}
     >
-      <Flag code={code} width={44} square className="h-11 w-11" />
+      {image ? (
+        <>
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(min-width: 768px) 40vw, 100vw"
+            className="-z-10 object-cover"
+          />
+          {/* The city photo is texture, not subject: without a heavy scrim the
+              white label and place name lose contrast over the bright sky. */}
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 bg-linear-to-r from-brand-950/95 via-brand-950/80 to-brand-950/55"
+          />
+        </>
+      ) : null}
+      <Flag code={code} width={44} square className="h-11 w-11 shrink-0" />
       <div className="min-w-0">
         <div
           className={`flex items-center gap-2 ${align === "end" ? "md:justify-end" : ""}`}
@@ -55,7 +82,7 @@ function Endpoint({
 
 export function Route({ dict }: Props) {
   return (
-    <section id="route" className="relative overflow-hidden py-24 sm:py-32">
+    <section id="route" className="relative overflow-hidden py-16 sm:py-32">
       <Container>
         <SectionHeading
           eyebrow={dict.route.subtitle}
@@ -65,7 +92,7 @@ export function Route({ dict }: Props) {
 
         <Reveal
           from="zoom"
-          className="relative isolate mx-auto mt-14 max-w-6xl overflow-hidden rounded-4xl border border-border shadow-(--shadow-elevated)"
+          className="relative isolate mx-auto mt-10 max-w-6xl overflow-hidden rounded-4xl border border-border shadow-(--shadow-elevated) sm:mt-14"
         >
           <VideoBackdrop
             src="/videos/5secondtuck.mp4"
@@ -97,46 +124,75 @@ export function Route({ dict }: Props) {
           {/* Corridor endpoints */}
           <div className="relative p-5 sm:p-8">
             <div className="grid items-center gap-5 md:grid-cols-[1fr_auto_1fr]">
-              <Endpoint
-                code={route.origin.code}
-                label={dict.route.originLabel}
-                place={dict.route.origin}
-                hubTag={dict.route.hubTag}
-                align="start"
-              />
+              {/* Two warehouses in China feeding one destination. */}
+              <div className="space-y-3">
+                {originKeys.map((key) => {
+                  const { code, image } = origins[key];
+                  return (
+                    <Endpoint
+                      key={key}
+                      code={code}
+                      label={dict.route.originLabel}
+                      place={dict.route.origins[key]}
+                      hubTag={dict.route.hubTag}
+                      align="start"
+                      image={
+                        image
+                          ? {
+                              src: image.path,
+                              alt: dict.seo.alt[image.altKey],
+                            }
+                          : undefined
+                      }
+                    />
+                  );
+                })}
+              </div>
 
-              <div className="relative h-14 md:h-20 md:w-32">
+              <div className="relative h-16 md:h-32 md:w-32">
                 <svg
                   viewBox="0 0 128 80"
                   className="absolute inset-0 h-full w-full text-brand-300"
                   aria-hidden
                 >
-                  <path
-                    d="M4 40 H124"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeOpacity="0.35"
-                    strokeWidth="2"
-                    strokeDasharray="7 7"
-                    strokeLinecap="round"
-                  />
-                  <motion.circle
-                    r="4"
-                    cy="40"
-                    fill="currentColor"
-                    initial={{ cx: 4, opacity: 0 }}
-                    animate={{ cx: 124, opacity: [0, 1, 1, 0] }}
-                    transition={{
-                      duration: 2.4,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
+                  {CONNECTORS.map((c) => (
+                    <path
+                      key={c.from}
+                      d={`M4 ${c.from} L124 ${MERGE_Y}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeOpacity="0.35"
+                      strokeWidth="2"
+                      strokeDasharray="7 7"
+                      strokeLinecap="round"
+                    />
+                  ))}
+                  {/* cx and cy both interpolate linearly, so the dot tracks the
+                      straight connector exactly. */}
+                  {CONNECTORS.map((c) => (
+                    <motion.circle
+                      key={c.from}
+                      r="4"
+                      fill="currentColor"
+                      initial={{ cx: 4, cy: c.from, opacity: 0 }}
+                      animate={{
+                        cx: 124,
+                        cy: MERGE_Y,
+                        opacity: [0, 1, 1, 0],
+                      }}
+                      transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: c.delay,
+                      }}
+                    />
+                  ))}
                 </svg>
               </div>
 
               <Endpoint
-                code={route.destination.code}
+                code={destination.code}
                 label={dict.route.destinationLabel}
                 place={dict.route.destination}
                 align="end"

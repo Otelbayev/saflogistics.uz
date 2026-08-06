@@ -89,7 +89,7 @@ export function CompareTable({ dict }: Props) {
   };
 
   return (
-    <section className="pb-24">
+    <section className="pb-16 sm:pb-24">
       <Container>
         <SectionHeading title={dict.services.compare} />
 

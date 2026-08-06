@@ -10,67 +10,12 @@ import { Icon } from "@/components/ui/Icon";
 import { useQuoteModal } from "@/components/ui/QuoteModal";
 import { CountUp } from "@/components/ui/CountUp";
 import { siteConfig, tariffKeys, tariffs, type TariffKey } from "@/lib/site";
+import { LIMITS, calculateProfit } from "@/lib/profit";
 
 type Props = { dict: Dictionary };
 
 const NUMBER = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const DECIMAL = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
-
-type Calculation =
-  | { state: "invalid" }
-  | { state: "tooFast" }
-  | {
-      state: "ok";
-      savedDays: number;
-      profitPerBatch: number;
-      turnsWithout: number;
-      turnsWith: number;
-      extraTurns: number;
-      extraProfit: number;
-    };
-
-/**
- * Cycle savings model from the TZ: shortening the purchase→sale cycle by the
- * days SAF saves raises the number of capital turns per year, and every extra
- * turn earns one more batch margin — without any extra investment.
- */
-function calculate(
-  investment: number,
-  marginPercent: number,
-  currentCycle: number,
-  tariff: TariffKey,
-): Calculation {
-  if (
-    !Number.isFinite(investment) ||
-    !Number.isFinite(marginPercent) ||
-    !Number.isFinite(currentCycle) ||
-    investment <= 0 ||
-    marginPercent <= 0 ||
-    currentCycle <= 0
-  ) {
-    return { state: "invalid" };
-  }
-
-  const safCycle = tariffs[tariff].max;
-  // Nothing to gain when the client already ships faster than the tariff.
-  if (currentCycle <= safCycle) return { state: "tooFast" };
-
-  const savedDays = currentCycle - safCycle;
-  const profitPerBatch = (investment * marginPercent) / 100;
-  const turnsWithout = 365 / currentCycle;
-  const turnsWith = 365 / safCycle;
-  const extraTurns = turnsWith - turnsWithout;
-
-  return {
-    state: "ok",
-    savedDays,
-    profitPerBatch,
-    turnsWithout,
-    turnsWith,
-    extraTurns,
-    extraProfit: extraTurns * profitPerBatch,
-  };
-}
 
 function Field({
   label,
@@ -91,8 +36,10 @@ function Field({
 }) {
   const hintId = useId();
   return (
-    <label className="block">
-      <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+    // Column flex with a growing label: in the 2×2 mobile grid the labels wrap
+    // to different line counts, and this keeps every input on the same baseline.
+    <label className="flex h-full flex-col">
+      <span className="mb-1 flex-1 text-[10px] font-semibold uppercase leading-tight tracking-[0.16em] text-muted sm:mb-1.5 sm:flex-none sm:text-[11px] sm:tracking-[0.2em]">
         {label}
       </span>
       <div className="relative">
@@ -104,13 +51,18 @@ function Field({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           aria-describedby={hintId}
-          className="w-full rounded-xl border border-border bg-background px-4 py-3.5 pr-16 text-base font-medium text-foreground outline-none transition focus:border-brand-500 focus:bg-surface focus:ring-2 focus:ring-brand-500/30"
+          className="w-full rounded-xl border border-border bg-background px-3 py-2.5 pr-12 text-base font-medium text-foreground outline-none transition focus:border-brand-500 focus:bg-surface focus:ring-2 focus:ring-brand-500/30 sm:px-4 sm:py-3.5 sm:pr-16"
         />
-        <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm font-medium text-muted">
+        <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs font-medium text-muted sm:right-4 sm:text-sm">
           {suffix}
         </span>
       </div>
-      <span id={hintId} className="mt-1.5 block text-xs text-muted">
+      {/* The TZ requires the calculator to stay understandable on mobile, so
+          the hints carry the unit and the meaning of each field at every size. */}
+      <span
+        id={hintId}
+        className="mt-1 block text-[10px] leading-tight text-muted sm:mt-1.5 sm:text-xs"
+      >
         {hint}
       </span>
     </label>
@@ -128,18 +80,18 @@ function Result({
 }) {
   return (
     <div
-      className={`rounded-2xl border p-4 ${
+      className={`rounded-2xl border p-2.5 sm:p-4 ${
         emphasis
-          ? "border-brand-500/40 bg-brand-500/10"
+          ? "col-span-2 border-brand-500/40 bg-brand-500/10"
           : "border-border bg-background/60 dark:border-white/10 dark:bg-white/5"
       }`}
     >
-      <div className="text-xs font-medium uppercase tracking-widest text-muted">
+      <div className="text-[10px] font-medium uppercase leading-tight tracking-wider text-muted sm:text-xs sm:tracking-widest">
         {label}
       </div>
       <div
-        className={`mt-1.5 font-semibold text-foreground ${
-          emphasis ? "text-3xl sm:text-4xl" : "text-2xl"
+        className={`mt-1 font-semibold text-foreground sm:mt-1.5 ${
+          emphasis ? "text-2xl sm:text-4xl" : "text-lg sm:text-2xl"
         }`}
       >
         {value}
@@ -152,20 +104,23 @@ export function ProfitCalculator({ dict }: Props) {
   const { open: openQuote } = useQuoteModal();
   const [investment, setInvestment] = useState("50000");
   const [margin, setMargin] = useState("20");
-  const [cycle, setCycle] = useState("45");
+  const [cycle, setCycle] = useState("60");
+  const [delivery, setDelivery] = useState("30");
   const [tariff, setTariff] = useState<TariffKey>("express");
 
   const t = dict.calculator;
 
   const result = useMemo(
     () =>
-      calculate(
+      calculateProfit(
         Number.parseFloat(investment),
         Number.parseFloat(margin),
         Number.parseFloat(cycle),
-        tariff,
+        Number.parseFloat(delivery),
+        // Upper bound of the window, so the figure under-promises.
+        tariffs[tariff].max,
       ),
-    [investment, margin, cycle, tariff],
+    [investment, margin, cycle, delivery, tariff],
   );
 
   // Format with a fixed locale, never the user's: Node and browser ICU disagree
@@ -174,8 +129,15 @@ export function ProfitCalculator({ dict }: Props) {
   const money = (n: number) => `$${NUMBER.format(Math.round(n))}`;
   const decimal = (n: number) => DECIMAL.format(n);
 
+  const warning =
+    result.state === "invalid"
+      ? t.warning.invalid
+      : result.state === "deliveryTooLong"
+        ? t.warning.deliveryTooLong
+        : t.warning.tooFast;
+
   return (
-    <section id="calculator" className="relative py-24 sm:py-32">
+    <section id="calculator" className="relative py-12 sm:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
@@ -193,41 +155,52 @@ export function ProfitCalculator({ dict }: Props) {
 
         <Reveal
           from="zoom"
-          className="mx-auto mt-14 max-w-6xl overflow-hidden rounded-4xl border border-border bg-surface p-6 shadow-(--shadow-elevated) sm:p-10 xl:max-w-7xl"
+          className="mx-auto mt-6 max-w-6xl overflow-hidden rounded-4xl border border-border bg-surface p-4 shadow-(--shadow-elevated) sm:mt-14 sm:p-10 xl:max-w-7xl"
         >
-          <div className="grid gap-10 lg:grid-cols-2">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-10">
             {/* Inputs */}
-            <div className="space-y-5">
-              <Field
-                label={t.inputs.investment}
-                hint={t.inputs.investmentHint}
-                value={investment}
-                onChange={setInvestment}
-                min={0}
-                max={100000000}
-                suffix="$"
-              />
-              <Field
-                label={t.inputs.margin}
-                hint={t.inputs.marginHint}
-                value={margin}
-                onChange={setMargin}
-                min={0}
-                max={100}
-                suffix="%"
-              />
-              <Field
-                label={t.inputs.cycle}
-                hint={t.inputs.cycleHint}
-                value={cycle}
-                onChange={setCycle}
-                min={0}
-                max={365}
-                suffix={t.results.days}
-              />
+            <div className="space-y-4 sm:space-y-5">
+              <div className="grid grid-cols-2 gap-3 lg:grid-cols-1 lg:gap-5">
+                <Field
+                  label={t.inputs.investment}
+                  hint={t.inputs.investmentHint}
+                  value={investment}
+                  onChange={setInvestment}
+                  min={LIMITS.investment.min}
+                  max={LIMITS.investment.max}
+                  suffix="$"
+                />
+                <Field
+                  label={t.inputs.margin}
+                  hint={t.inputs.marginHint}
+                  value={margin}
+                  onChange={setMargin}
+                  min={LIMITS.margin.min}
+                  max={LIMITS.margin.max}
+                  suffix="%"
+                />
+                <Field
+                  label={t.inputs.cycle}
+                  hint={t.inputs.cycleHint}
+                  value={cycle}
+                  onChange={setCycle}
+                  min={LIMITS.cycle.min}
+                  max={LIMITS.cycle.max}
+                  suffix={t.results.days}
+                />
+                <Field
+                  label={t.inputs.delivery}
+                  hint={t.inputs.deliveryHint}
+                  value={delivery}
+                  onChange={setDelivery}
+                  min={LIMITS.delivery.min}
+                  max={LIMITS.delivery.max}
+                  suffix={t.results.days}
+                />
+              </div>
 
               <div>
-                <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+                <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-muted sm:mb-1.5 sm:text-[11px] sm:tracking-[0.2em]">
                   {t.inputs.tariff}
                 </span>
                 <div
@@ -242,16 +215,16 @@ export function ProfitCalculator({ dict }: Props) {
                       role="radio"
                       aria-checked={tariff === key}
                       onClick={() => setTariff(key)}
-                      className={`rounded-xl border px-3 py-3 text-center transition ${
+                      className={`rounded-xl border px-2 py-2 text-center transition sm:px-3 sm:py-3 ${
                         tariff === key
                           ? "border-brand-500 bg-brand-500/10 text-foreground ring-1 ring-brand-500/30"
                           : "border-border bg-background text-muted hover:border-brand-500/40 hover:text-foreground"
                       }`}
                     >
-                      <span className="block text-sm font-semibold">
+                      <span className="block text-xs font-semibold sm:text-sm">
                         {dict.services[key].name}
                       </span>
-                      <span className="mt-0.5 block text-xs">
+                      <span className="mt-0.5 block text-[10px] sm:text-xs">
                         {tariffs[key].min}–{tariffs[key].max}{" "}
                         {dict.services.daysLabel}
                       </span>
@@ -263,22 +236,20 @@ export function ProfitCalculator({ dict }: Props) {
 
             {/* Results */}
             <div className="flex flex-col">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-muted">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted sm:text-sm sm:tracking-[0.22em]">
                 {t.results.title}
               </h3>
 
               {result.state !== "ok" ? (
                 <div
                   role="status"
-                  className="mt-4 flex flex-1 items-center rounded-2xl border border-amber-500/30 bg-amber-500/10 p-6 text-sm leading-relaxed text-amber-900 dark:text-amber-100"
+                  className="mt-3 flex flex-1 items-center rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm leading-relaxed text-amber-900 sm:mt-4 sm:p-6 dark:text-amber-100"
                 >
-                  {result.state === "invalid"
-                    ? t.warning.invalid
-                    : t.warning.tooFast}
+                  {warning}
                 </div>
               ) : (
                 <>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-3">
                     <Result
                       label={t.results.saved}
                       value={
@@ -290,9 +261,13 @@ export function ProfitCalculator({ dict }: Props) {
                       }
                     />
                     <Result
-                      label={t.results.perBatch}
+                      label={t.results.newCycle}
                       value={
-                        <CountUp value={result.profitPerBatch} format={money} />
+                        <CountUp
+                          value={result.newCycle}
+                          format={decimal}
+                          suffix={` ${t.results.days}`}
+                        />
                       }
                     />
                     <Result
@@ -327,6 +302,12 @@ export function ProfitCalculator({ dict }: Props) {
                       }
                     />
                     <Result
+                      label={t.results.perBatch}
+                      value={
+                        <CountUp value={result.profitPerBatch} format={money} />
+                      }
+                    />
+                    <Result
                       label={t.results.extraProfit}
                       value={
                         <CountUp
@@ -340,13 +321,15 @@ export function ProfitCalculator({ dict }: Props) {
                     />
                   </div>
 
-                  <p className="mt-5 text-sm font-medium leading-relaxed text-brand-700 dark:text-brand-200">
+                  {/* Required by the TZ as the closing emphasis — shown at
+                      every size, never dropped for vertical space. */}
+                  <p className="mt-3 text-xs font-medium leading-snug text-brand-700 sm:mt-5 sm:text-sm sm:leading-relaxed dark:text-brand-200">
                     {t.results.emphasis}
                   </p>
                 </>
               )}
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:gap-3">
                 <Button onClick={openQuote} className="w-full sm:w-auto">
                   {t.cta}
                   <Icon.ArrowRight size={16} />

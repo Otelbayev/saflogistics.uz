@@ -7,29 +7,54 @@ export type RoutePoint = {
   city: string;
   lat: number;
   lng: number;
+  /** City photo shown behind the endpoint card; origins only. */
+  image?: { path: string; altKey: keyof Dictionary["seo"]["alt"] };
 };
 
 /**
- * The company runs a single corridor: China → Uzbekistan, trucks only.
- * Every geography-facing block (route diagram, JSON-LD areaServed, flags)
- * reads from here — adding a direction means editing this object alone.
+ * The company runs China → Uzbekistan, trucks only, out of two own warehouses
+ * in China. Both corridors land on the same destination and share one set of
+ * transit windows, so the geography-facing blocks (route diagram, JSON-LD
+ * areaServed, flags) only need this list plus `destination`.
+ *
+ * The keys line up with `dict.route.origins.*` — add a key here and the same
+ * key must exist in every messages/*.json.
  */
-export const route: { origin: RoutePoint; destination: RoutePoint } = {
-  origin: {
+export const originKeys = ["guangzhou", "yiwu"] as const;
+export type OriginKey = (typeof originKeys)[number];
+
+export const origins: Record<OriginKey, RoutePoint> = {
+  guangzhou: {
     code: "CN",
     country: "China",
     city: "Guangzhou",
     lat: 23.1291,
     lng: 113.2644,
+    image: { path: "/images/guangzhou-city-skyline.jpg", altKey: "guangzhou" },
   },
-  destination: {
-    code: "UZ",
-    country: "Uzbekistan",
-    city: "Tashkent",
-    lat: 41.3111,
-    lng: 69.2797,
+  yiwu: {
+    code: "CN",
+    country: "China",
+    city: "Yiwu",
+    lat: 29.3069,
+    lng: 120.0765,
+    image: { path: "/images/yiwu-trade-city.jpg", altKey: "yiwu" },
   },
 };
+
+export const destination: RoutePoint = {
+  code: "UZ",
+  country: "Uzbekistan",
+  city: "Tashkent",
+  lat: 41.3111,
+  lng: 69.2797,
+};
+
+/** Every point the corridor touches, origins first. */
+export const routePoints: RoutePoint[] = [
+  ...originKeys.map((k) => origins[k]),
+  destination,
+];
 
 export const tariffKeys = ["express", "standard", "econom"] as const;
 export type TariffKey = (typeof tariffKeys)[number];
@@ -59,14 +84,15 @@ export const siteConfig = {
   ogImage: "/images/logo1.jpg",
   phones: ["+998935118484", "+998771730303"],
   email: "info@saflogistics.uz",
-  address: "Tashkent, Uzbekistan",
   legalAddress: "Toshkent sh., Abu Sulaymon Banokatiy ko‘chasi, 209",
-  mapUrl: "https://maps.app.goo.gl/u8wdkLZBd8cnEKNz7",
+  /** Office pin, taken from the Yandex Maps house card for the address above. */
+  office: { lat: 41.274893, lng: 69.285337 },
+  mapUrl: "https://yandex.uz/maps/-/CTGvf8lc",
   mapEmbed:
-    "https://www.google.com/maps?q=Tashkent%2C+Uzbekistan&output=embed",
+    "https://yandex.uz/map-widget/v1/?ll=69.285337%2C41.274893&z=17&pt=69.285337,41.274893,pm2rdm",
   instagram: "https://www.instagram.com/farrukh_mashanpin",
   instagramHandle: "farrukh_mashanpin",
-  hub: { city: "Guangzhou", country: "China", lat: 23.1291, lng: 113.2644 },
+  hubs: originKeys.map((k) => origins[k]),
 };
 
 /**
@@ -135,6 +161,18 @@ export const indexableImages: IndexableImage[] = [
     height: 1080,
   },
   { path: "/images/poster.png", altKey: "fleetPoster", width: 1920, height: 1080 },
+  {
+    path: "/images/guangzhou-city-skyline.jpg",
+    altKey: "guangzhou",
+    width: 2000,
+    height: 1027,
+  },
+  {
+    path: "/images/yiwu-trade-city.jpg",
+    altKey: "yiwu",
+    width: 1280,
+    height: 570,
+  },
 ];
 
 /** The landscape image used for social cards and as the page's primary image. */

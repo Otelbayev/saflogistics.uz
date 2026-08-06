@@ -67,7 +67,7 @@ export function Guarantees({ dict }: Props) {
   return (
     <section
       id="guarantees"
-      className="relative overflow-hidden border-y border-border bg-surface py-24 sm:py-32"
+      className="relative overflow-hidden border-y border-border bg-surface py-16 sm:py-32"
     >
       <div
         aria-hidden

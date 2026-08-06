@@ -43,31 +43,40 @@ type ButtonAsLink = CommonProps &
     href: string;
   };
 
+/** `tel:`, `mailto:` and absolute URLs are not routes — they get a plain `<a>`. */
+const isExternalHref = (href: string) => !href.startsWith("/");
+
 export function Button(props: ButtonAsButton | ButtonAsLink) {
-  const { variant = "primary", size = "md", className, children } = props;
+  // Pull the styling props out of `rest` here, once: spreading them back onto
+  // the element would leak `variant`/`size` into the DOM as invalid attributes
+  // and let the caller's raw `className` overwrite the computed classes.
+  const {
+    variant = "primary",
+    size = "md",
+    className,
+    children,
+    ...rest
+  } = props;
   const classes = clsx(base, variants[variant], sizes[size], className);
 
-  if ("href" in props && props.href !== undefined) {
-    const { href, ...rest } = props as ButtonAsLink;
+  if (rest.href !== undefined) {
+    const { href, ...linkProps } = rest as Omit<ButtonAsLink, keyof CommonProps>;
+    if (isExternalHref(href)) {
+      return (
+        <a href={href} className={classes} {...linkProps}>
+          {children}
+        </a>
+      );
+    }
     return (
-      <Link href={href} className={classes} {...rest}>
+      <Link href={href} className={classes} {...linkProps}>
         {children}
       </Link>
     );
   }
-  const {
-    variant: _v,
-    size: _s,
-    className: _c,
-    children: _ch,
-    ...rest
-  } = props as ButtonAsButton;
-  void _v;
-  void _s;
-  void _c;
-  void _ch;
+
   return (
-    <button className={classes} {...rest}>
+    <button className={classes} {...(rest as Omit<ButtonAsButton, keyof CommonProps>)}>
       {children}
     </button>
   );

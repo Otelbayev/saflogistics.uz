@@ -1,6 +1,6 @@
 # saflogistics.uz
 
-Single-page landing site for **SAF EXPRESS LOGISTICS MChJ** — express road freight (truck only) on one corridor: **Guangzhou, China → Tashkent, Uzbekistan**.
+Single-page landing site for **SAF EXPRESS LOGISTICS MChJ** — express road freight (truck only) on one corridor, China → Uzbekistan, out of two own warehouses: **Guangzhou and Yiwu, China → Tashkent, Uzbekistan**.
 
 Built with Next.js 16 (App Router, Turbopack build / webpack dev), React 19, Tailwind CSS 4 and framer-motion. Three locales: `uz` (default), `ru`, `en`.
 

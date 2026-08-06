@@ -15,6 +15,7 @@ import { Founder } from "@/components/sections/Founder";
 import { Contact } from "@/components/sections/Contact";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { HomePageJsonLd } from "@/components/seo/JsonLd";
+import { Preloader } from "@/components/ui/Preloader";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -23,6 +24,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
   return (
     <>
+      {/* Landing page only: the topic pages are entered straight from search,
+          where a splash would just stand between the visitor and the answer. */}
+      <Preloader />
       <Hero locale={locale} dict={dict} />
       <About dict={dict} />
       <Philosophy dict={dict} />

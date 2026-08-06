@@ -22,7 +22,7 @@ export function Services({ dict }: Props) {
   const { open: openQuote } = useQuoteModal();
 
   return (
-    <section id="tariffs" className="relative py-24 sm:py-32">
+    <section id="tariffs" className="relative py-16 sm:py-32">
       <Container>
         <SectionHeading
           eyebrow={dict.services.subtitle}
@@ -30,7 +30,7 @@ export function Services({ dict }: Props) {
           subtitle={dict.services.description}
         />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:mt-14 md:grid-cols-3">
           {tariffKeys.map((key, i) => {
             const tier = dict.services[key];
             const { min, max, featured } = tariffs[key];
