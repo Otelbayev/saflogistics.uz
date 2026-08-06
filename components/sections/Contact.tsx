@@ -133,7 +133,7 @@ export function Contact({ dict }: Props) {
           <iframe
             title="SAF Logistics on Yandex Maps"
             src={siteConfig.mapEmbed}
-            className="h-[420px] w-full border-0"
+            className="h-105 w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
