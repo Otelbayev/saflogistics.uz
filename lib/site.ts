@@ -92,6 +92,10 @@ export const siteConfig = {
     "https://yandex.uz/map-widget/v1/?ll=69.285337%2C41.274893&z=17&pt=69.285337,41.274893,pm2rdm",
   instagram: "https://www.instagram.com/farrukh_mashanpin",
   instagramHandle: "farrukh_mashanpin",
+  /** Telegram mini-app: the client cabinet — shipments, stages, SAF token
+   *  balance. A live product, linked from the tokens and ecosystem sections. */
+  telegramBot: "https://t.me/SAF_LOGISTICS_PARTNER_BOT",
+  telegramBotHandle: "@SAF_LOGISTICS_PARTNER_BOT",
   hubs: originKeys.map((k) => origins[k]),
 };
 

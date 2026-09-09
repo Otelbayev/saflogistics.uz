@@ -145,7 +145,7 @@ export function BusinessJsonLd({ locale, dict }: Props) {
     ],
     founder: { "@id": `${siteConfig.url}/#founder` },
     employee: { "@id": `${siteConfig.url}/#founder` },
-    sameAs: [siteConfig.instagram],
+    sameAs: [siteConfig.instagram, siteConfig.telegramBot],
     areaServed: [...new Set(routePoints.map((p) => p.country))].map(
       (name) => ({ "@type": "Country", name }),
     ),
@@ -264,9 +264,25 @@ export function HomePageJsonLd({ locale, dict }: Props) {
     dateModified: new Date().toISOString().slice(0, 10),
   };
 
+  /** Mirrors the visible accordion in `sections/Faq`. Both read the same
+   *  `dict.faq.items`, so the markup can never describe answers the page does
+   *  not actually show — which is what gets structured data ignored. */
+  const faqPage = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    inLanguage: locale,
+    isPartOf: { "@id": `${url}#webpage` },
+    mainEntity: dict.faq.items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <>
-      {[breadcrumb, webPage].map((node, i) => (
+      {[breadcrumb, webPage, faqPage].map((node, i) => (
         <script
           key={i}
           type="application/ld+json"

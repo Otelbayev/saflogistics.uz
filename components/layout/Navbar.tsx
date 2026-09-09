@@ -83,6 +83,7 @@ export function Navbar({ locale, dict }: Props) {
       icon: Icon.Cpu,
     },
     { href: `/${locale}#route`, label: dict.nav.route, icon: Icon.MapPin },
+    { href: `/${locale}#faq`, label: dict.nav.faq, icon: Icon.Sparkle },
     { href: `/${locale}#contact`, label: dict.nav.contact, icon: Icon.Phone },
   ];
 
@@ -93,7 +94,7 @@ export function Navbar({ locale, dict }: Props) {
           "fixed inset-x-0 top-0 z-90 w-full transition-all duration-300",
           scrolled
             ? "backdrop-blur-xl bg-[color-mix(in_oklab,var(--background)_88%,transparent)] border-b border-border"
-            : "backdrop-blur-md bg-[color-mix(in_oklab,var(--background)_60%,transparent)] md:bg-transparent md:backdrop-blur-none",
+            : "backdrop-blur-md bg-[color-mix(in_oklab,var(--background)_60%,transparent)] lg:bg-transparent lg:backdrop-blur-none",
         )}
         style={{ pointerEvents: "auto" }}
       >
@@ -123,19 +124,19 @@ export function Navbar({ locale, dict }: Props) {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition hover:bg-surface-2 hover:text-foreground"
+                className="whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-foreground/80 transition hover:bg-surface-2 hover:text-foreground xl:px-4"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             <LocaleSwitcher current={locale} />
             <ThemeToggle label={dict.theme.toggle} />
             <Button onClick={openQuote} size="sm">
@@ -150,7 +151,7 @@ export function Navbar({ locale, dict }: Props) {
             aria-label="Menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
-            className="relative inline-flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-(--shadow-soft) transition-transform active:scale-95 md:hidden"
+            className="relative inline-flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-(--shadow-soft) transition-transform active:scale-95 lg:hidden"
             style={{
               touchAction: "manipulation",
               WebkitTapHighlightColor: "transparent",
@@ -195,7 +196,7 @@ export function Navbar({ locale, dict }: Props) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             id="mobile-menu"
-            className="fixed inset-0 top-0 z-95 overflow-x-hidden overflow-y-auto overscroll-contain md:hidden"
+            className="fixed inset-0 top-0 z-95 overflow-x-hidden overflow-y-auto overscroll-contain lg:hidden"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             <div

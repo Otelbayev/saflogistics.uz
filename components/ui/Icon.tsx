@@ -136,4 +136,34 @@ export const Icon = {
       <path d="M13 2L4 14h7l-1 8 9-12h-7z" />
     </svg>
   ),
+  Telegram: (p: IconProps) => (
+    <svg {...base(p)}>
+      <path d="M21.2 4.1 2.9 10.6c-.6.2-.6 1 0 1.2l4.6 1.5 1.7 5c.2.6 1 .7 1.3.2l2.3-2.9 4.6 3.4c.5.4 1.2.1 1.3-.5l3-13.6c.1-.6-.4-1-1-.8z" />
+      <path d="M7.5 13.3 18 6.6l-7.5 7.7v3.6" />
+    </svg>
+  ),
+  Gift: (p: IconProps) => (
+    <svg {...base(p)}>
+      <rect x="3" y="8" width="18" height="4" rx="1" />
+      <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" />
+      <path d="M12 8v13" />
+      <path d="M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5h4z" />
+      <path d="M12 8s1.5-5 4-5a2.5 2.5 0 0 1 0 5h-4z" />
+    </svg>
+  ),
+  Coin: (p: IconProps) => (
+    <svg {...base(p)}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M14.3 9.6a2.7 2.7 0 0 0-2.3-1.1c-1.3 0-2.3.8-2.3 1.9 0 2.6 4.8 1.4 4.8 4 0 1.2-1.1 2-2.5 2a2.9 2.9 0 0 1-2.4-1.2" />
+      <path d="M12 7v10" />
+    </svg>
+  ),
+  Radar: (p: IconProps) => (
+    <svg {...base(p)}>
+      <path d="M12 3a9 9 0 1 0 9 9" />
+      <path d="M12 7a5 5 0 1 0 5 5" />
+      <path d="M12 12l6.5-6.5" />
+      <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  ),
 };

@@ -30,7 +30,11 @@
       "Saflogistics.uz",
       "Farrukh Mashanpin",
       "Farrux Mashanpin",
-      "Фаррух Машанпин"
+      "Фаррух Машанпин",
+      "SAF Tokens",
+      "SAF Logistics bot",
+      "Telegram cargo tracking",
+      "cargo tracking China Uzbekistan"
     ],
     "alt": {
       "logo": "SAF Logistics logo — express road freight from China to Uzbekistan",
@@ -71,6 +75,7 @@
     "tariffs": "Tariffs",
     "calculator": "Calculator",
     "route": "Route",
+    "faq": "FAQ",
     "contact": "Contact",
     "about": "About",
     "getQuote": "Get a quote"
@@ -241,6 +246,70 @@
     "cta": "Show me how you do it",
     "ctaSecondary": "Discuss with a manager"
   },
+  "tokens": {
+    "eyebrow": "Loyalty programme",
+    "title": "SAF Tokens — a bonus on every shipment",
+    "subtitle": "Every completed shipment credits tokens to your account automatically. Tokens are exchanged for free express delivery, cargo insurance and discounts.",
+    "how": [
+      {
+        "title": "You ship",
+        "desc": "Groupage or a full truck — both count towards your balance."
+      },
+      {
+        "title": "Tokens are credited automatically",
+        "desc": "The moment a shipment closes, your balance updates in the mini-app."
+      },
+      {
+        "title": "You exchange them",
+        "desc": "Free express, insurance or a discount on your next shipment."
+      }
+    ],
+    "tiersTitle": "Tiers",
+    "cols": {
+      "tier": "Tier",
+      "threshold": "Threshold",
+      "perks": "What you get"
+    },
+    "shipmentsLabel": "shipments",
+    "entryLabel": "From your first shipment",
+    "tiers": {
+      "bronze": {
+        "name": "Bronze",
+        "perks": "Entry to the programme and base token accrual on every shipment."
+      },
+      "silver": {
+        "name": "Silver",
+        "perks": "Increased token accrual and priority answers to your requests."
+      },
+      "gold": {
+        "name": "Gold",
+        "perks": "High token accrual and priority on dispatch."
+      },
+      "platinum": {
+        "name": "Platinum",
+        "perks": "Maximum token accrual, tailored terms and an annual shipping schedule."
+      }
+    },
+    "rewardsTitle": "What tokens buy",
+    "rewards": {
+      "discount100": {
+        "name": "$100 off your next shipment"
+      },
+      "express": {
+        "name": "Free express delivery"
+      },
+      "insurance": {
+        "name": "Free cargo insurance"
+      },
+      "discount10000": {
+        "name": "$10,000 off your next shipment"
+      }
+    },
+    "unit": "SAF",
+    "ctaTitle": "Your balance is already growing",
+    "ctaLabel": "Check your balance",
+    "ctaNote": "@SAF_LOGISTICS_PARTNER_BOT — Telegram mini-app"
+  },
   "route": {
     "title": "Guangzhou & Yiwu → Tashkent",
     "subtitle": "Two warehouses — one corridor",
@@ -256,6 +325,37 @@
     "transportLabel": "Transport",
     "transportValue": "Truck only",
     "doorToDoor": "Door to door"
+  },
+  "ecosystem": {
+    "eyebrow": "Digital ecosystem",
+    "title": "Your shipments in one app",
+    "subtitle": "@SAF_LOGISTICS_PARTNER_BOT is a live Telegram mini-app: your shipments, their stages, their cost and your bonus balance in one place.",
+    "screens": {
+      "home": {
+        "title": "My shipments",
+        "desc": "Your SAF tier, total shipments, total value and SAF token balance on the home screen."
+      },
+      "lcl": {
+        "title": "Groupage cargo",
+        "desc": "Every shipment with its invoice number, volume (cbm), weight and price, plus a stage-by-stage progress bar."
+      },
+      "ftl": {
+        "title": "Full trucks",
+        "desc": "FTL shipments in their own list — status, date and price in plain view."
+      },
+      "map": {
+        "title": "Cargo map",
+        "desc": "The corridor and where your shipments sit along it."
+      },
+      "exchange": {
+        "title": "Token exchange",
+        "desc": "See your balance and trade tokens for rewards."
+      }
+    },
+    "mapNote": "The position on the map is approximate — it follows the route stage, not a GPS tracker.",
+    "aiTitle": "AI tracking control",
+    "aiDesc": "An internal system follows every shipment through its stages automatically: Yiwu / Guangzhou → Kashgar → Uzbekistan. When a status changes the progress in the app updates, and your dedicated manager tells you about it.",
+    "ctaLabel": "Try the mini-app"
   },
   "individual": {
     "eyebrow": "Individual approach",
@@ -339,6 +439,10 @@
       "tech": {
         "title": "Tracking at every stage",
         "desc": "Online control of cargo status and transit-time compliance."
+      },
+      "app": {
+        "title": "Digital cabinet",
+        "desc": "Your shipments, their stages and your SAF token balance in a Telegram mini-app — open it whenever you like."
       }
     }
   },
@@ -349,6 +453,49 @@
     "specialty": "Head of the Guangzhou hub",
     "bio": "An expert who has shaped cargo flows between China and Uzbekistan for years. He knows the Guangzhou and Yiwu markets from the inside and personally calculates the route for every client.",
     "instagram": "Instagram profile"
+  },
+  "faq": {
+    "eyebrow": "Questions and answers",
+    "title": "Frequently asked questions",
+    "subtitle": "What our managers are asked every day about shipping cargo from China to Uzbekistan.",
+    "items": [
+      {
+        "q": "How does the delivery process work?",
+        "a": "Your suppliers deliver the goods to our warehouse in Guangzhou or Yiwu. On intake we check quantity and packaging, consolidate cargo from several suppliers into one batch where needed, prepare the documents and dispatch the truck. The cargo enters Uzbekistan via Kashgar, we handle customs clearance, and hand over in Tashkent."
+      },
+      {
+        "q": "How long does delivery take?",
+        "a": "It depends on the tariff: Express 8–12 days, Standard 14–18 days, Economy 20–30 days. The clock runs from the moment cargo leaves our warehouse in China until handover in Tashkent."
+      },
+      {
+        "q": "Is there a minimum volume?",
+        "a": "We work in the B2B segment: groupage cargo and full trucks. We do not handle small parcels for private individuals. The minimum volume for groupage depends on the goods and how regularly you ship — tell a manager your volume and you get an answer straight away."
+      },
+      {
+        "q": "How is the price calculated?",
+        "a": "From the volume-to-weight ratio, the chosen tariff, the goods classification, whether consolidation is needed and how regularly you ship. There is no fixed price list — every shipment is quoted individually. Customs clearance and cargo insurance are included in all three tariffs and are not billed separately."
+      },
+      {
+        "q": "Can I track my cargo in real time?",
+        "a": "Yes. In the @SAF_LOGISTICS_PARTNER_BOT Telegram mini-app every shipment is listed with its invoice number, volume, weight and price, and a progress bar shows which stage of the Yiwu / Guangzhou → Kashgar → Uzbekistan route it has reached. The position on the map is approximate and follows the route stage — it is not a GPS tracker. On top of that your dedicated manager reports every status change."
+      },
+      {
+        "q": "What makes SAF different from other freight forwarders?",
+        "a": "Three things. First, two warehouses of our own in China — Guangzhou and Yiwu — so the cargo passes through our hands rather than an intermediary's. Second, customs clearance and insurance are in the price, so no surprise invoices appear en route. Third, the digital cabinet: your shipments, their stages and your bonus balance live in a Telegram mini-app."
+      },
+      {
+        "q": "What are SAF Tokens and how do they work?",
+        "a": "They are our loyalty programme. Every completed shipment — groupage or full truck — credits SAF tokens to your account automatically. Tokens are exchanged for free express delivery (5,000 SAF), free cargo insurance (5,000 SAF) or a discount on your next shipment (1,000 SAF for $100, 100,000 SAF for $10,000). As your shipment count grows, your tier rises from Bronze to Platinum. The balance is visible in @SAF_LOGISTICS_PARTNER_BOT."
+      },
+      {
+        "q": "What about a full truck or a large volume?",
+        "a": "A full truckload (FTL) is our core service. The truck is loaded with your cargo only, is not reloaded en route and does not wait for other clients' goods, which is why the transit time is the shortest. For clients who ship regularly, the schedule and price are agreed separately."
+      }
+    ],
+    "moreLabel": "Full questions and answers page",
+    "ctaTitle": "Didn't find your question?",
+    "ctaText": "Write or call — a manager answers 24/7 and will prepare an exact quote for your cargo.",
+    "ctaLabel": "Message a manager"
   },
   "ctaBanner": {
     "title": "Put your cargo on the road today",
@@ -414,8 +561,10 @@
     "links": {
       "tariffs": "Tariffs",
       "calculator": "Profit calculator",
+      "tokens": "SAF Tokens",
       "route": "Route",
       "guarantees": "Guarantees",
+      "faq": "Questions and answers",
       "contact": "Contact"
     }
   },
@@ -1055,7 +1204,7 @@
           },
           {
             "q": "Can I track my cargo?",
-            "a": "Yes. Your dedicated manager reports status changes and will give you the current position whenever you ask."
+            "a": "Yes. Your shipments appear in the @SAF_LOGISTICS_PARTNER_BOT Telegram mini-app with a stage-by-stage progress bar, and your dedicated manager reports status changes and will give you the current position whenever you ask."
           },
           {
             "q": "Can you check a supplier in China?",

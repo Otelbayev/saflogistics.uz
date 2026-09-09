@@ -26,6 +26,7 @@ const items = [
   { key: "price" as const, icon: Icon.Tag, span: "" },
   { key: "support" as const, icon: Icon.Headset, span: "" },
   { key: "tech" as const, icon: Icon.Cpu, span: "" },
+  { key: "app" as const, icon: Icon.Telegram, span: "lg:col-span-2" },
 ];
 
 export function WhyUs({ dict }: Props) {

@@ -6,12 +6,15 @@ import { Philosophy } from "@/components/sections/Philosophy";
 import { Services } from "@/components/sections/Services";
 import { CompareTable } from "@/components/sections/CompareTable";
 import { ProfitCalculator } from "@/components/sections/ProfitCalculator";
+import { Tokens } from "@/components/sections/Tokens";
 import { Route } from "@/components/sections/Route";
+import { Ecosystem } from "@/components/sections/Ecosystem";
 import { Individual } from "@/components/sections/Individual";
 import { Guarantees } from "@/components/sections/Guarantees";
 import { ForWhom } from "@/components/sections/ForWhom";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Founder } from "@/components/sections/Founder";
+import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { HomePageJsonLd } from "@/components/seo/JsonLd";
@@ -33,12 +36,15 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Services dict={dict} />
       <CompareTable dict={dict} />
       <ProfitCalculator dict={dict} />
+      <Tokens dict={dict} />
       <Route dict={dict} />
+      <Ecosystem dict={dict} />
       <Individual dict={dict} />
       <Guarantees dict={dict} />
       <ForWhom dict={dict} />
       <WhyUs dict={dict} />
       <Founder dict={dict} />
+      <Faq locale={locale} dict={dict} />
       <Contact dict={dict} />
       <CtaBanner dict={dict} />
       {/* Page-level structured data. Previously emitted by the layout, which

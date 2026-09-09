@@ -65,6 +65,15 @@ export function Footer({ locale, dict }: Props) {
               >
                 <Icon.Instagram size={18} />
               </a>
+              <a
+                href={siteConfig.telegramBot}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={siteConfig.telegramBotHandle}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-brand-800 hover:text-white"
+              >
+                <Icon.Telegram size={18} />
+              </a>
               {siteConfig.phones.map((p) => (
                 <a
                   key={p}
@@ -87,8 +96,10 @@ export function Footer({ locale, dict }: Props) {
                 [
                   ["tariffs", "tariffs"],
                   ["calculator", "calculator"],
+                  ["tokens", "tokens"],
                   ["route", "route"],
                   ["guarantees", "guarantees"],
+                  ["faq", "faq"],
                   ["contact", "contact"],
                 ] as const
               ).map(([key, anchor]) => (

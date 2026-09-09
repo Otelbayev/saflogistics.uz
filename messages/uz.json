@@ -33,7 +33,11 @@
       "Saflogistics.uz",
       "Farrux Mashanpin",
       "Farrukh Mashanpin",
-      "Фаррух Машанпин"
+      "Фаррух Машанпин",
+      "SAF Tokens",
+      "SAF Logistics bot",
+      "Telegram mini-ilova yuk kuzatuv",
+      "yuk kuzatuv Xitoy O‘zbekiston"
     ],
     "alt": {
       "logo": "SAF Logistics logotipi — Xitoydan O‘zbekistonga ekspress yuk tashish",
@@ -74,6 +78,7 @@
     "tariffs": "Tariflar",
     "calculator": "Kalkulyator",
     "route": "Marshrut",
+    "faq": "Savol-javob",
     "contact": "Aloqa",
     "about": "Biz haqimizda",
     "getQuote": "Taklif olish"
@@ -244,6 +249,70 @@
     "cta": "Buni qanday qilishimizni ko‘rsating",
     "ctaSecondary": "Menejer bilan muhokama qilish"
   },
+  "tokens": {
+    "eyebrow": "Sodiqlik dasturi",
+    "title": "SAF Tokens — har bir tashish uchun bonus",
+    "subtitle": "Har bir yakunlangan tashish uchun hisobingizga avtomatik token yoziladi. Tokenlarni bepul ekspress yetkazib berish, yuk sug‘urtasi va chegirmaga almashtirasiz.",
+    "how": [
+      {
+        "title": "Yukni jo‘natasiz",
+        "desc": "Sborniy yoki to‘liq fura — ikkalasi ham hisobga kiradi."
+      },
+      {
+        "title": "Token avtomatik tushadi",
+        "desc": "Tashish yakunlangan zahoti balans mini-ilovada yangilanadi."
+      },
+      {
+        "title": "Sovg‘aga almashtirasiz",
+        "desc": "Bepul ekspress, sug‘urta yoki keyingi tashuvga chegirma."
+      }
+    ],
+    "tiersTitle": "Darajalar",
+    "cols": {
+      "tier": "Daraja",
+      "threshold": "Bo‘sag‘a",
+      "perks": "Imtiyozlar"
+    },
+    "shipmentsLabel": "tashuvdan",
+    "entryLabel": "Birinchi tashuvdan",
+    "tiers": {
+      "bronze": {
+        "name": "Bronze",
+        "perks": "Dasturga kirish va har bir tashish uchun bazaviy token hisobi."
+      },
+      "silver": {
+        "name": "Silver",
+        "perks": "Kuchaytirilgan token hisobi va so‘rovlarga tezkor javob."
+      },
+      "gold": {
+        "name": "Gold",
+        "perks": "Yuqori token hisobi va jo‘natishda ustuvorlik."
+      },
+      "platinum": {
+        "name": "Platinum",
+        "perks": "Maksimal token hisobi, shaxsiy shartlar va yillik jo‘natish grafigi."
+      }
+    },
+    "rewardsTitle": "Tokenlarni nimaga almashtirish mumkin",
+    "rewards": {
+      "discount100": {
+        "name": "Keyingi tashuvga $100 chegirma"
+      },
+      "express": {
+        "name": "Bepul ekspress yetkazib berish"
+      },
+      "insurance": {
+        "name": "Bepul yuk sug‘urtasi"
+      },
+      "discount10000": {
+        "name": "Keyingi tashuvga $10 000 chegirma"
+      }
+    },
+    "unit": "SAF",
+    "ctaTitle": "Balansingiz allaqachon yig‘ilyapti",
+    "ctaLabel": "Balansingizni ko‘ring",
+    "ctaNote": "@SAF_LOGISTICS_PARTNER_BOT — Telegram mini-ilovasi"
+  },
   "route": {
     "title": "Guanchjou va Iu → Toshkent",
     "subtitle": "Ikkita sklad — bitta koridor",
@@ -259,6 +328,37 @@
     "transportLabel": "Transport",
     "transportValue": "Faqat fura",
     "doorToDoor": "Eshikdan-eshikgacha"
+  },
+  "ecosystem": {
+    "eyebrow": "Raqamli ekosistema",
+    "title": "Yuklaringiz — bitta ilovada",
+    "subtitle": "@SAF_LOGISTICS_PARTNER_BOT — ishlayotgan Telegram mini-ilovasi: yuklaringiz, ularning bosqichlari, narxi va bonus balansingiz bir joyda.",
+    "screens": {
+      "home": {
+        "title": "Mening yuklarim",
+        "desc": "SAF darajangiz, jami tashuvlar soni, umumiy summa va SAF-token balansi bosh ekranda."
+      },
+      "lcl": {
+        "title": "Sborniy yuklar",
+        "desc": "Har bir yuk invoys raqami, hajmi (cbm), og‘irligi va narxi bilan, bosqichma-bosqich progress-bar bilan."
+      },
+      "ftl": {
+        "title": "To‘liq mashinalar",
+        "desc": "FTL jo‘natmalar alohida ro‘yxatda — status, sana va narx ko‘rinib turadi."
+      },
+      "map": {
+        "title": "Yuklar xaritasi",
+        "desc": "Yo‘nalish va yuklaringizning marshrutdagi joylashuvi xaritada."
+      },
+      "exchange": {
+        "title": "Token almashish",
+        "desc": "Balansni ko‘rasiz va tokenlarni sovg‘alarga almashtirasiz."
+      }
+    },
+    "mapNote": "Xaritadagi joylashuv taxminiy — yo‘l bosqichi bo‘yicha ko‘rsatiladi, GPS-treker emas.",
+    "aiTitle": "AI-treking nazorati",
+    "aiDesc": "Ichki tizim har bir yukning bosqichlarini avtomatik kuzatib boradi: Iu / Guanchjou → Qashqar → O‘zbekiston. Holat o‘zgarganda ilovadagi progress yangilanadi, biriktirilgan menejer esa sizga xabar beradi.",
+    "ctaLabel": "Mini-ilovani sinab ko‘rish"
   },
   "individual": {
     "eyebrow": "Individual yondashuv",
@@ -342,6 +442,10 @@
       "tech": {
         "title": "Har bosqichda kuzatuv",
         "desc": "Yuk holati va muddatlarni onlayn nazorat qilish tizimi."
+      },
+      "app": {
+        "title": "Raqamli kabinet",
+        "desc": "Yuklaringiz, ularning bosqichlari va SAF-token balansi Telegram mini-ilovada — istalgan vaqtda ochib ko‘rasiz."
       }
     }
   },
@@ -352,6 +456,49 @@
     "specialty": "Guanchjou hub rahbari",
     "bio": "Yillar davomida Xitoy va O‘zbekiston o‘rtasidagi yuk oqimlarini shakllantirgan ekspert. Guanchjou va Iu bozorlarini ichkaridan biladi va har bir mijozga marshrutni shaxsan hisoblab beradi.",
     "instagram": "Instagram profili"
+  },
+  "faq": {
+    "eyebrow": "Savol-javob",
+    "title": "Ko‘p so‘raladigan savollar",
+    "subtitle": "Xitoydan O‘zbekistonga yuk tashish bo‘yicha menejerlarimiz kuniga eshitadigan savollar.",
+    "items": [
+      {
+        "q": "Yetkazib berish jarayoni qanday kechadi?",
+        "a": "Yetkazib beruvchilaringiz yukni Guanchjou yoki Iudagi omborimizga topshiradi. Biz qabul qilishda miqdor va qadoqni tekshiramiz, bir nechta yetkazib beruvchidan kelgan yukni bitta partiyaga birlashtiramiz, hujjatlarni tayyorlaymiz va furani yo‘lga chiqaramiz. Yuk Qashqar orqali O‘zbekistonga kiradi, bojxonani biz rasmiylashtiramiz va Toshkentda topshiramiz."
+      },
+      {
+        "q": "Yetkazib berish qancha vaqt oladi?",
+        "a": "Tarifga bog‘liq: Ekspress 8–12 kun, Standart 14–18 kun, Ekonom 20–30 kun. Muddat Xitoydagi omborimizdan yuk chiqqanidan Toshkentda topshirilgunicha hisoblanadi."
+      },
+      {
+        "q": "Minimal hajm bormi?",
+        "a": "Biz B2B segmentida ishlaymiz: sborniy yuklar va to‘liq furalar. Jismoniy shaxslarning kichik posilkalari bilan ishlamaymiz. Sborniy yuk uchun minimal hajm tovar turi va jo‘natishlar muntazamligiga qarab kelishiladi — menejerga hajmni ayting, u darhol javob beradi."
+      },
+      {
+        "q": "Narx qanday hisoblanadi?",
+        "a": "Hajm va og‘irlik nisbati, tanlangan tarif, tovar nomenklaturasi, konsolidatsiya zarurati va jo‘natishlar muntazamligi asosida. Tayyor jadval yo‘q — har bir yuk alohida hisoblanadi. Bojxona rasmiylashtiruvi va yuk sug‘urtasi uchala tarifga ham kiritilgan, alohida to‘lanmaydi."
+      },
+      {
+        "q": "Yukni real vaqtda kuzatib borish mumkinmi?",
+        "a": "Ha. @SAF_LOGISTICS_PARTNER_BOT Telegram mini-ilovasida har bir yukingiz invoys raqami, hajmi, og‘irligi va narxi bilan ko‘rinadi, progress-bar esa Iu / Guanchjou → Qashqar → O‘zbekiston yo‘lining qaysi bosqichida ekanini ko‘rsatadi. Xaritadagi joylashuv yo‘l bosqichi bo‘yicha taxminiy ko‘rsatiladi — bu GPS-treker emas. Bundan tashqari biriktirilgan menejer har bir holat o‘zgarishi haqida o‘zi xabar beradi."
+      },
+      {
+        "q": "SAF boshqa ekspeditorlardan nimasi bilan farq qiladi?",
+        "a": "Uch narsa bilan. Birinchidan, Xitoydagi ikkita o‘z omborimiz — Guanchjou va Iu — ya’ni yuk vositachi orqali emas, bizning qo‘limizdan o‘tadi. Ikkinchidan, bojxona rasmiylashtiruvi va sug‘urta narxga kiritilgan, yo‘lda kutilmagan qo‘shimcha hisob chiqmaydi. Uchinchidan, raqamli kabinet: yuklaringiz, bosqichlari va bonus balansingiz Telegram mini-ilovada turadi."
+      },
+      {
+        "q": "SAF Tokens nima va qanday ishlaydi?",
+        "a": "Bu sodiqlik dasturimiz. Har bir yakunlangan tashish — sborniy bo‘ladimi yoki to‘liq fura — uchun hisobingizga avtomatik SAF-token yoziladi. Tokenlarni bepul ekspress yetkazib berish (5 000 SAF), bepul yuk sug‘urtasi (5 000 SAF) yoki keyingi tashuvga chegirma ($100 uchun 1 000 SAF, $10 000 uchun 100 000 SAF) ga almashtirasiz. Tashuvlar soni ortgani sari darajangiz Bronze’dan Platinum’gacha ko‘tariladi. Balansni @SAF_LOGISTICS_PARTNER_BOT da ko‘rasiz."
+      },
+      {
+        "q": "To‘liq fura yoki katta hajmli yuk bo‘lsa-chi?",
+        "a": "To‘liq mashina (FTL) — bizning asosiy yo‘nalishimiz. Fura faqat sizning yukingiz bilan yuklanadi, yo‘lda qayta yuklanmaydi va boshqa mijozlarning yuki kutilmaydi, shuning uchun muddat eng qisqa bo‘ladi. Muntazam jo‘natadigan mijozlar uchun grafik va narx alohida kelishiladi."
+      }
+    ],
+    "moreLabel": "To‘liq savol-javob sahifasi",
+    "ctaTitle": "Javobini topmadingizmi?",
+    "ctaText": "Yozing yoki qo‘ng‘iroq qiling — menejer 24/7 javob beradi va yukingiz uchun aniq hisob-kitobni tayyorlaydi.",
+    "ctaLabel": "Menejerga yozish"
   },
   "ctaBanner": {
     "title": "Yukingizni bugun yo‘lga qo‘ying",
@@ -417,8 +564,10 @@
     "links": {
       "tariffs": "Tariflar",
       "calculator": "Foyda kalkulyatori",
+      "tokens": "SAF Tokens",
       "route": "Marshrut",
       "guarantees": "Kafolatlar",
+      "faq": "Savol-javob",
       "contact": "Bog‘lanish"
     }
   },
@@ -1058,7 +1207,7 @@
           },
           {
             "q": "Yukni kuzatib borish mumkinmi?",
-            "a": "Ha. Sizga biriktirilgan menejer holat o‘zgarishlari haqida o‘zi xabar beradi va istalgan paytda so‘rasangiz joriy holatni aytadi."
+            "a": "Ha. @SAF_LOGISTICS_PARTNER_BOT Telegram mini-ilovasida yuklaringiz bosqichma-bosqich progress-bar bilan ko‘rinadi, biriktirilgan menejer esa holat o‘zgarishlari haqida o‘zi xabar beradi va istalgan paytda joriy holatni aytadi."
           },
           {
             "q": "Xitoydagi yetkazib beruvchini tekshira olasizmi?",
