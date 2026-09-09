@@ -96,7 +96,7 @@ export function Route({ dict }: Props) {
         >
           <VideoBackdrop
             src="/videos/5secondtuck.mp4"
-            poster="/images/5secondtuck-poster.png"
+            poster="/images/5secondtuck-poster.jpg"
             grade="duotone"
             className="-z-10"
           />

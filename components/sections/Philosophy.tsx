@@ -26,7 +26,7 @@ export function Philosophy({ dict }: Props) {
         >
           <VideoBackdrop
             src="/videos/a-large-white-semi-truck-is-driving-down-a-highway-free-video.mp4"
-            poster="/images/a-large-white-semi-truck-is-driving-down-a-highway-free-video-poster.png"
+            poster="/images/a-large-white-semi-truck-is-driving-down-a-highway-free-video-poster.jpg"
             grade="duotone"
             parallax
             className="-z-10"

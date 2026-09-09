@@ -27,6 +27,28 @@ npm run lint
 | `proxy.ts` | Next 16 proxy (formerly middleware): prefixes locale-less paths with `/uz` |
 | `docs/` | Client-supplied brief and media (git-ignored) |
 
+## Replacing images and videos
+
+`next.config.ts` serves everything under `public/images` and `public/videos`
+with `Cache-Control: public, max-age=31536000, immutable`, and the next/image
+optimizer has no cache-invalidation API. So:
+
+**Replacing an asset means giving it a new filename.** Overwrite one in place
+and returning visitors keep the old bytes for a year.
+
+Keep new assets in the shape the existing ones already have — photos capped at
+1920px wide, JPEG rather than PNG (PNG is only for UI captures and flags), and
+background clips at 720p, H.264 CRF 30, no audio track:
+
+```bash
+ffmpeg -i in.mp4 -vf "scale='min(1280,iw)':-2" -c:v libx264 -crf 30 \
+  -preset slow -pix_fmt yuv420p -an -movflags +faststart out.mp4
+```
+
+`indexableImages` in `lib/site.ts` publishes each image's real width and height
+into JSON-LD and the sitemap — update them to match the file, or the markup
+lies about the asset.
+
 ## Positioning rules
 
 The site is deliberately narrow. Two rules come straight from the client brief and must survive every future edit:

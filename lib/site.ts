@@ -115,24 +115,24 @@ export type IndexableImage = {
 
 export const indexableImages: IndexableImage[] = [
   { path: "/images/logo1.jpg", altKey: "logo", width: 1080, height: 1080 },
-  { path: "/images/boss.jpg", altKey: "founder", width: 1000, height: 1000 },
+  { path: "/images/boss.jpg", altKey: "founder", width: 1080, height: 1080 },
   {
     path: "/images/semi-truck-port-sunset.jpg",
     altKey: "truckPort",
     width: 1920,
-    height: 1280,
+    height: 1047,
   },
   {
     path: "/images/industrial-port-container-yard.jpg",
     altKey: "containerYard",
     width: 1920,
-    height: 1280,
+    height: 1323,
   },
   {
     path: "/images/truck-logistics-operations-dusk.jpg",
     altKey: "operationsDusk",
     width: 1920,
-    height: 1280,
+    height: 1076,
   },
   {
     path: "/images/large-cargo-truck-driving-rural-highway-with-trailer-logistics-freight-transport.jpg",
@@ -147,24 +147,29 @@ export const indexableImages: IndexableImage[] = [
     height: 1280,
   },
   {
-    path: "/images/a-large-white-semi-truck-is-driving-down-a-highway-free-video-poster.png",
+    path: "/images/a-large-white-semi-truck-is-driving-down-a-highway-free-video-poster.jpg",
     altKey: "heroPoster",
     width: 1920,
-    height: 1080,
+    height: 1082,
   },
   {
-    path: "/images/5secondtuck-poster.png",
+    path: "/images/5secondtuck-poster.jpg",
     altKey: "routePoster",
     width: 1920,
-    height: 1080,
+    height: 1148,
   },
   {
-    path: "/images/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046-poster.png",
+    path: "/images/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046-poster.jpg",
     altKey: "ctaPoster",
     width: 1920,
-    height: 1080,
+    height: 1079,
   },
-  { path: "/images/poster.png", altKey: "fleetPoster", width: 1920, height: 1080 },
+  {
+    path: "/images/poster.jpg",
+    altKey: "fleetPoster",
+    width: 1920,
+    height: 1084,
+  },
   {
     path: "/images/guangzhou-city-skyline.jpg",
     altKey: "guangzhou",
@@ -194,23 +199,23 @@ export const indexableVideos: IndexableVideo[] = [
   {
     path: "/videos/a-large-white-semi-truck-is-driving-down-a-highway-free-video.mp4",
     thumbnail:
-      "/images/a-large-white-semi-truck-is-driving-down-a-highway-free-video-poster.png",
+      "/images/a-large-white-semi-truck-is-driving-down-a-highway-free-video-poster.jpg",
     titleKey: "hero",
   },
   {
     path: "/videos/15373444_3840_2160_25fps.mp4",
-    thumbnail: "/images/poster.png",
+    thumbnail: "/images/poster.jpg",
     titleKey: "fleet",
   },
   {
     path: "/videos/5secondtuck.mp4",
-    thumbnail: "/images/5secondtuck-poster.png",
+    thumbnail: "/images/5secondtuck-poster.jpg",
     titleKey: "route",
   },
   {
     path: "/videos/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046.mp4",
     thumbnail:
-      "/images/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046-poster.png",
+      "/images/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046-poster.jpg",
     titleKey: "highway",
   },
 ];

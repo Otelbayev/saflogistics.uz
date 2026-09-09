@@ -25,7 +25,7 @@ export function CtaBanner({ dict }: Props) {
         >
           <VideoBackdrop
             src="/videos/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046.mp4"
-            poster="/images/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046-poster.png"
+            poster="/images/vecteezy_cargo-truck-with-cargo-trailer-is-driving-on-the-highway_47880046-poster.jpg"
             grade="duotone"
             weight="heavy"
             parallax

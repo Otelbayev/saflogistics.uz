@@ -78,7 +78,7 @@ export function Hero({ locale, dict }: Props) {
           later, desktop only. The <video> gets no `poster` attribute — that
           would refetch the raw PNG straight from /public. */}
       <Image
-        src="/images/poster.png"
+        src="/images/poster.jpg"
         alt={dict.seo.alt.fleetPoster}
         fill
         priority
