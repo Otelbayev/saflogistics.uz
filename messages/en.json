@@ -74,7 +74,7 @@
     "home": "Home",
     "tariffs": "Tariffs",
     "calculator": "Calculator",
-    "route": "Route",
+    "app": "App",
     "faq": "FAQ",
     "contact": "Contact",
     "about": "About",
@@ -95,6 +95,12 @@
     "badgeExpressValue": "8–12 days",
     "float1": "500+ shipments delivered",
     "float2": "Deep expertise — Guangzhou and Yiwu",
+    "app": {
+      "title": "SAF Tokens · Telegram mini-app",
+      "desc": "Tokens on every shipment, cargo stages and balance — all in one app.",
+      "more": "@SAF_LOGISTICS_PARTNER_BOT shows the invoice, cbm and delivery status of every shipment. Tokens buy free express, insurance or a discount.",
+      "cta": "Open"
+    },
     "stats": {
       "years": "Years of experience",
       "projects": "Shipments delivered",

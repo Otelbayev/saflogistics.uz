@@ -246,6 +246,50 @@ export function Hero({ locale, dict }: Props) {
               <span className="sr-only">{dict.hero.tickerLabel}</span>
             </Pill>
           </motion.div>
+
+          {/* Tokens and the mini-app, one tap from the fold. The hero is a
+              single non-scrolling viewport, so this band is rationed by the
+              height it has: below 760px (and on phones) it is gone entirely —
+              720px would overflow by 27px — between 760 and 840 only the
+              summary line runs, and above 840px the detail below it joins in.
+              Measured slack: 4px at 768, 14px at 840, 44px at 900. */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="mt-3 hidden [@media(min-width:640px)_and_(min-height:760px)]:block"
+          >
+            <Link
+              href={`/${locale}#ecosystem`}
+              className="group flex max-w-2xl items-start gap-3 rounded-2xl border border-brand-700/25 bg-white/65 px-4 py-2 backdrop-blur [@media(min-height:840px)]:py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-700/50 hover:bg-white/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:border-white/20 dark:bg-white/10 dark:hover:border-white/40 dark:hover:bg-white/20"
+            >
+              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-800/10 text-brand-800 dark:bg-white/15 dark:text-white">
+                <Icon.Coin size={16} />
+              </span>
+              <span className="flex min-w-0 flex-col">
+                <span className="truncate text-sm font-semibold text-brand-950 dark:text-white">
+                  {dict.hero.app.title}
+                </span>
+                <span className="mt-0.5 line-clamp-1 text-xs leading-relaxed text-brand-950/75 dark:text-white/75">
+                  {dict.hero.app.desc}
+                </span>
+                {/* The detail is a separate string rather than more of the
+                    same one: clamping a single paragraph to one line cuts it
+                    mid-sentence, and the short window is exactly where a
+                    half-sentence would be all a visitor sees. */}
+                <span className="mt-1 hidden text-xs leading-relaxed text-brand-950/70 [@media(min-height:840px)]:block dark:text-white/70">
+                  {dict.hero.app.more}
+                </span>
+              </span>
+              <span className="ml-auto inline-flex shrink-0 items-center gap-1.5 text-xs font-semibold text-brand-800 dark:text-brand-100">
+                <span className="hidden md:inline">{dict.hero.app.cta}</span>
+                <Icon.ArrowRight
+                  size={14}
+                  className="transition-transform group-hover:translate-x-0.5"
+                />
+              </span>
+            </Link>
+          </motion.div>
         </div>
       </Container>
 

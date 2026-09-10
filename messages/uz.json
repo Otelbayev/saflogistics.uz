@@ -77,7 +77,7 @@
     "home": "Bosh sahifa",
     "tariffs": "Tariflar",
     "calculator": "Kalkulyator",
-    "route": "Marshrut",
+    "app": "Ilova",
     "faq": "Savol-javob",
     "contact": "Aloqa",
     "about": "Biz haqimizda",
@@ -98,6 +98,12 @@
     "badgeExpressValue": "8–12 kun",
     "float1": "500+ muvaffaqiyatli tashuv",
     "float2": "Chuqur ekspertiza — Guanchjou va Iu",
+    "app": {
+      "title": "SAF Tokens · Telegram mini-ilova",
+      "desc": "Har bir tashuv uchun SAF-token, yuk bosqichlari va balans — bitta ilovada.",
+      "more": "@SAF_LOGISTICS_PARTNER_BOT’da har bir yukning invoysi, cbm’i va yetkazish holati ko‘rinadi. Tokenlar bepul ekspress, sug‘urta yoki chegirmaga almashtiriladi.",
+      "cta": "Ochish"
+    },
     "stats": {
       "years": "Yillik tajriba",
       "projects": "Muvaffaqiyatli tashuv",

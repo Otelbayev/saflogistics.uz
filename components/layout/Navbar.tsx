@@ -82,7 +82,11 @@ export function Navbar({ locale, dict }: Props) {
       label: dict.nav.calculator,
       icon: Icon.Cpu,
     },
-    { href: `/${locale}#route`, label: dict.nav.route, icon: Icon.MapPin },
+    {
+      href: `/${locale}#ecosystem`,
+      label: dict.nav.app,
+      icon: Icon.Telegram,
+    },
     { href: `/${locale}#faq`, label: dict.nav.faq, icon: Icon.Sparkle },
     { href: `/${locale}#contact`, label: dict.nav.contact, icon: Icon.Phone },
   ];

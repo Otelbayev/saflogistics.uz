@@ -50,7 +50,7 @@ export function Ecosystem({ dict }: Props) {
                   mode would read as a rendering fault rather than a screenshot. */}
               <div className="relative overflow-hidden rounded-xl border border-border bg-white p-2">
                 <Image
-                  src={`/images/app/${key}.png`}
+                  src={`/images/app/${i + 1}.png`}
                   alt={t.screens[key].title}
                   width={SHOT_W}
                   height={SHOT_H}
