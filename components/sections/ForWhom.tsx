@@ -1,12 +1,12 @@
 "use client";
 
-import type { Dictionary } from "@/lib/i18n";
+import type { DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"forWhom"> };
 
 export function ForWhom({ dict }: Props) {
   return (

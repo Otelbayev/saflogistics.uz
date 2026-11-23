@@ -521,9 +521,10 @@
     "hoursWeek": "24/7 — kecha-yu kunduz",
     "hoursSun": "Dam olish kunlarisiz",
     "addressLabel": "Manzil",
-    "address": "Toshkent sh., Abu Sulaymon Banokatiy ko‘chasi, 209",
+    "address": "Toshkent sh., Elbek ko‘chasi, 5A",
     "mapTitle": "Bizni xaritada toping",
     "mapCta": "Yandex xaritada ochish",
+    "routeCta": "Yo‘nalish olish",
     "socialLabel": "Ijtimoiy tarmoqlar",
     "form": {
       "title": "Bepul ariza qoldiring",
@@ -1256,7 +1257,7 @@
             "body": [
               "2019 yildan buyon Xitoy–O‘zbekiston koridorida ishlaymiz. Shu davrda 500 dan ortiq yuk o‘z vaqtida yetkazilgan.",
               "Kompaniya asoschisi — Farrux Mashanpin. U Guanchjoudagi ofisga bevosita rahbarlik qiladi, ya’ni Xitoy tomonidagi jarayon egasi to‘g‘ridan-to‘g‘ri kompaniya rahbaridir.",
-              "Yuridik nom — SAF EXPRESS LOGISTICS MChJ. Ofis Toshkentda, Abu Sulaymon Banokatiy ko‘chasi, 209-uy."
+              "Yuridik nom — SAF EXPRESS LOGISTICS MChJ. Ofis Toshkentda, Elbek ko‘chasi, 5A-uy."
             ]
           },
           {
@@ -1300,7 +1301,7 @@
           },
           {
             "q": "Ofisingizga borib gaplashsam bo‘ladimi?",
-            "a": "Ha. Toshkent, Abu Sulaymon Banokatiy ko‘chasi, 209. Aloqa 24/7 ishlaydi, ofisga tashrifni esa menejer bilan oldindan kelishib olasiz."
+            "a": "Ha. Toshkent, Elbek ko‘chasi, 5A. Aloqa 24/7 ishlaydi, ofisga tashrifni esa menejer bilan oldindan kelishib olasiz."
           }
         ]
       }

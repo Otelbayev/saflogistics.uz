@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Dictionary } from "@/lib/i18n";
+import { pickDict } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/sections/ContactForm";
@@ -106,7 +107,7 @@ export function Contact({ dict }: Props) {
         </div>
 
         <div className="lg:col-span-3">
-          <ContactForm dict={dict} />
+          <ContactForm dict={pickDict(dict, "contact")} />
         </div>
       </Container>
 
@@ -130,14 +131,53 @@ export function Contact({ dict }: Props) {
               {dict.contact.mapCta}
             </a>
           </div>
-          <iframe
-            title="SAF Logistics on Yandex Maps"
-            src={siteConfig.mapEmbed}
-            className="h-105 w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+          <div className="relative bg-surface">
+            <iframe
+              title="SAF Logistics on Yandex Maps"
+              src={siteConfig.mapEmbed}
+              className="block h-80 w-full border-0 sm:h-105 lg:h-120"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+
+            {/* Floating address card — sits over the map from sm up, drops
+                below it on phones so the pin is never covered. */}
+            <div className="border-t border-border bg-surface p-5 sm:absolute sm:bottom-5 sm:left-5 sm:max-w-sm sm:rounded-2xl sm:border sm:bg-surface/90 sm:shadow-(--shadow-soft) sm:backdrop-blur-md">
+              <div className="flex items-start gap-3">
+                <span className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-800 text-white">
+                  <span className="absolute inset-0 animate-ping rounded-full bg-brand-800/30" />
+                  <Icon.MapPin size={18} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-foreground">
+                    {siteConfig.legalName}
+                  </p>
+                  <p className="mt-0.5 text-sm text-muted">
+                    {dict.contact.address}
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <a
+                  href={siteConfig.mapRoute}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-800 px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
+                >
+                  {dict.contact.routeCta} <Icon.ArrowRight size={14} />
+                </a>
+                <a
+                  href={siteConfig.mapUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:border-brand-700 hover:text-brand-700 dark:hover:text-brand-200"
+                >
+                  {dict.contact.mapCta}
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

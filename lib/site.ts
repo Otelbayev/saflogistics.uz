@@ -84,12 +84,15 @@ export const siteConfig = {
   ogImage: "/images/logo1.jpg",
   phones: ["+998935118484", "+998771730303"],
   email: "info@saflogistics.uz",
-  legalAddress: "Toshkent sh., Abu Sulaymon Banokatiy ko‘chasi, 209",
+  legalAddress: "Toshkent sh., Elbek ko‘chasi, 5A",
   /** Office pin, taken from the Yandex Maps house card for the address above. */
-  office: { lat: 41.274893, lng: 69.285337 },
-  mapUrl: "https://yandex.uz/maps/-/CTGvf8lc",
+  office: { lat: 41.298463, lng: 69.292538 },
+  mapUrl: "https://yandex.uz/maps/-/CXcz7AP3",
+  /** Yandex route to the office pin, from the viewer's current location. */
+  mapRoute:
+    "https://yandex.uz/maps/?rtext=~41.298463%2C69.292538&rtt=auto",
   mapEmbed:
-    "https://yandex.uz/map-widget/v1/?ll=69.285337%2C41.274893&z=17&pt=69.285337,41.274893,pm2rdm",
+    "https://yandex.uz/map-widget/v1/?ll=69.292538%2C41.298463&z=17&pt=69.292538,41.298463,pm2rdm",
   instagram: "https://www.instagram.com/farrukh_mashanpin",
   instagramHandle: "farrukh_mashanpin",
   /** Telegram mini-app: the client cabinet — shipments, stages, SAF token

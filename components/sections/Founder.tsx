@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import type { Dictionary } from "@/lib/i18n";
+import { m as motion } from "framer-motion";
+import type { DictSlice, SeoAlt } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { siteConfig } from "@/lib/site";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"founder"> & SeoAlt };
 
 export function Founder({ dict }: Props) {
   return (

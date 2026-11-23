@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import {
   useEffect,
   useRef,
@@ -10,7 +10,7 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
-import type { Dictionary } from "@/lib/i18n";
+import type { DictSlice, SeoAlt } from "@/lib/i18n";
 import type { Locale } from "@/lib/locales";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -21,7 +21,7 @@ import { CountUp } from "@/components/ui/CountUp";
 
 type Props = {
   locale: Locale;
-  dict: Dictionary;
+  dict: DictSlice<"hero"> & SeoAlt;
 };
 
 /** `value` is the number that counts up; prefix/suffix frame it. */
@@ -161,28 +161,27 @@ export function Hero({ locale, dict }: Props) {
 
       <Container className="relative flex min-h-0 flex-1 flex-col justify-center">
         <div className="max-w-2xl">
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-800 backdrop-blur sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em] dark:border-white/15 dark:bg-white/10 dark:text-brand-200"
+          {/* The above-the-fold copy fades in with CSS, not framer-motion: it
+              starts on first paint instead of waiting for JS to hydrate, which
+              is what LCP is measured on. */}
+          <span
+            style={{ "--hero-y": "16px", animationDuration: "0.6s" } as CSSProperties}
+            className="hero-in inline-flex w-fit items-center gap-2 rounded-full border border-brand-700/30 bg-white/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-800 backdrop-blur sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em] dark:border-white/15 dark:bg-white/10 dark:text-brand-200"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500/80" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500 dark:bg-brand-300" />
             </span>
             <span>{dict.hero.badge}</span>
-          </motion.span>
+          </span>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+          <h1
+            style={{ "--hero-y": "28px", animationDelay: "0.1s" } as CSSProperties}
             /* From lg up the headline is pinned to exactly two lines: each half
                is its own nowrap line and the block is allowed to grow past the
                copy column. Type size is unchanged — only the wrapping differs.
                Below lg it wraps naturally as before. */
-            className="mt-3 text-balance text-[clamp(1.75rem,6vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-brand-950 sm:mt-5 lg:w-max lg:max-w-none dark:text-white"
+            className="hero-in mt-3 text-balance text-[clamp(1.75rem,6vw,4.5rem)] font-semibold leading-[1.06] tracking-tight text-brand-950 sm:mt-5 lg:w-max lg:max-w-none dark:text-white"
           >
             <span className="block lg:whitespace-nowrap">
               {dict.hero.titleLine1}
@@ -193,22 +192,18 @@ export function Hero({ locale, dict }: Props) {
                 {dict.hero.titleAccent}
               </span>
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-3 line-clamp-4 max-w-xl text-sm leading-relaxed text-brand-950/85 sm:mt-6 sm:text-lg dark:text-white/85"
+          <p
+            style={{ "--hero-y": "24px", animationDelay: "0.2s" } as CSSProperties}
+            className="hero-in mt-3 line-clamp-4 max-w-xl text-sm leading-relaxed text-brand-950/85 sm:mt-6 sm:text-lg dark:text-white/85"
           >
             {dict.hero.subtitle}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-5 flex flex-col items-stretch gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center"
+          <div
+            style={{ "--hero-y": "20px", animationDelay: "0.3s" } as CSSProperties}
+            className="hero-in mt-5 flex flex-col items-stretch gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center"
           >
             <Button onClick={openQuote} size="lg" className="w-full sm:w-auto">
               {dict.hero.ctaContact}
@@ -220,7 +215,7 @@ export function Hero({ locale, dict }: Props) {
             >
               {dict.hero.ctaServices}
             </Link>
-          </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

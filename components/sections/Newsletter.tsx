@@ -1,12 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { isValidPhoneNumber } from "libphonenumber-js";
-import type { Dictionary } from "@/lib/i18n";
+import type { DictSlice } from "@/lib/i18n";
 import { Icon } from "@/components/ui/Icon";
-import { PhoneField } from "@/components/ui/PhoneField";
+import { LazyPhoneField, isValidPhone } from "@/components/ui/LazyPhoneField";
 
-type Props = { dict: Dictionary; variant?: "inline" | "panel" };
+type Props = { dict: DictSlice<"contact" | "newsletter">; variant?: "inline" | "panel" };
 
 export function Newsletter({ dict, variant = "panel" }: Props) {
   const [submitting, setSubmitting] = useState(false);
@@ -19,7 +18,7 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
-    if (!phone || !isValidPhoneNumber(phone)) {
+    if (!(await isValidPhone(phone))) {
       setPhoneError(true);
       return;
     }
@@ -81,7 +80,7 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
           required
           className={lightInput}
         />
-        <PhoneField
+        <LazyPhoneField
           value={phone}
           onChange={setPhone}
           placeholder={dict.newsletter.phonePlaceholder}
@@ -132,7 +131,7 @@ export function Newsletter({ dict, variant = "panel" }: Props) {
               required
               className={darkInput}
             />
-            <PhoneField
+            <LazyPhoneField
               value={phone}
               onChange={setPhone}
               placeholder={dict.newsletter.phonePlaceholder}

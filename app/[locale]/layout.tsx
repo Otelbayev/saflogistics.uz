@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import { themeInitScript } from "@/components/theme/ThemeProvider";
-import { hasLocale, getDictionary } from "@/lib/i18n";
+import { hasLocale, getDictionary, pickDict } from "@/lib/i18n";
 import { defaultLocale, locales, type Locale } from "@/lib/locales";
 import { localeHtmlLang, primaryImage, siteConfig } from "@/lib/site";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
@@ -10,6 +10,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BusinessJsonLd } from "@/components/seo/JsonLd";
 import { QuoteModalProvider } from "@/components/ui/QuoteModal";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -136,14 +137,21 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
         />
         <ThemeProvider>
-          <QuoteModalProvider dict={dict}>
-            <div className="relative">
-              <Navbar locale={locale} dict={dict} />
-              <main className="min-h-[70vh]">{children}</main>
-              <Footer locale={locale} dict={dict} />
-              <BusinessJsonLd locale={locale} dict={dict} />
-            </div>
-          </QuoteModalProvider>
+          <MotionProvider>
+            <QuoteModalProvider
+              dict={pickDict(dict, "site", "ctaBanner", "contact")}
+            >
+              <div className="relative">
+                <Navbar
+                  locale={locale}
+                  dict={pickDict(dict, "contact", "nav", "site", "theme")}
+                />
+                <main className="min-h-[70vh]">{children}</main>
+                <Footer locale={locale} dict={dict} />
+                <BusinessJsonLd locale={locale} dict={dict} />
+              </div>
+            </QuoteModalProvider>
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

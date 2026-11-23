@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import type { Dictionary } from "@/lib/i18n";
+import { AnimatePresence, m as motion } from "framer-motion";
+import type { DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"individual"> };
 
 const itemKeys = ["route", "terms", "pricing", "manager"] as const;
 type ItemKey = (typeof itemKeys)[number];

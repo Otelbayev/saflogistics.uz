@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Dictionary } from "@/lib/i18n";
+import { pickDict } from "@/lib/i18n";
 import type { Locale } from "@/lib/locales";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
@@ -27,7 +28,7 @@ export function Footer({ locale, dict }: Props) {
       />
       <Container className="relative py-12 sm:py-16">
         <div className="mb-10 sm:mb-12">
-          <Newsletter dict={dict} />
+          <Newsletter dict={pickDict(dict, "contact", "newsletter")} />
         </div>
 
         <div className="grid gap-10 md:grid-cols-4">

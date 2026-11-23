@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import type { Dictionary } from "@/lib/i18n";
+import { m as motion } from "framer-motion";
+import type { DictSlice, SeoAlt } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"about"> & SeoAlt };
 
 const featureKeys = ["experience", "b2b", "hub"] as const;
 const featureIcons = {

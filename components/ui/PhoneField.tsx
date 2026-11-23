@@ -82,6 +82,9 @@ export const PhoneField = forwardRef<HTMLDivElement, Props>(function PhoneField(
         name={name}
         required={required}
         numberInputProps={{ maxLength, inputMode: "tel" }}
+        // Self-hosted (public/flags) instead of the library's default
+        // github.io CDN — no third-party DNS/TLS on the critical path.
+        flagUrl="/flags/{XX}.svg"
       />
     </div>
   );

@@ -1,14 +1,14 @@
 "use client";
 
 import type { ReactNode } from "react";
-import type { Dictionary } from "@/lib/i18n";
+import type { Dictionary, DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import { tariffKeys, tariffs, type TariffKey } from "@/lib/site";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"services"> };
 
 type RowKey = keyof Dictionary["services"]["compareTable"]["rows"];
 type Marks = Record<TariffKey, "yes" | "no"> | null;

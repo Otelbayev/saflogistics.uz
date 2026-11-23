@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useMemo, useState, type ReactNode } from "react";
-import type { Dictionary } from "@/lib/i18n";
+import type { DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -12,7 +12,7 @@ import { CountUp } from "@/components/ui/CountUp";
 import { siteConfig, tariffKeys, tariffs, type TariffKey } from "@/lib/site";
 import { LIMITS, calculateProfit } from "@/lib/profit";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"calculator" | "services"> };
 
 const NUMBER = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const DECIMAL = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });

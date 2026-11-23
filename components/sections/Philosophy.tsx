@@ -1,12 +1,12 @@
 "use client";
 
-import type { Dictionary } from "@/lib/i18n";
+import type { DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import { VideoBackdrop } from "@/components/ui/VideoBackdrop";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"philosophy"> };
 
 const reasonKeys = ["time", "routes", "control", "partnership"] as const;
 const reasonIcons = {

@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { Dictionary } from "@/lib/i18n";
+import { m as motion } from "framer-motion";
+import type { DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -10,7 +10,7 @@ import { tariffKeys, tariffs } from "@/lib/site";
 import { useQuoteModal } from "@/components/ui/QuoteModal";
 import { TiltCard } from "@/components/ui/TiltCard";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"services"> };
 
 const accents: Record<string, string> = {
   express: "from-brand-500 to-brand-800",

@@ -116,7 +116,7 @@ export function BusinessJsonLd({ locale, dict }: Props) {
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Abu Sulaymon Banokatiy street, 209",
+      streetAddress: "Elbek street, 5A",
       addressLocality: "Tashkent",
       addressCountry: "UZ",
     },

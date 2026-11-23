@@ -5,8 +5,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
-import type { Dictionary } from "@/lib/i18n";
+import { AnimatePresence, m as motion } from "framer-motion";
+import type { DictSlice } from "@/lib/i18n";
 import type { Locale } from "@/lib/locales";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -18,7 +18,7 @@ import { siteConfig } from "@/lib/site";
 
 type Props = {
   locale: Locale;
-  dict: Dictionary;
+  dict: DictSlice<"contact" | "nav" | "site" | "theme">;
 };
 
 export function Navbar({ locale, dict }: Props) {

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale } from "@/lib/i18n";
+import { getDictionary, hasLocale, pickDict, seoAlt } from "@/lib/i18n";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Philosophy } from "@/components/sections/Philosophy";
@@ -18,7 +18,6 @@ import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { HomePageJsonLd } from "@/components/seo/JsonLd";
-import { Preloader } from "@/components/ui/Preloader";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -27,26 +26,23 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
   return (
     <>
-      {/* Landing page only: the topic pages are entered straight from search,
-          where a splash would just stand between the visitor and the answer. */}
-      <Preloader />
-      <Hero locale={locale} dict={dict} />
-      <About dict={dict} />
-      <Philosophy dict={dict} />
-      <Services dict={dict} />
-      <CompareTable dict={dict} />
-      <ProfitCalculator dict={dict} />
+      <Hero locale={locale} dict={{ ...pickDict(dict, "hero"), ...seoAlt(dict) }} />
+      <About dict={{ ...pickDict(dict, "about"), ...seoAlt(dict) }} />
+      <Philosophy dict={pickDict(dict, "philosophy")} />
+      <Services dict={pickDict(dict, "services")} />
+      <CompareTable dict={pickDict(dict, "services")} />
+      <ProfitCalculator dict={pickDict(dict, "calculator", "services")} />
       <Tokens dict={dict} />
-      <Route dict={dict} />
+      <Route dict={{ ...pickDict(dict, "route", "services"), ...seoAlt(dict) }} />
       <Ecosystem dict={dict} />
-      <Individual dict={dict} />
-      <Guarantees dict={dict} />
-      <ForWhom dict={dict} />
-      <WhyUs dict={dict} />
-      <Founder dict={dict} />
+      <Individual dict={pickDict(dict, "individual")} />
+      <Guarantees dict={pickDict(dict, "guarantees")} />
+      <ForWhom dict={pickDict(dict, "forWhom")} />
+      <WhyUs dict={pickDict(dict, "services", "why")} />
+      <Founder dict={{ ...pickDict(dict, "founder"), ...seoAlt(dict) }} />
       <Faq locale={locale} dict={dict} />
       <Contact dict={dict} />
-      <CtaBanner dict={dict} />
+      <CtaBanner dict={pickDict(dict, "ctaBanner", "site")} />
       {/* Page-level structured data. Previously emitted by the layout, which
           meant every route claimed to be the landing page; it lives here now
           so the topic pages can describe themselves. Visible output for this

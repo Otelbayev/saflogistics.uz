@@ -1,6 +1,6 @@
 "use client";
 
-import type { Dictionary } from "@/lib/i18n";
+import type { DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -8,7 +8,7 @@ import { Icon } from "@/components/ui/Icon";
 import { CargoScene } from "@/components/ui/CargoScene";
 import { tariffs } from "@/lib/site";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"services" | "why"> };
 
 /**
  * Bento layout: one hero cell carrying the headline advantage plus a 3D

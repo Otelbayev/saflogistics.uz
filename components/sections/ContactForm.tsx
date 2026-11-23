@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { isValidPhoneNumber } from "libphonenumber-js";
-import type { Dictionary } from "@/lib/i18n";
+import { m as motion, AnimatePresence } from "framer-motion";
+import type { DictSlice } from "@/lib/i18n";
 import { Icon } from "@/components/ui/Icon";
-import { PhoneField } from "@/components/ui/PhoneField";
+import { LazyPhoneField, isValidPhone } from "@/components/ui/LazyPhoneField";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"contact"> };
 
 const SERVICE_KEYS = [
   "express",
@@ -34,7 +33,7 @@ export function ContactForm({ dict }: Props) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
-    if (!phone || !isValidPhoneNumber(phone)) {
+    if (!(await isValidPhone(phone))) {
       setPhoneError(true);
       return;
     }
@@ -112,7 +111,7 @@ export function ContactForm({ dict }: Props) {
           </label>
           <label className="block">
             <span className={labelClass}>{dict.contact.form.phone}</span>
-            <PhoneField
+            <LazyPhoneField
               value={phone}
               onChange={setPhone}
               placeholder={dict.contact.form.phonePlaceholder}

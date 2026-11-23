@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { Dictionary } from "@/lib/i18n";
+import { m as motion } from "framer-motion";
+import type { DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"guarantees"> };
 
 const itemKeys = ["deadline", "cargo", "transparency"] as const;
 const itemIcons = {

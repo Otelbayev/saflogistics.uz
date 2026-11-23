@@ -1,14 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { Dictionary } from "@/lib/i18n";
+import { m as motion } from "framer-motion";
+import type { DictSlice } from "@/lib/i18n";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
 import { siteConfig } from "@/lib/site";
 import { useQuoteModal } from "@/components/ui/QuoteModal";
 import { VideoBackdrop } from "@/components/ui/VideoBackdrop";
 
-type Props = { dict: Dictionary };
+type Props = { dict: DictSlice<"ctaBanner" | "site"> };
 
 export function CtaBanner({ dict }: Props) {
   const { open } = useQuoteModal();

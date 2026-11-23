@@ -518,9 +518,10 @@
     "hoursWeek": "24/7 — round the clock",
     "hoursSun": "No days off",
     "addressLabel": "Address",
-    "address": "209 Abu Sulaymon Banokatiy street, Tashkent",
+    "address": "5A Elbek street, Tashkent",
     "mapTitle": "Find us on the map",
     "mapCta": "Open in Yandex Maps",
+    "routeCta": "Get directions",
     "socialLabel": "Social networks",
     "form": {
       "title": "Request a free quote",
@@ -1253,7 +1254,7 @@
             "body": [
               "We have worked the China–Uzbekistan corridor since 2019, delivering more than 500 shipments on time over that period.",
               "The founder is Farrukh Mashanpin, who directly runs the Guangzhou office — meaning the process owner on the Chinese side is the head of the company.",
-              "The registered name is SAF EXPRESS LOGISTICS MChJ. The office is in Tashkent at 209 Abu Sulaymon Banokatiy Street."
+              "The registered name is SAF EXPRESS LOGISTICS MChJ. The office is in Tashkent at 5A Elbek Street."
             ]
           },
           {
@@ -1297,7 +1298,7 @@
           },
           {
             "q": "Can I visit your office?",
-            "a": "Yes — 209 Abu Sulaymon Banokatiy Street, Tashkent. We are reachable 24/7; an office visit is arranged with your manager in advance."
+            "a": "Yes — 5A Elbek Street, Tashkent. We are reachable 24/7; an office visit is arranged with your manager in advance."
           }
         ]
       }
